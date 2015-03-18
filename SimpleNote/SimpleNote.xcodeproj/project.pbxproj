@@ -14,6 +14,7 @@
 		2875D4C31AB7B87B00BE46BC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2875D4C11AB7B87B00BE46BC /* LaunchScreen.xib */; };
 		2875D4CF1AB7B87B00BE46BC /* SimpleNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2875D4CE1AB7B87B00BE46BC /* SimpleNoteTests.m */; };
 		287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD9991AB926F1005FB37F /* NoteListController.m */; };
+		287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD99C1AB927E8005FB37F /* NoteDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		287BD9961AB92684005FB37F /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		287BD9981AB926F1005FB37F /* NoteListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListController.h; sourceTree = "<group>"; };
 		287BD9991AB926F1005FB37F /* NoteListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListController.m; sourceTree = "<group>"; };
+		287BD99B1AB927E8005FB37F /* NoteDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailController.h; sourceTree = "<group>"; };
+		287BD99C1AB927E8005FB37F /* NoteDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 			children = (
 				287BD9981AB926F1005FB37F /* NoteListController.h */,
 				287BD9991AB926F1005FB37F /* NoteListController.m */,
+				287BD99B1AB927E8005FB37F /* NoteDetailController.h */,
+				287BD99C1AB927E8005FB37F /* NoteDetailController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			files = (
 				2875D4B81AB7B87B00BE46BC /* AppDelegate.m in Sources */,
 				287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */,
+				287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */,
 				2875D4B51AB7B87B00BE46BC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
