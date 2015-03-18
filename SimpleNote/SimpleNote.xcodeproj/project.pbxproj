@@ -15,6 +15,7 @@
 		2875D4CF1AB7B87B00BE46BC /* SimpleNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2875D4CE1AB7B87B00BE46BC /* SimpleNoteTests.m */; };
 		287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD9991AB926F1005FB37F /* NoteListController.m */; };
 		287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD99C1AB927E8005FB37F /* NoteDetailController.m */; };
+		28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF5D381AB976D4000AFBDB /* NoteListCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		287BD9991AB926F1005FB37F /* NoteListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListController.m; sourceTree = "<group>"; };
 		287BD99B1AB927E8005FB37F /* NoteDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailController.h; sourceTree = "<group>"; };
 		287BD99C1AB927E8005FB37F /* NoteDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailController.m; sourceTree = "<group>"; };
+		28FF5D371AB976D4000AFBDB /* NoteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListCell.h; sourceTree = "<group>"; };
+		28FF5D381AB976D4000AFBDB /* NoteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				287BD9991AB926F1005FB37F /* NoteListController.m */,
 				287BD99B1AB927E8005FB37F /* NoteDetailController.h */,
 				287BD99C1AB927E8005FB37F /* NoteDetailController.m */,
+				28FF5D371AB976D4000AFBDB /* NoteListCell.h */,
+				28FF5D381AB976D4000AFBDB /* NoteListCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */,
 				287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */,
 				2875D4B51AB7B87B00BE46BC /* main.m in Sources */,
+				28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
