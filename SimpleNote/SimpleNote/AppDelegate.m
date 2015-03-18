@@ -16,7 +16,32 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    NoteListController *controller = [[NoteListController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    /* customize navigation style */
+    
+    
+    NSArray *colorArr = [NSArray arrayWithObjects:DefaultColor,DefaultGreen,DefaultRed,DefaultYellow,nil];
+    
+    colorCount = [[[NSUserDefaults standardUserDefaults]objectForKey:@"colorCount"] integerValue];
+    
+    
+    [[UINavigationBar appearance] setBarTintColor:colorArr[colorCount]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               [UIColor whiteColor],NSForegroundColorAttributeName,
+                                               nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    self.window.rootViewController = navigationController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
