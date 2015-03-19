@@ -9,7 +9,9 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+{
+    NSInteger colorCount;
+}
 @end
 
 @implementation AppDelegate

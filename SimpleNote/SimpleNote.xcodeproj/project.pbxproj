@@ -18,6 +18,20 @@
 		286B7AF21ABA71E10019151A /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE81ABA71E10019151A /* save@2x.png */; };
 		286B7AF31ABA71E10019151A /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE91ABA71E10019151A /* star@2x.png */; };
 		286B7AF71ABA723D0019151A /* VNNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7AF61ABA723D0019151A /* VNNote.m */; };
+		286B7B001ABA96630019151A /* UIColor+VNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7AF91ABA96630019151A /* UIColor+VNHex.m */; };
+		286B7B011ABA96630019151A /* NoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7AFB1ABA96630019151A /* NoteManager.m */; };
+		286B7B021ABA96630019151A /* VNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7AFD1ABA96630019151A /* VNConstants.m */; };
+		286B7B031ABA96630019151A /* NSDate+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7AFF1ABA96630019151A /* NSDate+Conversion.m */; };
+		286B7B131ABA971F0019151A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 286B7B081ABA971F0019151A /* libz.dylib */; };
+		286B7B141ABA971F0019151A /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 286B7B091ABA971F0019151A /* libMobClickLibrary.a */; };
+		286B7B151ABA971F0019151A /* KWPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B0C1ABA971F0019151A /* KWPopoverView.m */; };
+		286B7B161ABA971F0019151A /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B0E1ABA971F0019151A /* Colours.m */; };
+		286B7B171ABA971F0019151A /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B101ABA971F0019151A /* SVIndefiniteAnimatedView.m */; };
+		286B7B181ABA971F0019151A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B121ABA971F0019151A /* SVProgressHUD.m */; };
+		286B7B221ABA974D0019151A /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B1B1ABA974D0019151A /* SCLAlertView.m */; };
+		286B7B231ABA974D0019151A /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B1D1ABA974D0019151A /* SCLAlertViewResponder.m */; };
+		286B7B241ABA974D0019151A /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B1F1ABA974D0019151A /* SCLAlertViewStyleKit.m */; };
+		286B7B251ABA974D0019151A /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 286B7B211ABA974D0019151A /* SCLButton.m */; };
 		2875D4B51AB7B87B00BE46BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2875D4B41AB7B87B00BE46BC /* main.m */; };
 		2875D4B81AB7B87B00BE46BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2875D4B71AB7B87B00BE46BC /* AppDelegate.m */; };
 		2875D4BE1AB7B87B00BE46BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2875D4BC1AB7B87B00BE46BC /* Main.storyboard */; };
@@ -52,6 +66,33 @@
 		286B7AE91ABA71E10019151A /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		286B7AF51ABA723D0019151A /* VNNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNNote.h; sourceTree = "<group>"; };
 		286B7AF61ABA723D0019151A /* VNNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNNote.m; sourceTree = "<group>"; };
+		286B7AF81ABA96630019151A /* UIColor+VNHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+VNHex.h"; sourceTree = "<group>"; };
+		286B7AF91ABA96630019151A /* UIColor+VNHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VNHex.m"; sourceTree = "<group>"; };
+		286B7AFA1ABA96630019151A /* NoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteManager.h; sourceTree = "<group>"; };
+		286B7AFB1ABA96630019151A /* NoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteManager.m; sourceTree = "<group>"; };
+		286B7AFC1ABA96630019151A /* VNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VNConstants.h; sourceTree = "<group>"; };
+		286B7AFD1ABA96630019151A /* VNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VNConstants.m; sourceTree = "<group>"; };
+		286B7AFE1ABA96630019151A /* NSDate+Conversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Conversion.h"; sourceTree = "<group>"; };
+		286B7AFF1ABA96630019151A /* NSDate+Conversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Conversion.m"; sourceTree = "<group>"; };
+		286B7B081ABA971F0019151A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
+		286B7B091ABA971F0019151A /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		286B7B0A1ABA971F0019151A /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		286B7B0B1ABA971F0019151A /* KWPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWPopoverView.h; sourceTree = "<group>"; };
+		286B7B0C1ABA971F0019151A /* KWPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWPopoverView.m; sourceTree = "<group>"; };
+		286B7B0D1ABA971F0019151A /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		286B7B0E1ABA971F0019151A /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		286B7B0F1ABA971F0019151A /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		286B7B101ABA971F0019151A /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		286B7B111ABA971F0019151A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		286B7B121ABA971F0019151A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		286B7B1A1ABA974D0019151A /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
+		286B7B1B1ABA974D0019151A /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
+		286B7B1C1ABA974D0019151A /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
+		286B7B1D1ABA974D0019151A /* SCLAlertViewResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewResponder.m; sourceTree = "<group>"; };
+		286B7B1E1ABA974D0019151A /* SCLAlertViewStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewStyleKit.h; sourceTree = "<group>"; };
+		286B7B1F1ABA974D0019151A /* SCLAlertViewStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewStyleKit.m; sourceTree = "<group>"; };
+		286B7B201ABA974D0019151A /* SCLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLButton.h; sourceTree = "<group>"; };
+		286B7B211ABA974D0019151A /* SCLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLButton.m; sourceTree = "<group>"; };
 		2875D4AF1AB7B87B00BE46BC /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2875D4B31AB7B87B00BE46BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2875D4B41AB7B87B00BE46BC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -78,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286B7B131ABA971F0019151A /* libz.dylib in Frameworks */,
+				286B7B141ABA971F0019151A /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +156,50 @@
 			children = (
 				286B7AF51ABA723D0019151A /* VNNote.h */,
 				286B7AF61ABA723D0019151A /* VNNote.m */,
+				286B7AF81ABA96630019151A /* UIColor+VNHex.h */,
+				286B7AF91ABA96630019151A /* UIColor+VNHex.m */,
+				286B7AFA1ABA96630019151A /* NoteManager.h */,
+				286B7AFB1ABA96630019151A /* NoteManager.m */,
+				286B7AFC1ABA96630019151A /* VNConstants.h */,
+				286B7AFD1ABA96630019151A /* VNConstants.m */,
+				286B7AFE1ABA96630019151A /* NSDate+Conversion.h */,
+				286B7AFF1ABA96630019151A /* NSDate+Conversion.m */,
 			);
 			name = NoteManager;
+			sourceTree = "<group>";
+		};
+		286B7B071ABA970F0019151A /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				286B7B081ABA971F0019151A /* libz.dylib */,
+				286B7B091ABA971F0019151A /* libMobClickLibrary.a */,
+				286B7B0A1ABA971F0019151A /* MobClick.h */,
+				286B7B0B1ABA971F0019151A /* KWPopoverView.h */,
+				286B7B0C1ABA971F0019151A /* KWPopoverView.m */,
+				286B7B191ABA974D0019151A /* SCLAlertView */,
+				286B7B0D1ABA971F0019151A /* Colours.h */,
+				286B7B0E1ABA971F0019151A /* Colours.m */,
+				286B7B0F1ABA971F0019151A /* SVIndefiniteAnimatedView.h */,
+				286B7B101ABA971F0019151A /* SVIndefiniteAnimatedView.m */,
+				286B7B111ABA971F0019151A /* SVProgressHUD.h */,
+				286B7B121ABA971F0019151A /* SVProgressHUD.m */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		286B7B191ABA974D0019151A /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				286B7B1A1ABA974D0019151A /* SCLAlertView.h */,
+				286B7B1B1ABA974D0019151A /* SCLAlertView.m */,
+				286B7B1C1ABA974D0019151A /* SCLAlertViewResponder.h */,
+				286B7B1D1ABA974D0019151A /* SCLAlertViewResponder.m */,
+				286B7B1E1ABA974D0019151A /* SCLAlertViewStyleKit.h */,
+				286B7B1F1ABA974D0019151A /* SCLAlertViewStyleKit.m */,
+				286B7B201ABA974D0019151A /* SCLButton.h */,
+				286B7B211ABA974D0019151A /* SCLButton.m */,
+			);
+			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
 		2875D4A61AB7B87B00BE46BC = {
@@ -141,6 +226,7 @@
 				2875D4B61AB7B87B00BE46BC /* AppDelegate.h */,
 				2875D4B71AB7B87B00BE46BC /* AppDelegate.m */,
 				287BD9951AB9266F005FB37F /* MainHeader.h */,
+				286B7B071ABA970F0019151A /* Pod */,
 				286B7AF41ABA72050019151A /* NoteManager */,
 				287BD9971AB926DE005FB37F /* Controller */,
 				286B7ADF1ABA71E10019151A /* Resource */,
@@ -302,10 +388,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286B7B151ABA971F0019151A /* KWPopoverView.m in Sources */,
+				286B7B171ABA971F0019151A /* SVIndefiniteAnimatedView.m in Sources */,
+				286B7B031ABA96630019151A /* NSDate+Conversion.m in Sources */,
+				286B7B181ABA971F0019151A /* SVProgressHUD.m in Sources */,
 				2875D4B81AB7B87B00BE46BC /* AppDelegate.m in Sources */,
+				286B7B221ABA974D0019151A /* SCLAlertView.m in Sources */,
+				286B7B011ABA96630019151A /* NoteManager.m in Sources */,
 				287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */,
 				287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */,
+				286B7B231ABA974D0019151A /* SCLAlertViewResponder.m in Sources */,
+				286B7B251ABA974D0019151A /* SCLButton.m in Sources */,
+				286B7B241ABA974D0019151A /* SCLAlertViewStyleKit.m in Sources */,
 				2875D4B51AB7B87B00BE46BC /* main.m in Sources */,
+				286B7B161ABA971F0019151A /* Colours.m in Sources */,
+				286B7B021ABA96630019151A /* VNConstants.m in Sources */,
+				286B7B001ABA96630019151A /* UIColor+VNHex.m in Sources */,
 				28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */,
 				286B7AF71ABA723D0019151A /* VNNote.m in Sources */,
 			);
@@ -432,6 +530,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Header.h";
 				INFOPLIST_FILE = SimpleNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleNote",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -443,6 +545,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Header.h";
 				INFOPLIST_FILE = SimpleNote/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleNote",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
