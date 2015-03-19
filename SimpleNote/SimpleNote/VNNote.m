@@ -7,7 +7,14 @@
 //
 
 #import "VNNote.h"
+#import "NoteManager.h"
 
+#define kNoteIDKey      @"NoteID"
+#define kTitleKey       @"Title"
+#define kContentKey     @"Content"
+#define kCreatedDate    @"CreatedDate"
+#define kUpdatedDate    @"UpdatedDate"
+#define kEncryptStr    @"encryptStr"
 @implementation VNNote
 
 @end
