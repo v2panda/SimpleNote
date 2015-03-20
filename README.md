@@ -3,4 +3,4 @@ SimpleNote-至简笔记
 
 License
 
-All Rights Reserved
+Copyright (c)2015 XuZhen All Rights Reserved
