@@ -42,15 +42,10 @@
                                            selector:@selector(reloadData)
                                                name:kNotificationCreateFile
                                              object:nil];
-//    NSString *filePathR = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0 ];
-//    NSLog(@"%@",filePathR);
-    
-    
 
 }
 -(void)tapClick
 {
-    
     [txt resignFirstResponder];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -104,38 +99,12 @@
 }
 
 
-//
-//#pragma mark IFlyRecognizerViewDelegate
-//
-//- (void)onResult:(NSArray *)resultArray isLast:(BOOL)isLast
-//{
-//  NSMutableString *result = [[NSMutableString alloc] init];
-//  NSDictionary *dic = [resultArray objectAtIndex:0];
-//  for (NSString *key in dic) {
-//    [result appendFormat:@"%@", key];
-//  }
-//  [_resultString appendString:result];
-//  if (isLast && _resultString.length > 0) {
-//    VNNote *note = [[VNNote alloc] initWithTitle:nil
-//                                         content:_resultString
-//                                     createdDate:[NSDate date]
-//                                      updateDate:[NSDate date]];
-//    BOOL success = [note Persistence];
-//    if (success) {
-//      [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SaveSuccess", @"")];
-//      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationCreateFile object:nil userInfo:nil];
-//    } else {
-//      [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SaveFail", @"")];
-//    }
-//    _resultString = [NSMutableString string];
-//  }
-//}
+
 
 
 
 - (void)createTask
 {
-  //[MobClick event:kEventAddNewNote];
   NoteDetailController *controller = [[NoteDetailController alloc] init];
   [self.navigationController pushViewController:controller animated:YES];
 }
