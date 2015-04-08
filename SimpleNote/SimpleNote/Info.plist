@@ -34,5 +34,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>至简笔记</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>icon-jian.png</string>
+	</array>
 </dict>
 </plist>

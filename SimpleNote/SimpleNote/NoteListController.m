@@ -18,7 +18,7 @@
 
 @interface NoteListController ()<UITextFieldDelegate>
 {
-  NSMutableString *_resultString;
+    NSMutableString *_resultString;
     NSArray *colorArr;
     NSInteger colorCount;
     UITextField *txt;
@@ -42,8 +42,8 @@
                                            selector:@selector(reloadData)
                                                name:kNotificationCreateFile
                                              object:nil];
-
 }
+
 -(void)tapClick
 {
     [txt resignFirstResponder];
