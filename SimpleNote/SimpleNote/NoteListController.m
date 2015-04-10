@@ -164,7 +164,7 @@
             }else
             {
                 SCLAlertView *alert = [[SCLAlertView alloc] init];
-                [alert showWarning:self title:@"失败" subTitle:@"两次输入密码不一致" closeButtonTitle:@"确定" duration:0.0f];
+                [alert showWarning:self title:@"失败" subTitle:@"密码错误" closeButtonTitle:@"确定" duration:0.0f];
             }
         }];
 
