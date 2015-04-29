@@ -19,7 +19,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self addInitFileIfNeeded];
@@ -29,11 +28,9 @@
      
     /* customize navigation style */
     
-    
     NSArray *colorArr = [NSArray arrayWithObjects:DefaultColor,DefaultGreen,DefaultRed,DefaultYellow,nil];
     
     colorCount = [[[NSUserDefaults standardUserDefaults]objectForKey:@"colorCount"] integerValue];
-    
     
     [[UINavigationBar appearance] setBarTintColor:colorArr[colorCount]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];

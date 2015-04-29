@@ -143,7 +143,7 @@ NSTimer *durationTimer;
     if ([systemVersion floatValue] < 8.0f)
     {
         // iOS versions before 7.0 did not switch the width and height on device roration
-        if UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]))
         {
             CGSize ssz = sz;
             sz = CGSizeMake(ssz.height, ssz.width);
@@ -153,7 +153,8 @@ NSTimer *durationTimer;
     // Set background frame
     CGRect newFrame = self.shadowView.frame;
     newFrame.size = sz;
-    self.shadowView.frame = newFrame;
+    //self.shadowView.frame = newFrame;
+    self.shadowView.frame = [UIScreen mainScreen].bounds;
     
     // Set frames
     CGRect r;
@@ -331,7 +332,8 @@ NSTimer *durationTimer;
     // Add subviews
     [self.rootViewController addChildViewController:self];
     self.shadowView.frame = vc.view.bounds;
-    [self.rootViewController.view addSubview:self.shadowView];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.shadowView];
+   // [self.rootViewController.view addSubview:self.shadowView];
     [self.rootViewController.view addSubview:self.view];
 
     // Alert colour/icon
