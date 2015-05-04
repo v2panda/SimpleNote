@@ -22,6 +22,7 @@
     NSArray *colorArr;
     NSInteger colorCount;
     UITextField *txt;
+    SCLAlertView *alert;
 }
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -47,7 +48,16 @@
 
 -(void)tapClick
 {
-    [txt resignFirstResponder];
+    if ([txt isFirstResponder]) {
+        [txt resignFirstResponder];
+        [UIView animateWithDuration:0.1 animations:^{
+            UIView *view1 = [alert getView];
+            CGRect r = view1.frame;
+            r.origin.y = r.origin.y +70;
+            view1.frame =  r;
+        }];
+    }
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -141,12 +151,13 @@
   VNNote *note = [self.dataSource objectAtIndex:indexPath.row];
     if(note.encryptStr)
     {
-        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        alert = [[SCLAlertView alloc] init];
         txt = [alert addTextField:@"请输入密码"];
         txt.delegate = self;
         txt.secureTextEntry = YES;
         txt.autocorrectionType = UITextAutocorrectionTypeNo;
         txt.autocapitalizationType = UITextAutocapitalizationTypeNone;
+       
         [alert addButton:@"确定" actionBlock:^(void) {
             if ([txt.text isEqualToString:note.encryptStr]) {
                 [txt resignFirstResponder];
@@ -166,7 +177,8 @@
         tap.numberOfTapsRequired = 1;
         tap.numberOfTouchesRequired = 1;
         [alert.view addGestureRecognizer:tap];
-        
+        UIView *view1 = [alert getShadowView];
+        [view1 addGestureRecognizer:tap];
     }
     else
     {
@@ -174,11 +186,29 @@
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    
+}
+
+//  became first responder
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
+    NSLog(@"became first responder");
+     UIView *view1 = [alert getView];
+    [UIView animateWithDuration:0.1 animations:^{
+        CGRect r = view1.frame;
+        r.origin.y = r.origin.y - 70;
+        view1.frame =  r;
+    }];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        UIView *view1 = [alert getView];
+        CGRect r = view1.frame;
+        r.origin.y = r.origin.y +70;
+        view1.frame =  r;
+    }];
     return YES;
 }
 
@@ -207,6 +237,5 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
 }
 @end

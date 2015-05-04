@@ -149,7 +149,6 @@ NSTimer *durationTimer;
             sz = CGSizeMake(ssz.height, ssz.width);
         }
     }
-    
     // Set background frame
     CGRect newFrame = self.shadowView.frame;
     newFrame.size = sz;
@@ -249,7 +248,6 @@ NSTimer *durationTimer;
     txt.clearButtonMode = UITextFieldViewModeWhileEditing;
     txt.layer.masksToBounds = YES;
     txt.layer.borderWidth = 1.0f;
-    
     
     if (title != nil)
     {
@@ -523,7 +521,14 @@ NSTimer *durationTimer;
         [self removeFromParentViewController];
     }];
 }
-
+- (UIView*)getView
+{
+    return self.view;
+}
+-(UIView*)getShadowView
+{
+    return self.shadowView;
+}
 @end
 // 版权属于原作者
 // http://code4app.com (cn) http://code4app.net (en)

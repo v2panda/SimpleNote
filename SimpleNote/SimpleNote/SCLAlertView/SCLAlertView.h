@@ -58,6 +58,13 @@ typedef NS_ENUM(NSInteger, SCLAlertViewStyle)
  */
 @property (nonatomic, copy) SCLAttributedFormatBlock attributedFormatBlock;
 
+/** Get SCLAlertView
+ *
+ * TODO
+ */
+- (UIView*)getView;
+
+-(UIView*)getShadowView;
 /** Hide SCLAlertView
  *
  * TODO
