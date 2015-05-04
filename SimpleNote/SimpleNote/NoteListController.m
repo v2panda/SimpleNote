@@ -21,10 +21,10 @@
     NSMutableString *_resultString;
     NSArray *colorArr;
     NSInteger colorCount;
-    UITextField *txt;
+    
     SCLAlertView *alert;
 }
-
+@property(nonatomic,strong)UITextField *txt;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
@@ -48,8 +48,8 @@
 
 -(void)tapClick
 {
-    if ([txt isFirstResponder]) {
-        [txt resignFirstResponder];
+    if ([_txt isFirstResponder]) {
+        [_txt resignFirstResponder];
         [UIView animateWithDuration:0.1 animations:^{
             UIView *view1 = [alert getView];
             CGRect r = view1.frame;
@@ -57,7 +57,6 @@
             view1.frame =  r;
         }];
     }
-    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -152,22 +151,23 @@
     if(note.encryptStr)
     {
         alert = [[SCLAlertView alloc] init];
-        txt = [alert addTextField:@"请输入密码"];
-        txt.delegate = self;
-        txt.secureTextEntry = YES;
-        txt.autocorrectionType = UITextAutocorrectionTypeNo;
-        txt.autocapitalizationType = UITextAutocapitalizationTypeNone;
-       
+        _txt = [alert addTextField:@"请输入密码"];
+        _txt.delegate = self;
+        _txt.secureTextEntry = YES;
+        _txt.autocorrectionType = UITextAutocorrectionTypeNo;
+        _txt.autocapitalizationType = UITextAutocapitalizationTypeNone;
+       __weak typeof(self) _weakSelf=self;
         [alert addButton:@"确定" actionBlock:^(void) {
-            if ([txt.text isEqualToString:note.encryptStr]) {
-                [txt resignFirstResponder];
+           
+            if ([_weakSelf.txt.text isEqualToString:note.encryptStr]) {
+                [_weakSelf.txt resignFirstResponder];
                     NoteDetailController *controller = [[NoteDetailController alloc] initWithNote:note];
                     controller.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:controller animated:YES];
+                    [_weakSelf.navigationController pushViewController:controller animated:YES];
             }else
             {
                 SCLAlertView *alert = [[SCLAlertView alloc] init];
-                [alert showWarning:self title:@"失败" subTitle:@"密码错误" closeButtonTitle:@"确定" duration:0.0f];
+                [alert showWarning:_weakSelf title:@"失败" subTitle:@"密码错误" closeButtonTitle:@"确定" duration:0.0f];
             }
         }];
 
@@ -176,9 +176,13 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
         tap.numberOfTapsRequired = 1;
         tap.numberOfTouchesRequired = 1;
+        
         [alert.view addGestureRecognizer:tap];
+        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+        tap1.numberOfTapsRequired = 1;
+        tap1.numberOfTouchesRequired = 1;
         UIView *view1 = [alert getShadowView];
-        [view1 addGestureRecognizer:tap];
+        [view1 addGestureRecognizer:tap1];
     }
     else
     {
@@ -191,8 +195,7 @@
 //  became first responder
 - (void)textFieldDidBeginEditing:(UITextField *)textField;
 {
-    NSLog(@"became first responder");
-     UIView *view1 = [alert getView];
+    UIView *view1 = [alert getView];
     [UIView animateWithDuration:0.1 animations:^{
         CGRect r = view1.frame;
         r.origin.y = r.origin.y - 70;

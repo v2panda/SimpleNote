@@ -39,10 +39,10 @@ static const CGFloat kVoiceButtonWidth = 100;
     NSArray *colorArr;
     NSInteger colorCount;
     
-    
+
   BOOL _isEditingTitle;
 }
-
+@property(nonatomic,strong)SCLAlertView *alert;
 @end
 
 
@@ -223,14 +223,14 @@ static const CGFloat kVoiceButtonWidth = 100;
 }
 -(void)changeCode
 {
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
-    encryptTxt = [alert addTextField:@"输入旧密码"];
+    _alert = [[SCLAlertView alloc] init];
+    encryptTxt = [_alert addTextField:@"输入旧密码"];
     encryptTxt.delegate = self;
     encryptTxt.secureTextEntry = YES;
-    encryptTxt2 = [alert addTextField:@"输入新密码"];
+    encryptTxt2 = [_alert addTextField:@"输入新密码"];
     encryptTxt2.delegate = self;
     encryptTxt2.secureTextEntry = YES;
-    [alert addButton:@"确定" actionBlock:^(void) {
+    [_alert addButton:@"确定" actionBlock:^(void) {
         
         if ([encryptTxt.text isEqualToString:_note.encryptStr] )
         {
@@ -250,7 +250,30 @@ static const CGFloat kVoiceButtonWidth = 100;
             [alert showWarning:self title:@"失败" subTitle:@"旧密码输入错误" closeButtonTitle:@"确定" duration:0.0f];
         }
     }];
-    [alert showSuccess:self title:@"至简加密" subTitle:@"请输入新旧密码" closeButtonTitle:nil duration:0.0f];
+    [_alert showSuccess:self title:@"至简加密" subTitle:@"请输入新旧密码" closeButtonTitle:nil duration:0.0f];
+   
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    
+    [_alert.view addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    tap1.numberOfTapsRequired = 1;
+    tap1.numberOfTouchesRequired = 1;
+    UIView *view1 = [_alert getShadowView];
+    [view1 addGestureRecognizer:tap1];
+}
+-(void)tapClick
+{
+    if ([encryptTxt isFirstResponder] || [encryptTxt2 isFirstResponder]) {
+        [self hideKeyboard];
+        [UIView animateWithDuration:0.1 animations:^{
+            UIView *view1 = [_alert getView];
+            CGRect r = view1.frame;
+            r.origin.y = r.origin.y +70;
+            view1.frame =  r;
+        }];
+    }
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -259,30 +282,40 @@ static const CGFloat kVoiceButtonWidth = 100;
 }
 -(void)encryptInput
 {
+    _alert = [[SCLAlertView alloc] init];
     
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
-    
-    encryptTxt = [alert addTextField:@"输入密码"];
+    encryptTxt = [_alert addTextField:@"输入密码"];
     encryptTxt.delegate = self;
     encryptTxt.secureTextEntry = YES;
     
-    encryptTxt2 = [alert addTextField:@"再次输入"];
+    encryptTxt2 = [_alert addTextField:@"再次输入"];
     encryptTxt2.delegate = self;
     encryptTxt2.secureTextEntry = YES;
-    [alert addButton:@"确定" actionBlock:^(void) {
+    __weak typeof(self) _weakSelf=self;
+    [_alert addButton:@"确定" actionBlock:^(void) {
        
         if ([encryptTxt.text isEqualToString:encryptTxt2.text] && ![self isBlankString:encryptTxt.text])
         {
             encryptStr = encryptTxt.text;
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showSuccess:self title:@"成功" subTitle:@"加密成功" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showSuccess:_weakSelf title:@"成功" subTitle:@"加密成功" closeButtonTitle:@"确定" duration:0.0f];
         }else
         {
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showWarning:self title:@"失败" subTitle:@"两次输入密码不一致" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showWarning:_weakSelf title:@"失败" subTitle:@"两次输入密码不一致" closeButtonTitle:@"确定" duration:0.0f];
         }
     }];
-    [alert showSuccess:self title:@"至简加密" subTitle:@"请输入加密密码" closeButtonTitle:nil duration:0.0f];
+    [_alert showSuccess:self title:@"至简加密" subTitle:@"请输入加密密码" closeButtonTitle:nil duration:0.0f];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    
+    [_alert.view addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+    tap1.numberOfTapsRequired = 1;
+    tap1.numberOfTouchesRequired = 1;
+    UIView *view1 = [_alert getShadowView];
+    [view1 addGestureRecognizer:tap1];
 }
 - (BOOL) isBlankString:(NSString *)string {
     if (string == nil || string == NULL) {
@@ -296,9 +329,30 @@ static const CGFloat kVoiceButtonWidth = 100;
     }
     return NO;
 }
+//  became first responder
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
+    UIView *view1 = [_alert getView];
+    [UIView animateWithDuration:0.1 animations:^{
+        CGRect r = view1.frame;
+        r.origin.y = r.origin.y - 70;
+        view1.frame =  r;
+    }];
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    NSLog(@"点击了textField");
+    [UIView animateWithDuration:0.1 animations:^{
+        UIView *view1 = [_alert getView];
+        CGRect r = view1.frame;
+        r.origin.y = r.origin.y +70;
+        view1.frame =  r;
+    }];
+    return YES;
+}
 
 #pragma mark - Keyboard
-
 - (void)keyboardWillShow:(NSNotification *)notification
 {
   NSDictionary *userInfo = notification.userInfo;
@@ -340,6 +394,14 @@ static const CGFloat kVoiceButtonWidth = 100;
     if ([_titleFiled isFirstResponder]) {
         _isEditingTitle = YES;
         [_titleFiled resignFirstResponder];
+    }
+    if ([encryptTxt isFirstResponder]) {
+        _isEditingTitle = YES;
+        [encryptTxt resignFirstResponder];
+    }
+    if ([encryptTxt2 isFirstResponder]) {
+        _isEditingTitle = YES;
+        [encryptTxt2 resignFirstResponder];
     }
 }
 
