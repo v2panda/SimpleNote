@@ -133,7 +133,7 @@ static const CGFloat kVoiceButtonWidth = 100;
     _titleFiled = [[UITextField alloc]initWithFrame:CGRectMake(kHorizontalMargin, 70, kDeviceWidth - kHorizontalMargin * 2, 44)];
     _titleFiled.borderStyle     = UITextBorderStyleRoundedRect;
     UILabel *leftView = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 45.0f, 44.0f)];
-    leftView.text   = @"标题:";
+    leftView.text   = NSLocalizedString(@"标题:", nil);
     leftView.font = [UIFont systemFontOfSize:18];
     leftView.textColor = [UIColor systemDarkColor];
     _titleFiled.textColor = [UIColor systemDarkColor];
@@ -179,7 +179,7 @@ static const CGFloat kVoiceButtonWidth = 100;
     if (_note.encryptStr) {
         _encryptButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_encryptButton setFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
-        [_encryptButton setTitle:@"修改密码" forState:UIControlStateNormal];
+        [_encryptButton setTitle:NSLocalizedString(@"修改密码", nil) forState:UIControlStateNormal];
         [_encryptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _encryptButton.layer.cornerRadius = kVoiceButtonWidth / 2;
         _encryptButton.layer.masksToBounds = YES;
@@ -224,13 +224,13 @@ static const CGFloat kVoiceButtonWidth = 100;
 -(void)changeCode
 {
     _alert = [[SCLAlertView alloc] init];
-    encryptTxt = [_alert addTextField:@"输入旧密码"];
+    encryptTxt = [_alert addTextField:NSLocalizedString(@"输入旧密码", nil)];
     encryptTxt.delegate = self;
     encryptTxt.secureTextEntry = YES;
-    encryptTxt2 = [_alert addTextField:@"输入新密码"];
+    encryptTxt2 = [_alert addTextField:NSLocalizedString(@"输入新密码", nil)];
     encryptTxt2.delegate = self;
     encryptTxt2.secureTextEntry = YES;
-    [_alert addButton:@"确定" actionBlock:^(void) {
+    [_alert addButton:NSLocalizedString(@"确定", nil) actionBlock:^(void) {
         
         if ([encryptTxt.text isEqualToString:_note.encryptStr] )
         {
@@ -238,19 +238,19 @@ static const CGFloat kVoiceButtonWidth = 100;
                 changeStr = encryptTxt.text;
                 changeStr2 = nil;
                 SCLAlertView *alert = [[SCLAlertView alloc] init];
-                [alert showSuccess:self title:@"成功" subTitle:@"解密成功" closeButtonTitle:@"确定" duration:0.0f];
+                [alert showSuccess:self title:NSLocalizedString(@"成功", nil) subTitle:NSLocalizedString(@"解密成功", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
             }else{
             changeStr = encryptTxt2.text;
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showSuccess:self title:@"成功" subTitle:@"加密成功" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showSuccess:self title:NSLocalizedString(@"成功", nil) subTitle:NSLocalizedString(@"加密成功", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
             }
         }else
         {
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showWarning:self title:@"失败" subTitle:@"旧密码输入错误" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showWarning:self title:NSLocalizedString(@"失败", nil) subTitle:NSLocalizedString(@"旧密码输入错误", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
         }
     }];
-    [_alert showSuccess:self title:@"至简加密" subTitle:@"请输入新旧密码" closeButtonTitle:nil duration:0.0f];
+    [_alert showSuccess:self title:NSLocalizedString(@"至简加密", nil) subTitle:NSLocalizedString(@"请出入新旧密码", nil) closeButtonTitle:nil duration:0.0f];
    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
     tap.numberOfTapsRequired = 1;
@@ -284,28 +284,28 @@ static const CGFloat kVoiceButtonWidth = 100;
 {
     _alert = [[SCLAlertView alloc] init];
     
-    encryptTxt = [_alert addTextField:@"输入密码"];
+    encryptTxt = [_alert addTextField:NSLocalizedString(@"输入旧密码", nil)];
     encryptTxt.delegate = self;
     encryptTxt.secureTextEntry = YES;
     
-    encryptTxt2 = [_alert addTextField:@"再次输入"];
+    encryptTxt2 = [_alert addTextField:NSLocalizedString(@"再次输入", nil)];
     encryptTxt2.delegate = self;
     encryptTxt2.secureTextEntry = YES;
     __weak typeof(self) _weakSelf=self;
-    [_alert addButton:@"确定" actionBlock:^(void) {
+    [_alert addButton:NSLocalizedString(@"确定", nil) actionBlock:^(void) {
        
         if ([encryptTxt.text isEqualToString:encryptTxt2.text] && ![self isBlankString:encryptTxt.text])
         {
             encryptStr = encryptTxt.text;
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showSuccess:_weakSelf title:@"成功" subTitle:@"加密成功" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showSuccess:_weakSelf title:NSLocalizedString(@"成功", nil) subTitle:NSLocalizedString(@"加密成功", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
         }else
         {
             SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert showWarning:_weakSelf title:@"失败" subTitle:@"两次输入密码不一致" closeButtonTitle:@"确定" duration:0.0f];
+            [alert showWarning:_weakSelf title:NSLocalizedString(@"失败", nil) subTitle:NSLocalizedString(@"两次输入的密码不一致", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
         }
     }];
-    [_alert showSuccess:self title:@"至简加密" subTitle:@"请输入加密密码" closeButtonTitle:nil duration:0.0f];
+    [_alert showSuccess:self title:NSLocalizedString(@"至简加密", nil) subTitle:NSLocalizedString(@"请输入加密密码", nil) closeButtonTitle:nil duration:0.0f];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
@@ -342,7 +342,6 @@ static const CGFloat kVoiceButtonWidth = 100;
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    NSLog(@"点击了textField");
     [UIView animateWithDuration:0.1 animations:^{
         UIView *view1 = [_alert getView];
         CGRect r = view1.frame;
@@ -502,7 +501,7 @@ static const CGFloat kVoiceButtonWidth = 100;
   MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
   [composer setMailComposeDelegate:self];
   if ([MFMailComposeViewController canSendMail]) {
-    [composer setSubject:@"来自至简笔记的一封信"];
+    [composer setSubject:NSLocalizedString(@"来自至简笔记的一封信", nil)];
     [composer setMessageBody:_contentTextView.text isHTML:NO];
     [composer setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:composer animated:YES completion:nil];

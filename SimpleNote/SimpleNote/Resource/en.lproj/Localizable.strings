@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  SimpleNote
+
+ Created by 徐臻 on 15/3/19.
+ Copyright (c) 2015年 xuzhen. All rights reserved.
+*/
+
+
+// EN
+
+"标题:" = "Title:";
+"修改密码" = "ChangePW";
+"输入旧密码" = "Enter the old password";
+"输入新密码" = "Enter the new password";
+"确定" = "Yes";
+"失败" = "Fail";
+"成功" = "Success";
+"请输入密码" = "Please Enter The Password";
+"验证密码" = "Verify Password";
+"解密成功" = "Decryption Success";
+"加密成功" = "Encryption Successful";
+"密码错误" = "Password Error";
+"旧密码输入错误" = "The old password input error";
+"至简加密" = "The Simple Encryption";
+"再次输入" = "Enter The Password Again";
+"请输入新旧密码" = "Please enter the old password";
+"请输入加密密码" = "Please enter the  password";
+"两次输入的密码不一致" = "The Passwords do not match";
+"至简笔记" = "SimpleNote";
+"来自至简笔记的一封信" = "The letter from SimpleNote";
+
+
+
+//Home
+"AppName" = "SimpleNote";
+
+
+"ActionSheetCancel" = "Cancel";
+"ActionSheetFont" = "Font";
+"ActionSheetSave" = "Save";
+"ActionSheetCopy" = "Copy";
+"ActionSheetMail" = "Send Email";
+
+
+"EncryptInput" = "Encryption";
+
+
+// About
+"AboutTitle" = "About SimpleNote";
+"AboutText" = "SimpleNote is a simple notebook application, you only need basic input to complete writing notes. SimpleNote also supports encryption, sending mail, custom fonts, skin and other additional functions, is a good tool to improve efficiency.";
+
+
+
+
+
+
+

@@ -80,7 +80,7 @@
                                                                   target:self
                                                                   action:@selector(createTask)];
   self.navigationItem.rightBarButtonItem = rightItem;
-  self.navigationItem.title = kAppName;
+  self.navigationItem.title = NSLocalizedString(@"至简笔记", nil);
 }
 
 -(void)changeColor
@@ -151,13 +151,13 @@
     if(note.encryptStr)
     {
         alert = [[SCLAlertView alloc] init];
-        _txt = [alert addTextField:@"请输入密码"];
+        _txt = [alert addTextField:NSLocalizedString(@"请输入密码", nil)];
         _txt.delegate = self;
         _txt.secureTextEntry = YES;
         _txt.autocorrectionType = UITextAutocorrectionTypeNo;
         _txt.autocapitalizationType = UITextAutocapitalizationTypeNone;
        __weak typeof(self) _weakSelf=self;
-        [alert addButton:@"确定" actionBlock:^(void) {
+        [alert addButton:NSLocalizedString(@"确定", nil) actionBlock:^(void) {
            
             if ([_weakSelf.txt.text isEqualToString:note.encryptStr]) {
                 [_weakSelf.txt resignFirstResponder];
@@ -167,11 +167,11 @@
             }else
             {
                 SCLAlertView *alert = [[SCLAlertView alloc] init];
-                [alert showWarning:_weakSelf title:@"失败" subTitle:@"密码错误" closeButtonTitle:@"确定" duration:0.0f];
+                [alert showWarning:_weakSelf title:NSLocalizedString(@"失败", nil) subTitle:NSLocalizedString(@"密码错误", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
             }
         }];
 
-        [alert showSuccess:self title:@"验证密码" subTitle:@"请输入密码" closeButtonTitle:nil duration:0.0f];
+        [alert showSuccess:self title:NSLocalizedString(@"验证密码", nil) subTitle:NSLocalizedString(@"请输入密码", nil) closeButtonTitle:nil duration:0.0f];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
         tap.numberOfTapsRequired = 1;

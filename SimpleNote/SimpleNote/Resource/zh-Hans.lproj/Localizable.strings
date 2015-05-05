@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  SimpleNote
+
+ Created by 徐臻 on 15/3/19.
+ Copyright (c) 2015年 xuzhen. All rights reserved.
+*/
+
+
+// Home
+
+"AppName" = "至简笔记";
+
+
+"ActionSheetCancel" = "取消";
+"ActionSheetFont" = "字体";
+"ActionSheetSave" = "保存";
+"ActionSheetCopy" = "复制";
+"ActionSheetMail" = "发邮件";
+"ActionSheetWeixin" = "分享到朋友圈";
+
+"AddTitleForNote" = "给笔记加个标题？";
+"Sure" = "确定";
+
+"CopySuccess" = "已复制到粘贴板";
+"DeleteFileSuccess" = "删除成功";
+
+"SendEmailSuccess" = "邮件发送成功";
+"SendEmailFail" = "邮件发送失败";
+"CanNoteSendMail" = "无法发送邮件，请检查设备设置";
+
+"EncryptInput" = "轻松加密";
+
+"SaveSuccess" = "保存成功";
+"SaveFail" = "保存失败";
+
+"InputViewTitle" = "标题";
+"InputViewText" = "正文";
+"InputTextNoData" = "请输入文字";
+"NoTitleNote" = "无标题笔记";
+
+
+
+// About
+"AboutTitle" = "关于至简笔记";
+"AboutText" = "至简笔记是一款简约的笔记本，你只需要通过基本输入，即可完成笔记的书写。同时支持笔记加密，发送邮件，自定义字体、皮肤等附加功能，是提高效率的好工具。";
+
+
+
