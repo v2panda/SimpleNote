@@ -42,6 +42,8 @@
 		287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD9991AB926F1005FB37F /* NoteListController.m */; };
 		287BD99D1AB927E8005FB37F /* NoteDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287BD99C1AB927E8005FB37F /* NoteDetailController.m */; };
 		2896E4431AF8537300625BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2896E4451AF8537300625BE1 /* Localizable.strings */; };
+		2896E44D1AF88ED100625BE1 /* UIImage+BlurGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */; };
+		2896E44E1AF88ED100625BE1 /* SecurityStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */; };
 		28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF5D381AB976D4000AFBDB /* NoteListCell.m */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,10 @@
 		2896E4441AF8537300625BE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2896E4461AF8537A00625BE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2896E4471AF8537B00625BE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2896E4491AF88ED100625BE1 /* UIImage+BlurGlass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BlurGlass.h"; sourceTree = "<group>"; };
+		2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurGlass.m"; sourceTree = "<group>"; };
+		2896E44B1AF88ED100625BE1 /* SecurityStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityStrategy.h; sourceTree = "<group>"; };
+		2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityStrategy.m; sourceTree = "<group>"; };
 		28FF5D371AB976D4000AFBDB /* NoteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListCell.h; sourceTree = "<group>"; };
 		28FF5D381AB976D4000AFBDB /* NoteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +187,7 @@
 		286B7B071ABA970F0019151A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
+				2896E4481AF88E8300625BE1 /* SecurityView */,
 				286B7B081ABA971F0019151A /* libz.dylib */,
 				286B7B091ABA971F0019151A /* libMobClickLibrary.a */,
 				286B7B0A1ABA971F0019151A /* MobClick.h */,
@@ -286,6 +293,17 @@
 				28FF5D381AB976D4000AFBDB /* NoteListCell.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		2896E4481AF88E8300625BE1 /* SecurityView */ = {
+			isa = PBXGroup;
+			children = (
+				2896E4491AF88ED100625BE1 /* UIImage+BlurGlass.h */,
+				2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */,
+				2896E44B1AF88ED100625BE1 /* SecurityStrategy.h */,
+				2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */,
+			);
+			name = SecurityView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,7 +424,9 @@
 				286B7B171ABA971F0019151A /* SVIndefiniteAnimatedView.m in Sources */,
 				286B7B031ABA96630019151A /* NSDate+Conversion.m in Sources */,
 				286B7B181ABA971F0019151A /* SVProgressHUD.m in Sources */,
+				2896E44E1AF88ED100625BE1 /* SecurityStrategy.m in Sources */,
 				2875D4B81AB7B87B00BE46BC /* AppDelegate.m in Sources */,
+				2896E44D1AF88ED100625BE1 /* UIImage+BlurGlass.m in Sources */,
 				286B7B221ABA974D0019151A /* SCLAlertView.m in Sources */,
 				286B7B011ABA96630019151A /* NoteManager.m in Sources */,
 				287BD99A1AB926F1005FB37F /* NoteListController.m in Sources */,
