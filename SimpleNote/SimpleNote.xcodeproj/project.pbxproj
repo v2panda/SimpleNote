@@ -13,8 +13,6 @@
 		286B7AEB1ABA71E10019151A /* 44.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE11ABA71E10019151A /* 44.png */; };
 		286B7AEC1ABA71E10019151A /* ic_add_tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE21ABA71E10019151A /* ic_add_tab@2x.png */; };
 		286B7AED1ABA71E10019151A /* ic_more_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE31ABA71E10019151A /* ic_more_white@2x.png */; };
-		286B7AEE1ABA71E10019151A /* icon-jian.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE41ABA71E10019151A /* icon-jian.png */; };
-		286B7AEF1ABA71E10019151A /* icon1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE51ABA71E10019151A /* icon1024.png */; };
 		286B7AF11ABA71E10019151A /* micro_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE71ABA71E10019151A /* micro_small@2x.png */; };
 		286B7AF21ABA71E10019151A /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE81ABA71E10019151A /* save@2x.png */; };
 		286B7AF31ABA71E10019151A /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 286B7AE91ABA71E10019151A /* star@2x.png */; };
@@ -44,6 +42,7 @@
 		2896E4431AF8537300625BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2896E4451AF8537300625BE1 /* Localizable.strings */; };
 		2896E44D1AF88ED100625BE1 /* UIImage+BlurGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */; };
 		2896E44E1AF88ED100625BE1 /* SecurityStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */; };
+		28FD3DF71AFAFB540055DC66 /* 55.png in Resources */ = {isa = PBXBuildFile; fileRef = 28FD3DF61AFAFB540055DC66 /* 55.png */; };
 		28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF5D381AB976D4000AFBDB /* NoteListCell.m */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +63,6 @@
 		286B7AE11ABA71E10019151A /* 44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44.png; sourceTree = "<group>"; };
 		286B7AE21ABA71E10019151A /* ic_add_tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_add_tab@2x.png"; sourceTree = "<group>"; };
 		286B7AE31ABA71E10019151A /* ic_more_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_more_white@2x.png"; sourceTree = "<group>"; };
-		286B7AE41ABA71E10019151A /* icon-jian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jian.png"; sourceTree = "<group>"; };
-		286B7AE51ABA71E10019151A /* icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1024.png; sourceTree = "<group>"; };
 		286B7AE71ABA71E10019151A /* micro_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "micro_small@2x.png"; sourceTree = "<group>"; };
 		286B7AE81ABA71E10019151A /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
 		286B7AE91ABA71E10019151A /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
@@ -115,8 +112,6 @@
 		287BD9991AB926F1005FB37F /* NoteListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListController.m; sourceTree = "<group>"; };
 		287BD99B1AB927E8005FB37F /* NoteDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailController.h; sourceTree = "<group>"; };
 		287BD99C1AB927E8005FB37F /* NoteDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailController.m; sourceTree = "<group>"; };
-		2896E4411AF8534A00625BE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		2896E4421AF8534A00625BE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2896E4441AF8537300625BE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2896E4461AF8537A00625BE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2896E4471AF8537B00625BE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -124,6 +119,7 @@
 		2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurGlass.m"; sourceTree = "<group>"; };
 		2896E44B1AF88ED100625BE1 /* SecurityStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityStrategy.h; sourceTree = "<group>"; };
 		2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityStrategy.m; sourceTree = "<group>"; };
+		28FD3DF61AFAFB540055DC66 /* 55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 55.png; sourceTree = "<group>"; };
 		28FF5D371AB976D4000AFBDB /* NoteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListCell.h; sourceTree = "<group>"; };
 		28FF5D381AB976D4000AFBDB /* NoteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,12 +149,11 @@
 			children = (
 				2821D9461AEE27EC00A28225 /* 20150427041642990_easyicon_net_32.png */,
 				286B7AE01ABA71E10019151A /* 2.png */,
+				28FD3DF61AFAFB540055DC66 /* 55.png */,
 				286B7AE11ABA71E10019151A /* 44.png */,
 				286B7AE21ABA71E10019151A /* ic_add_tab@2x.png */,
 				286B7AE31ABA71E10019151A /* ic_more_white@2x.png */,
-				286B7AE41ABA71E10019151A /* icon-jian.png */,
 				2821D9481AEE2B9E00A28225 /* icon-jian-1.png */,
-				286B7AE51ABA71E10019151A /* icon1024.png */,
 				2896E4451AF8537300625BE1 /* Localizable.strings */,
 				286B7AE71ABA71E10019151A /* micro_small@2x.png */,
 				286B7AE81ABA71E10019151A /* save@2x.png */,
@@ -388,13 +383,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286B7AEE1ABA71E10019151A /* icon-jian.png in Resources */,
 				286B7AEB1ABA71E10019151A /* 44.png in Resources */,
 				2875D4BE1AB7B87B00BE46BC /* Main.storyboard in Resources */,
 				286B7AF11ABA71E10019151A /* micro_small@2x.png in Resources */,
+				28FD3DF71AFAFB540055DC66 /* 55.png in Resources */,
 				2821D9471AEE27EC00A28225 /* 20150427041642990_easyicon_net_32.png in Resources */,
 				2875D4C31AB7B87B00BE46BC /* LaunchScreen.xib in Resources */,
-				286B7AEF1ABA71E10019151A /* icon1024.png in Resources */,
 				2896E4431AF8537300625BE1 /* Localizable.strings in Resources */,
 				286B7AF21ABA71E10019151A /* save@2x.png in Resources */,
 				286B7AF31ABA71E10019151A /* star@2x.png in Resources */,
@@ -466,7 +460,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				2875D4BD1AB7B87B00BE46BC /* Base */,
-				2896E4411AF8534A00625BE1 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -475,7 +468,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				2875D4C21AB7B87B00BE46BC /* Base */,
-				2896E4421AF8534A00625BE1 /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -527,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -562,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -574,10 +566,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Header.h";
 				INFOPLIST_FILE = SimpleNote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,10 +585,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Header.h";
 				INFOPLIST_FILE = SimpleNote/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

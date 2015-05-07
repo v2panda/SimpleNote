@@ -45,7 +45,6 @@ static const CGFloat kVoiceButtonWidth = 100;
 @property(nonatomic,strong)SCLAlertView *alert;
 @end
 
-
 @implementation NoteDetailController
 
 - (instancetype)initWithNote:(VNNote *)note
@@ -201,9 +200,7 @@ static const CGFloat kVoiceButtonWidth = 100;
         [_encryptButton setTintColor:[UIColor whiteColor]];
         [self.view addSubview:_encryptButton];
     }
-  
 }
-
 - (void)viewWillDisappear:(BOOL)animated
 {
   [super viewWillDisappear:animated];

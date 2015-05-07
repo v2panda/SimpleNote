@@ -229,6 +229,8 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     VNNote *note = [self.dataSource objectAtIndex:indexPath.row];
     [[NoteManager sharedManager] deleteNote:note];
