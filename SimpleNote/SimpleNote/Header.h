@@ -11,4 +11,5 @@
 #define SimpleNote_Header_h
 
 #import "MainHeader.h"
+#import "DeformationButton.h"
 #endif

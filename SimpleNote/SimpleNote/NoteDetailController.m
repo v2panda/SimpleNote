@@ -28,7 +28,7 @@ static const CGFloat kVoiceButtonWidth = 100;
   UITextView *_contentTextView;
 
   UIButton *_encryptButton;
-    
+    DeformationButton* ton;
     UITextField *_titleFiled;
     UITextField *encryptTxt;
     UITextField *encryptTxt2;
@@ -176,29 +176,58 @@ static const CGFloat kVoiceButtonWidth = 100;
   [self.view addSubview:_contentTextView];
     
     if (_note.encryptStr) {
-        _encryptButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_encryptButton setFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
-        [_encryptButton setTitle:NSLocalizedString(@"修改密码", nil) forState:UIControlStateNormal];
-        [_encryptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _encryptButton.layer.cornerRadius = kVoiceButtonWidth / 2;
-        _encryptButton.layer.masksToBounds = YES;
-        [_encryptButton setBackgroundColor:[UIColor systemColor]];
-        [_encryptButton addTarget:self action:@selector(changeCode) forControlEvents:UIControlEventTouchUpInside];
-        [_encryptButton setTintColor:[UIColor whiteColor]];
-        [self.view addSubview:_encryptButton];
+//        _encryptButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_encryptButton setFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
+//        [_encryptButton setTitle:NSLocalizedString(@"修改密码", nil) forState:UIControlStateNormal];
+//        [_encryptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        _encryptButton.layer.cornerRadius = kVoiceButtonWidth / 2;
+//        _encryptButton.layer.masksToBounds = YES;
+//        [_encryptButton setBackgroundColor:[UIColor systemColor]];
+//        [_encryptButton addTarget:self action:@selector(changeCode) forControlEvents:UIControlEventTouchUpInside];
+//        [_encryptButton setTintColor:[UIColor whiteColor]];
+//        [self.view addSubview:_encryptButton];
+        ton = [[DeformationButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
+        [ton.forDisplayButton setTitle:NSLocalizedString(@"修改密码", @"") forState:UIControlStateNormal];
+        [ton.forDisplayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        ton.contentColor = [UIColor systemColor];
+        ton.progressColor = [UIColor whiteColor];
+        [ton.forDisplayButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
+        
+        ton.layer.cornerRadius = kVoiceButtonWidth / 2;
+        ton.layer.masksToBounds = YES;
+        [ton  setBackgroundColor:[UIColor systemColor]];
+        [ton addTarget:self action:@selector(changeCode) forControlEvents:UIControlEventTouchUpInside];
+        [ton setTintColor:[UIColor whiteColor]];
+        [self.view addSubview:ton];
     }
     else
     {
-        _encryptButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_encryptButton setFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
-        [_encryptButton setTitle:NSLocalizedString(@"EncryptInput", @"") forState:UIControlStateNormal];
-        [_encryptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _encryptButton.layer.cornerRadius = kVoiceButtonWidth / 2;
-        _encryptButton.layer.masksToBounds = YES;
-        [_encryptButton setBackgroundColor:[UIColor systemColor]];
-        [_encryptButton addTarget:self action:@selector(encryptInput) forControlEvents:UIControlEventTouchUpInside];
-        [_encryptButton setTintColor:[UIColor whiteColor]];
-        [self.view addSubview:_encryptButton];
+//        _encryptButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_encryptButton setFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
+//        [_encryptButton setTitle:NSLocalizedString(@"EncryptInput", @"") forState:UIControlStateNormal];
+//        [_encryptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        _encryptButton.layer.cornerRadius = kVoiceButtonWidth / 2;
+//        _encryptButton.layer.masksToBounds = YES;
+//        [_encryptButton setBackgroundColor:[UIColor systemColor]];
+//        [_encryptButton addTarget:self action:@selector(encryptInput) forControlEvents:UIControlEventTouchUpInside];
+//        [_encryptButton setTintColor:[UIColor whiteColor]];
+//        [self.view addSubview:_encryptButton];
+        
+        //
+        ton = [[DeformationButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width - kVoiceButtonWidth) / 2, self.view.frame.size.height - kVoiceButtonWidth - kVerticalMargin, kVoiceButtonWidth, kVoiceButtonWidth)];
+        [ton.forDisplayButton setTitle:NSLocalizedString(@"EncryptInput", @"") forState:UIControlStateNormal];
+       [ton.forDisplayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        ton.contentColor = [UIColor systemColor];
+        ton.progressColor = [UIColor whiteColor];
+        [ton.forDisplayButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
+        
+        ton.layer.cornerRadius = kVoiceButtonWidth / 2;
+        ton.layer.masksToBounds = YES;
+        [ton  setBackgroundColor:[UIColor systemColor]];
+        [ton addTarget:self action:@selector(encryptInput) forControlEvents:UIControlEventTouchUpInside];
+        [ton setTintColor:[UIColor whiteColor]];
+        [self.view addSubview:ton];
+        
     }
 }
 - (void)viewWillDisappear:(BOOL)animated

@@ -42,6 +42,8 @@
 		2896E4431AF8537300625BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2896E4451AF8537300625BE1 /* Localizable.strings */; };
 		2896E44D1AF88ED100625BE1 /* UIImage+BlurGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */; };
 		2896E44E1AF88ED100625BE1 /* SecurityStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */; };
+		2898842F1AFCA174003C011F /* DeformationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2898842E1AFCA174003C011F /* DeformationButton.m */; };
+		289884321AFCA17B003C011F /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 289884311AFCA17B003C011F /* MMMaterialDesignSpinner.m */; };
 		28FD3DF71AFAFB540055DC66 /* 55.png in Resources */ = {isa = PBXBuildFile; fileRef = 28FD3DF61AFAFB540055DC66 /* 55.png */; };
 		28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FF5D381AB976D4000AFBDB /* NoteListCell.m */; };
 /* End PBXBuildFile section */
@@ -119,6 +121,10 @@
 		2896E44A1AF88ED100625BE1 /* UIImage+BlurGlass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurGlass.m"; sourceTree = "<group>"; };
 		2896E44B1AF88ED100625BE1 /* SecurityStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityStrategy.h; sourceTree = "<group>"; };
 		2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityStrategy.m; sourceTree = "<group>"; };
+		2898842D1AFCA174003C011F /* DeformationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeformationButton.h; sourceTree = "<group>"; };
+		2898842E1AFCA174003C011F /* DeformationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeformationButton.m; sourceTree = "<group>"; };
+		289884301AFCA17B003C011F /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		289884311AFCA17B003C011F /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		28FD3DF61AFAFB540055DC66 /* 55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 55.png; sourceTree = "<group>"; };
 		28FF5D371AB976D4000AFBDB /* NoteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListCell.h; sourceTree = "<group>"; };
 		28FF5D381AB976D4000AFBDB /* NoteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListCell.m; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 		286B7B071ABA970F0019151A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
+				289884331AFCA17D003C011F /* DeformationButton */,
 				2896E4481AF88E8300625BE1 /* SecurityView */,
 				286B7B081ABA971F0019151A /* libz.dylib */,
 				286B7B091ABA971F0019151A /* libMobClickLibrary.a */,
@@ -299,6 +306,17 @@
 				2896E44C1AF88ED100625BE1 /* SecurityStrategy.m */,
 			);
 			name = SecurityView;
+			sourceTree = "<group>";
+		};
+		289884331AFCA17D003C011F /* DeformationButton */ = {
+			isa = PBXGroup;
+			children = (
+				289884301AFCA17B003C011F /* MMMaterialDesignSpinner.h */,
+				289884311AFCA17B003C011F /* MMMaterialDesignSpinner.m */,
+				2898842D1AFCA174003C011F /* DeformationButton.h */,
+				2898842E1AFCA174003C011F /* DeformationButton.m */,
+			);
+			name = DeformationButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,8 +447,10 @@
 				286B7B251ABA974D0019151A /* SCLButton.m in Sources */,
 				286B7B241ABA974D0019151A /* SCLAlertViewStyleKit.m in Sources */,
 				2875D4B51AB7B87B00BE46BC /* main.m in Sources */,
+				2898842F1AFCA174003C011F /* DeformationButton.m in Sources */,
 				286B7B161ABA971F0019151A /* Colours.m in Sources */,
 				286B7B021ABA96630019151A /* VNConstants.m in Sources */,
+				289884321AFCA17B003C011F /* MMMaterialDesignSpinner.m in Sources */,
 				286B7B001ABA96630019151A /* UIColor+VNHex.m in Sources */,
 				28FF5D391AB976D4000AFBDB /* NoteListCell.m in Sources */,
 				286B7AF71ABA723D0019151A /* VNNote.m in Sources */,

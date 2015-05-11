@@ -16,12 +16,12 @@
 #import "SVProgressHUD.h"
 #import "UIColor+VNHex.h"
 
+
 @interface NoteListController ()<UITextFieldDelegate>
 {
     NSMutableString *_resultString;
     NSArray *colorArr;
     NSInteger colorCount;
-    
     SCLAlertView *alert;
 }
 @property(nonatomic,strong)UITextField *txt;
@@ -43,7 +43,6 @@
                                            selector:@selector(reloadData)
                                                name:kNotificationCreateFile
                                              object:nil];
-    
 }
 
 -(void)tapClick
@@ -81,6 +80,7 @@
                                                                   action:@selector(createTask)];
   self.navigationItem.rightBarButtonItem = rightItem;
   self.navigationItem.title = NSLocalizedString(@"至简笔记", nil);
+    
 }
 
 -(void)changeColor
