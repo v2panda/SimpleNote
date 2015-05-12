@@ -95,7 +95,7 @@ static const CGFloat kMaxTitleHeight = 100;
   [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
   [_timeLabel setText:[formatter stringFromDate:note.createdDate]];
     if (note.encryptStr) {
-          [_encryptLabel setText:@"密"];
+          [_encryptLabel setText:NSLocalizedString(@"密", nil)];
     }else
     {
         [_encryptLabel setText:@""];

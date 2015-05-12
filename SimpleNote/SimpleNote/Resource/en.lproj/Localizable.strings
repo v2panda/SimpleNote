@@ -29,7 +29,8 @@
 "两次输入的密码不一致" = "The Passwords do not match";
 "至简笔记" = "SimpleNote";
 "来自至简笔记的一封信" = "The letter from SimpleNote";
-
+"密" = "Secret";
+"无标题笔记" = "Untitled Note";
 
 
 //Home

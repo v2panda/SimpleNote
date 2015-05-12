@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define VNNOTE_DEFAULT_TITLE @"无标题笔记"
+#define VNNOTE_DEFAULT_TITLE NSLocalizedString(@"无标题笔记", nil)
 @interface VNNote : NSObject<NSCoding>
 
 @property (nonatomic, strong) NSString *noteID;
