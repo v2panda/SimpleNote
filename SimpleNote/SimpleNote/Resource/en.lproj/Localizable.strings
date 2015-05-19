@@ -17,6 +17,7 @@
 "失败" = "Fail";
 "成功" = "Success";
 "请输入密码" = "Please Enter The Password";
+"输入密码" = "Enter The Password";
 "验证密码" = "Verify Password";
 "解密成功" = "Decryption Success";
 "加密成功" = "Encryption Successful";

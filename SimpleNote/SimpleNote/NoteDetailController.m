@@ -38,6 +38,7 @@ static const CGFloat kVoiceButtonWidth = 100;
     UISlider *mySlider;
     NSArray *colorArr;
     NSInteger colorCount;
+    CGFloat yy;
     
 
   BOOL _isEditingTitle;
@@ -276,8 +277,11 @@ static const CGFloat kVoiceButtonWidth = 100;
             [alert showWarning:self title:NSLocalizedString(@"失败", nil) subTitle:NSLocalizedString(@"旧密码输入错误", nil) closeButtonTitle:NSLocalizedString(@"确定", nil) duration:0.0f];
         }
     }];
-    [_alert showSuccess:self title:NSLocalizedString(@"至简加密", nil) subTitle:NSLocalizedString(@"请出入新旧密码", nil) closeButtonTitle:nil duration:0.0f];
-   
+    [_alert showSuccess:self title:NSLocalizedString(@"至简加密", nil) subTitle:NSLocalizedString(@"请输入新旧密码", nil) closeButtonTitle:nil duration:0.0f];
+    //获取
+    UIView *view22 = [_alert getView];
+    CGRect r = view22.frame;
+    yy =  r.origin.y ;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
@@ -291,15 +295,17 @@ static const CGFloat kVoiceButtonWidth = 100;
 }
 -(void)tapClick
 {
-    if ([encryptTxt isFirstResponder] || [encryptTxt2 isFirstResponder]) {
-        [self hideKeyboard];
-        [UIView animateWithDuration:0.1 animations:^{
-            UIView *view1 = [_alert getView];
-            CGRect r = view1.frame;
-            r.origin.y = r.origin.y +70;
-            view1.frame =  r;
-        }];
-    }
+
+        if ([encryptTxt isFirstResponder] || [encryptTxt2 isFirstResponder]) {
+            [self hideKeyboard];
+            [UIView animateWithDuration:0.1 animations:^{
+                UIView *view1 = [_alert getView];
+                CGRect r = view1.frame;
+                r.origin.y = r.origin.y +70;
+                view1.frame =  r;
+            }];
+        }
+ 
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -309,14 +315,15 @@ static const CGFloat kVoiceButtonWidth = 100;
 -(void)encryptInput
 {
     _alert = [[SCLAlertView alloc] init];
-    
-    encryptTxt = [_alert addTextField:NSLocalizedString(@"输入旧密码", nil)];
+
+    encryptTxt = [_alert addTextField:NSLocalizedString(@"输入密码", nil)];
     encryptTxt.delegate = self;
     encryptTxt.secureTextEntry = YES;
     
     encryptTxt2 = [_alert addTextField:NSLocalizedString(@"再次输入", nil)];
     encryptTxt2.delegate = self;
     encryptTxt2.secureTextEntry = YES;
+    
     __weak typeof(self) _weakSelf=self;
     [_alert addButton:NSLocalizedString(@"确定", nil) actionBlock:^(void) {
        
@@ -332,6 +339,11 @@ static const CGFloat kVoiceButtonWidth = 100;
         }
     }];
     [_alert showSuccess:self title:NSLocalizedString(@"至简加密", nil) subTitle:NSLocalizedString(@"请输入加密密码", nil) closeButtonTitle:nil duration:0.0f];
+    //获取
+    UIView *view22 = [_alert getView];
+    CGRect r = view22.frame;
+    yy =  r.origin.y ;
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
@@ -342,6 +354,7 @@ static const CGFloat kVoiceButtonWidth = 100;
     tap1.numberOfTouchesRequired = 1;
     UIView *view1 = [_alert getShadowView];
     [view1 addGestureRecognizer:tap1];
+    
 }
 - (BOOL) isBlankString:(NSString *)string {
     if (string == nil || string == NULL) {
@@ -358,22 +371,17 @@ static const CGFloat kVoiceButtonWidth = 100;
 //  became first responder
 - (void)textFieldDidBeginEditing:(UITextField *)textField;
 {
-    UIView *view1 = [_alert getView];
-    [UIView animateWithDuration:0.1 animations:^{
-        CGRect r = view1.frame;
-        r.origin.y = r.origin.y - 70;
-        view1.frame =  r;
-    }];
+        UIView *view1 = [_alert getView];
+        [UIView animateWithDuration:0.1 animations:^{
+            CGRect r = view1.frame;
+            r.origin.y = yy - 70;
+            view1.frame =  r;
+        }];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    [UIView animateWithDuration:0.1 animations:^{
-        UIView *view1 = [_alert getView];
-        CGRect r = view1.frame;
-        r.origin.y = r.origin.y +70;
-        view1.frame =  r;
-    }];
+
     return YES;
 }
 
@@ -399,15 +407,17 @@ static const CGFloat kVoiceButtonWidth = 100;
 - (void)keyboardWillHide:(NSNotification *)notification
 {
   NSDictionary *userInfo = notification.userInfo;
+    
   [UIView animateWithDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
                         delay:0.f
                       options:[userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]
                    animations:^
    {
      CGRect frame = _contentTextView.frame;
-       frame.size.height = KDeviceHeight -kVoiceButtonWidth - kVerticalMargin * 2 - kViewOriginY-44;
+       frame.size.height = KDeviceHeight -kVoiceButtonWidth - kVerticalMargin * 2 - kViewOriginY - 44;
      _contentTextView.frame = frame;
    }               completion:NULL];
+    
 }
 
 - (void)hideKeyboard

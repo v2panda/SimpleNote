@@ -27,7 +27,7 @@
 {
   NSString *documentsDirectory = [self documentDirectoryPath];
   self.docPath = documentsDirectory;
-  
+
   if ([[NSFileManager defaultManager] fileExistsAtPath:documentsDirectory]) {
     return self.docPath;
   }
