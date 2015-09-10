@@ -74,6 +74,10 @@ static const CGFloat kVoiceButtonWidth = 100;
                                            selector:@selector(keyboardWillHide:)
                                                name:UIKeyboardWillHideNotification
                                              object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeFont)
+                                                 name:@"PDAFonts"
+                                               object:nil];
     
     mySlider = [[UISlider alloc]initWithFrame:CGRectMake(kDeviceWidth/2 - 80, KDeviceHeight/2 - 50, 160, 50)];
     NSString *str = [[NSUserDefaults standardUserDefaults]objectForKey:@"font"];
@@ -84,6 +88,16 @@ static const CGFloat kVoiceButtonWidth = 100;
     mySlider.alpha = .8;
     mySlider.backgroundColor = [UIColor whiteColor];
     [mySlider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)changeFont
+{
+    NSString *str = [[NSUserDefaults standardUserDefaults]objectForKey:@"font"];
+    if (!str) {
+        _contentTextView.font = [UIFont fontWithName:@"STYuanti-SC-Regular" size:16];
+    }else{
+        _contentTextView.font = [UIFont fontWithName:@"STYuanti-SC-Regular" size:[str floatValue]];
+    }
 }
 
 - (void)dealloc
@@ -161,9 +175,9 @@ static const CGFloat kVoiceButtonWidth = 100;
     
     NSString *str = [[NSUserDefaults standardUserDefaults]objectForKey:@"font"];
     if (!str) {
-        _contentTextView.font = [UIFont systemFontOfSize:16];
+        _contentTextView.font = [UIFont fontWithName:@"STYuanti-SC-Regular" size:16];
     }else{
-  _contentTextView.font = [UIFont systemFontOfSize:[str floatValue]];
+        _contentTextView.font = [UIFont fontWithName:@"STYuanti-SC-Regular" size:[str floatValue]];
     }
   _contentTextView.autocorrectionType = UITextAutocorrectionTypeNo;
   _contentTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;

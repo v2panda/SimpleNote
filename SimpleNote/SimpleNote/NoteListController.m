@@ -43,6 +43,14 @@
                                            selector:@selector(reloadData)
                                                name:kNotificationCreateFile
                                              object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeFont)
+                                                 name:@"PDAFonts"
+                                               object:nil];
+}
+- (void)changeFont
+{
+    NSLog(@"收到通知");
 }
 
 -(void)tapClick

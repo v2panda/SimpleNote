@@ -13,7 +13,7 @@
 		<string>icon-jian-1.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>cococom.panda.xuzhen</string>
+	<string>com.123</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -37,8 +37,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>
