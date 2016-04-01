@@ -10,5 +10,6 @@
 #define SimpleNoteHeader_pch
 
 #import "Common.h"
+#import "UIView+Frame.h"
 
 #endif /* SimpleNoteHeader_pch */

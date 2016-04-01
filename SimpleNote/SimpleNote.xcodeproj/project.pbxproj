@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */; };
+		284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54611CAE0E98006EDCB8 /* UIView+Frame.m */; };
+		284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */; };
+		284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C546A1CAE2572006EDCB8 /* NoteBookModel.m */; };
 		2866CE2A1CACF83F00518F16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE291CACF83F00518F16 /* main.m */; };
 		2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE2C1CACF83F00518F16 /* AppDelegate.m */; };
 		2866CE331CACF83F00518F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE311CACF83F00518F16 /* Main.storyboard */; };
 		2866CE351CACF83F00518F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE341CACF83F00518F16 /* Assets.xcassets */; };
 		2866CE381CACF83F00518F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */; };
-		2866CE4E1CACFDD800518F16 /* SNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE4D1CACFDD800518F16 /* SNRootViewController.m */; };
 		2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE501CAD000B00518F16 /* SNLeftViewController.m */; };
 		2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE531CAD004B00518F16 /* SNMainViewController.m */; };
 		2866CE571CAD015B00518F16 /* Temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE561CAD015B00518F16 /* Temp.m */; };
@@ -22,6 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRootViewController.h; sourceTree = "<group>"; };
+		284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRootViewController.m; sourceTree = "<group>"; };
+		284C54601CAE0E98006EDCB8 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		284C54611CAE0E98006EDCB8 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		284C54631CAE10E8006EDCB8 /* NoteBookViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteBookViewCell.h; sourceTree = "<group>"; };
+		284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteBookViewCell.m; sourceTree = "<group>"; };
+		284C54691CAE2572006EDCB8 /* NoteBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteBookModel.h; sourceTree = "<group>"; };
+		284C546A1CAE2572006EDCB8 /* NoteBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteBookModel.m; sourceTree = "<group>"; };
 		2866CE251CACF83F00518F16 /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2866CE291CACF83F00518F16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2866CE2B1CACF83F00518F16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -30,8 +41,6 @@
 		2866CE341CACF83F00518F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2866CE371CACF83F00518F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2866CE391CACF83F00518F16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2866CE4C1CACFDD800518F16 /* SNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRootViewController.h; sourceTree = "<group>"; };
-		2866CE4D1CACFDD800518F16 /* SNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRootViewController.m; sourceTree = "<group>"; };
 		2866CE4F1CAD000B00518F16 /* SNLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLeftViewController.h; sourceTree = "<group>"; };
 		2866CE501CAD000B00518F16 /* SNLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLeftViewController.m; sourceTree = "<group>"; };
 		2866CE521CAD004B00518F16 /* SNMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainViewController.h; sourceTree = "<group>"; };
@@ -61,6 +70,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		284C545B1CAE0DD1006EDCB8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				284C54601CAE0E98006EDCB8 /* UIView+Frame.h */,
+				284C54611CAE0E98006EDCB8 /* UIView+Frame.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		284C545C1CAE0DD1006EDCB8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */,
+				284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2866CE1C1CACF83F00518F16 = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +159,8 @@
 		2866CE421CACF8C300518F16 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				2866CE4C1CACFDD800518F16 /* SNRootViewController.h */,
-				2866CE4D1CACFDD800518F16 /* SNRootViewController.m */,
+				284C545C1CAE0DD1006EDCB8 /* Controllers */,
+				284C545B1CAE0DD1006EDCB8 /* Categories */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -182,6 +209,8 @@
 		2866CE5D1CAD134B00518F16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				284C54631CAE10E8006EDCB8 /* NoteBookViewCell.h */,
+				284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -191,6 +220,8 @@
 			children = (
 				2866CE5F1CAD137B00518F16 /* SNLeftFlowlayout.h */,
 				2866CE601CAD137B00518F16 /* SNLeftFlowlayout.m */,
+				284C54691CAE2572006EDCB8 /* NoteBookModel.h */,
+				284C546A1CAE2572006EDCB8 /* NoteBookModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -336,11 +367,14 @@
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
 				2866CE5B1CAD019300518F16 /* tempasd.m in Sources */,
 				2866CE571CAD015B00518F16 /* Temp.m in Sources */,
+				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
+				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
-				2866CE4E1CACFDD800518F16 /* SNRootViewController.m in Sources */,
+				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
 				2866CE611CAD137B00518F16 /* SNLeftFlowlayout.m in Sources */,
+				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
