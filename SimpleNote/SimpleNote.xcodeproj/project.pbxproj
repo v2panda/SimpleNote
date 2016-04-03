@@ -11,6 +11,12 @@
 		284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54611CAE0E98006EDCB8 /* UIView+Frame.m */; };
 		284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */; };
 		284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C546A1CAE2572006EDCB8 /* NoteBookModel.m */; };
+		2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D6FF1CB0C490008FB392 /* EditNoteBookViewController.m */; };
+		2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7081CB0F284008FB392 /* NoteBookDefaultCell.m */; };
+		2853D70B1CB0F284008FB392 /* NoteBookDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2853D7091CB0F284008FB392 /* NoteBookDefaultCell.xib */; };
+		2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */; };
+		2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */; };
+		2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7131CB108E6008FB392 /* NoteCoverModel.m */; };
 		2866CE2A1CACF83F00518F16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE291CACF83F00518F16 /* main.m */; };
 		2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE2C1CACF83F00518F16 /* AppDelegate.m */; };
 		2866CE331CACF83F00518F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE311CACF83F00518F16 /* Main.storyboard */; };
@@ -33,6 +39,17 @@
 		284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteBookViewCell.m; sourceTree = "<group>"; };
 		284C54691CAE2572006EDCB8 /* NoteBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteBookModel.h; sourceTree = "<group>"; };
 		284C546A1CAE2572006EDCB8 /* NoteBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteBookModel.m; sourceTree = "<group>"; };
+		2853D6FE1CB0C490008FB392 /* EditNoteBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteBookViewController.h; sourceTree = "<group>"; };
+		2853D6FF1CB0C490008FB392 /* EditNoteBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteBookViewController.m; sourceTree = "<group>"; };
+		2853D7071CB0F284008FB392 /* NoteBookDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteBookDefaultCell.h; sourceTree = "<group>"; };
+		2853D7081CB0F284008FB392 /* NoteBookDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteBookDefaultCell.m; sourceTree = "<group>"; };
+		2853D7091CB0F284008FB392 /* NoteBookDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteBookDefaultCell.xib; sourceTree = "<group>"; };
+		2853D70C1CB0FA0C008FB392 /* NoteCoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCoverCell.h; sourceTree = "<group>"; };
+		2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCoverCell.m; sourceTree = "<group>"; };
+		2853D70F1CB101ED008FB392 /* ChooseCoverReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCoverReusableView.h; sourceTree = "<group>"; };
+		2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCoverReusableView.m; sourceTree = "<group>"; };
+		2853D7121CB108E6008FB392 /* NoteCoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCoverModel.h; sourceTree = "<group>"; };
+		2853D7131CB108E6008FB392 /* NoteCoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCoverModel.m; sourceTree = "<group>"; };
 		2866CE251CACF83F00518F16 /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2866CE291CACF83F00518F16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2866CE2B1CACF83F00518F16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,6 +219,8 @@
 				2866CE501CAD000B00518F16 /* SNLeftViewController.m */,
 				2866CE521CAD004B00518F16 /* SNMainViewController.h */,
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
+				2853D6FE1CB0C490008FB392 /* EditNoteBookViewController.h */,
+				2853D6FF1CB0C490008FB392 /* EditNoteBookViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +230,13 @@
 			children = (
 				284C54631CAE10E8006EDCB8 /* NoteBookViewCell.h */,
 				284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */,
+				2853D7071CB0F284008FB392 /* NoteBookDefaultCell.h */,
+				2853D7081CB0F284008FB392 /* NoteBookDefaultCell.m */,
+				2853D7091CB0F284008FB392 /* NoteBookDefaultCell.xib */,
+				2853D70C1CB0FA0C008FB392 /* NoteCoverCell.h */,
+				2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */,
+				2853D70F1CB101ED008FB392 /* ChooseCoverReusableView.h */,
+				2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -222,6 +248,8 @@
 				2866CE601CAD137B00518F16 /* SNLeftFlowlayout.m */,
 				284C54691CAE2572006EDCB8 /* NoteBookModel.h */,
 				284C546A1CAE2572006EDCB8 /* NoteBookModel.m */,
+				2853D7121CB108E6008FB392 /* NoteCoverModel.h */,
+				2853D7131CB108E6008FB392 /* NoteCoverModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -305,6 +333,7 @@
 			files = (
 				2866CE381CACF83F00518F16 /* LaunchScreen.storyboard in Resources */,
 				2866CE351CACF83F00518F16 /* Assets.xcassets in Resources */,
+				2853D70B1CB0F284008FB392 /* NoteBookDefaultCell.xib in Resources */,
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,17 +393,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
+				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
+				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
 				2866CE5B1CAD019300518F16 /* tempasd.m in Sources */,
 				2866CE571CAD015B00518F16 /* Temp.m in Sources */,
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
+				2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
 				2866CE611CAD137B00518F16 /* SNLeftFlowlayout.m in Sources */,
 				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,
+				2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

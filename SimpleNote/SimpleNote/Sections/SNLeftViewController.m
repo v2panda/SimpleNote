@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avataImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *noteEditButton;
+@property (weak, nonatomic) IBOutlet UIButton *addNoteButton;
 
 @property (nonatomic, assign) BOOL isEditing;
 @property (nonatomic, copy) NSMutableArray<NoteBookModel *> *notebooksArray;
@@ -42,7 +43,8 @@
     
     for (int i = 0; i < 10; i ++) {
         NoteBookModel *model = [NoteBookModel new];
-        model.noteBookTitle = [NSString stringWithFormat:@"测试标题%@",@(i)];
+        model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
+        model.noteBookCoverString = [NSString stringWithFormat:@"AccountBookCover%@",@(i%6)];
         if (i == 0) {
             model.isNoteBookSeleted = YES;
         }else {
@@ -67,6 +69,12 @@
     
     [self.noteCollectionView reloadData];
     
+}
+- (IBAction)addNoteButtonDidTouched:(UIButton *)sender {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -111,8 +119,16 @@
 
 #pragma mark - NoteBookViewCellBtnDelegate
 
-- (void)noteEditBtnTouched {
+- (void)noteEditBtnTouched:(NSInteger)noteBookID {
     NSLog(@"Edit");
+
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
+    
+    NoteBookModel *model = self.notebooksArray[noteBookID];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"noteEditBtnTouched" object:model];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)noteDeleteBtnTouched:(NSInteger)noteBookID {
@@ -120,6 +136,13 @@
     
     if (self.notebooksArray.count == 1) {
         // 不让删
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"删除笔记本失败，不能删除正在使用的笔记本" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        return;
     }
     
     NoteBookModel *model = self.notebooksArray[noteBookID];
@@ -131,14 +154,12 @@
         [self.notebooksArray removeObjectAtIndex:noteBookID];
     }
 
-    
-//    [self.notebooksArray removeObjectAtIndex:noteBookID];
     [self.noteCollectionView reloadData];
     
     
 }
 
-#pragma mark - getter and setters
+#pragma mark - getters and setters
 - (NSMutableArray<NoteBookModel *> *)notebooksArray
 {
     if (!_notebooksArray) {

@@ -13,18 +13,13 @@
 
 @optional
 - (void)noteDeleteBtnTouched:(NSInteger)noteBookID;
-- (void)noteEditBtnTouched;
+- (void)noteEditBtnTouched:(NSInteger)noteBookID;
 
 @end
 
 
 @interface NoteBookViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *noteCheckImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *editBGView;
-@property (weak, nonatomic) IBOutlet UIButton *noteDeleteBtn;
-@property (weak, nonatomic) IBOutlet UIButton *noteEditBtn;
 @property (nonatomic, weak) id <NoteBookViewCellBtnDelegate>  delegate;
 @property (nonatomic, strong) NoteBookModel *model;
 @property (nonatomic, assign) BOOL isNoteBookEditing;

@@ -12,6 +12,13 @@
 
 @interface NoteBookViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *noteBookCover;
+@property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *noteCheckImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *editBGView;
+@property (weak, nonatomic) IBOutlet UIButton *noteDeleteBtn;
+@property (weak, nonatomic) IBOutlet UIButton *noteEditBtn;
+
 @property (nonatomic, assign) NSInteger notebookID;
 
 @end
@@ -24,6 +31,7 @@
     _model = model;
     self.noteCheckImageView.hidden = !model.isNoteBookSeleted;
     self.noteTitleLabel.text = model.noteBookTitle;
+    self.noteBookCover.image = [UIImage imageNamed:model.noteBookCoverString];
 }
 
 - (void)setIsNoteBookEditing:(BOOL)isNoteBookEditing {
@@ -37,7 +45,6 @@
 {
     static NSString *identifier = @"NoteCellID";
     NoteBookViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-//    cell.noteTitleLabel.font = [UIFont systemFontOfSize:12];
     
     cell.notebookID = indexPath.row;
     return cell;
@@ -54,8 +61,8 @@
 - (IBAction)noteEditBtnDidTouched:(UIButton *)sender {
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([self.delegate respondsToSelector:@selector(noteEditBtnTouched)]) {
-            [self.delegate noteEditBtnTouched];
+        if ([self.delegate respondsToSelector:@selector(noteEditBtnTouched:)]) {
+            [self.delegate noteEditBtnTouched:self.notebookID];
         }
     });
 }

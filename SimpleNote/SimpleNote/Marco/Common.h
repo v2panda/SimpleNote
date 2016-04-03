@@ -18,4 +18,7 @@
 /**是否5.5寸屏*/
 #define is6plus_Inch    ([UIScreen mainScreen].bounds.size.height == 736)
 
+/**自定义颜色*/
+#define SNColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:255/255.0]
+
 #endif /* Common_h */
