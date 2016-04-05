@@ -12,6 +12,7 @@
 #import "NoteCoverModel.h"
 #import "NoteBookModel.h"
 
+
 @interface EditNoteBookViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
@@ -38,7 +39,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
-#warning NoteBook ID
+
 #pragma mark - event response
 - (void)getNoteBookModel:(NSNotification *)noteBookInfo {
     self.noteBookModel = (NoteBookModel *)noteBookInfo.object;
@@ -51,6 +52,7 @@
 
 - (IBAction)saveBtnDidTouched:(UIBarButtonItem *)sender {
     NSLog(@"Save & Add");
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:kNoteBookAddedSaved object:self.noteBookModel];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -59,7 +61,7 @@
     NSLog(@"Back");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+#warning 默认封面
 #pragma mark - UITableViewDataSource UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -137,6 +139,7 @@
     if (!_noteBookModel) {
         _noteBookModel = [NoteBookModel new];
         _noteBookModel.noteBookCoverString = @"AccountBookCover0";
+        _noteBookModel.noteBookID = [CreateNoteBookID getNoteBookID];
     }
     return _noteBookModel;
 }

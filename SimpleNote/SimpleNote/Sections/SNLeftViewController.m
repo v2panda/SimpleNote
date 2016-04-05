@@ -12,6 +12,7 @@
 #import "NoteBookModel.h"
 #import "EditNoteBookViewController.h"
 
+
 @interface SNLeftViewController () <UICollectionViewDelegate,UICollectionViewDataSource,NoteBookViewCellBtnDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avataImageView;
@@ -50,7 +51,8 @@
         NoteBookModel *model = [NoteBookModel new];
         model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
         model.noteBookCoverString = [NSString stringWithFormat:@"AccountBookCover%@",@(i%6)];
-        model.noteBookID = @(i);
+        model.noteBookID = [CreateNoteBookID getNoteBookID];
+        NSLog(@"%@",model.noteBookID);
         if (i == 0) {
             model.isNoteBookSeleted = YES;
         }else {
@@ -163,11 +165,7 @@
     
     if (self.notebooksArray.count == 1) {
         // 不让删
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"删除笔记本失败，不能删除正在使用的笔记本" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        }];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        kTipAlert(@"删除笔记本失败，不能删除正在使用的笔记本");
         
         return;
     }

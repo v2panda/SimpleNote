@@ -33,7 +33,16 @@
 }
 
 #pragma  mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (textField.text.length > 20) {
+        return NO;
+    }else {
+        return YES;
+    }
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    
     if (self.backNoteTitle) {
         self.backNoteTitle(textField.text);
     }
