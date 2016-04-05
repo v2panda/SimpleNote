@@ -12,5 +12,4 @@
 - (IBAction)ChooseCoverBtnDidTouched:(UIButton *)sender {
     NSLog(@"ChooseCoverReusableViewID");
 }
-
 @end

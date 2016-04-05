@@ -28,6 +28,9 @@
                         <rect key="frame" x="104" y="0.0" width="208" height="59"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="1Pv-N2-mbb"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>

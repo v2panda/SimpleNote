@@ -10,6 +10,7 @@
 #import "SNLeftFlowlayout.h"
 #import "NoteBookViewCell.h"
 #import "NoteBookModel.h"
+#import "EditNoteBookViewController.h"
 
 @interface SNLeftViewController () <UICollectionViewDelegate,UICollectionViewDataSource,NoteBookViewCellBtnDelegate>
 
@@ -35,8 +36,12 @@
     self.avataImageView.layer.cornerRadius = self.avataImageView.width / 2;
     self.avataImageView.layer.masksToBounds = YES;
     
-    
     [self simulateData];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)simulateData {
@@ -45,6 +50,7 @@
         NoteBookModel *model = [NoteBookModel new];
         model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
         model.noteBookCoverString = [NSString stringWithFormat:@"AccountBookCover%@",@(i%6)];
+        model.noteBookID = @(i);
         if (i == 0) {
             model.isNoteBookSeleted = YES;
         }else {
@@ -56,6 +62,28 @@
 }
 
 #pragma mark - event response
+
+- (void)saveNoteBookModel:(NSNotification *)noteBookInfo {
+    NoteBookModel *model = (NoteBookModel *)noteBookInfo.object;
+    
+    BOOL isAdd = NO;
+    
+    for (__strong NoteBookModel *tempModel in self.notebooksArray) {
+        if ( [model.noteBookID isEqualToNumber:tempModel.noteBookID]) {
+            tempModel = model;
+            isAdd = NO;
+            [self.noteCollectionView reloadData];
+            return;
+        }else {
+            isAdd = YES;
+        }
+    }
+    if (isAdd) {
+        [self.notebooksArray addObject:model];
+        [self.noteCollectionView reloadData];
+    }
+    
+}
 
 - (IBAction)noteEditButtonDidTouched:(UIButton *)sender {
     self.isEditing = !self.isEditing;
@@ -121,13 +149,12 @@
 
 - (void)noteEditBtnTouched:(NSInteger)noteBookID {
     NSLog(@"Edit");
-
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
     
     NoteBookModel *model = self.notebooksArray[noteBookID];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"noteEditBtnTouched" object:model];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNoteEditBtnTouched object:model];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -155,7 +182,6 @@
     }
 
     [self.noteCollectionView reloadData];
-    
     
 }
 

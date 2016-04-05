@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FD0A41CB359FF000F25DA /* SNBasicViewController.m */; };
 		284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */; };
 		284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54611CAE0E98006EDCB8 /* UIView+Frame.m */; };
 		284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282FD0A31CB359FF000F25DA /* SNBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicViewController.h; sourceTree = "<group>"; };
+		282FD0A41CB359FF000F25DA /* SNBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicViewController.m; sourceTree = "<group>"; };
 		284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRootViewController.h; sourceTree = "<group>"; };
 		284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRootViewController.m; sourceTree = "<group>"; };
 		284C54601CAE0E98006EDCB8 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 			children = (
 				284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */,
 				284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */,
+				282FD0A31CB359FF000F25DA /* SNBasicViewController.h */,
+				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,

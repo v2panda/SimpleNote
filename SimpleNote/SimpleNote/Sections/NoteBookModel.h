@@ -10,6 +10,7 @@
 
 @interface NoteBookModel : NSObject
 
+@property (nonatomic, strong) NSNumber *noteBookID;
 @property (nonatomic, strong) NSString *noteBookTitle;
 @property (nonatomic, assign) BOOL isNoteBookSeleted;
 @property (nonatomic, copy) NSString *noteBookCoverString;

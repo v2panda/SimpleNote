@@ -5,7 +5,7 @@
 //  Created by Panda on 16/3/31.
 //  Copyright © 2016年 v2panda. All rights reserved.
 //
-
+#import <UIKit/UIKit.h>
 #ifndef Common_h
 #define Common_h
 
@@ -20,5 +20,17 @@
 
 /**自定义颜色*/
 #define SNColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:255/255.0]
+
+/** weakify - strongify **/
+#define weakify(var) __weak typeof(var) SNWeak_##var = var;
+#define strongify(var) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+__strong typeof(var) var = SNWeak_##var; \
+_Pragma("clang diagnostic pop")
+
+/** KNotificationName **/
+static NSString * const kNoteEditBtnTouched = @"kNotificationNoteEditBtnTouched";
+static NSString * const kNoteBookAddedSaved = @"kNotificationNoteBookAddedSaved";
 
 #endif /* Common_h */

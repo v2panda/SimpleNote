@@ -13,8 +13,10 @@
 #import "NoteBookModel.h"
 
 @interface EditNoteBookViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *createCollectionView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
 @property (nonatomic, strong) NSMutableArray<NoteCoverModel *> *covers;
 @property (nonatomic, copy) NSString *chooseCover;
 @property (nonatomic, strong) NoteBookModel *noteBookModel;
@@ -27,25 +29,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
 }
 
 - (void)awakeFromNib {
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNoteBookModel:) name:@"noteEditBtnTouched" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNoteBookModel:) name:kNoteEditBtnTouched object:nil];
 }
 
-
-- (void)getNoteBookModel:(NSNotification *)noteBookInfo {
-    self.noteBookModel = (NoteBookModel *)noteBookInfo.object;
-    [self.createTableView reloadData];
-}
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
-
+#warning NoteBook ID
 #pragma mark - event response
+- (void)getNoteBookModel:(NSNotification *)noteBookInfo {
+    self.noteBookModel = (NoteBookModel *)noteBookInfo.object;
+    if (self.noteBookModel.noteBookTitle) {
+        self.navigationItem.rightBarButtonItem.title = @"保存";
+        self.title = @"编辑笔记本";
+    }
+    [self.createTableView reloadData];
+}
+
 - (IBAction)saveBtnDidTouched:(UIBarButtonItem *)sender {
-    NSLog(@"Save");
+    NSLog(@"Save & Add");
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNoteBookAddedSaved object:self.noteBookModel];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backBtnDidTouched:(UIBarButtonItem *)sender {
@@ -63,6 +70,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         NoteBookDefaultCell *cell = [NoteBookDefaultCell cellWithTableView:tableView];
+        NoteBookModel *model = self.noteBookModel;
+        cell.backNoteTitle = ^(NSString *title) {
+            model.noteBookTitle = title;
+        };
         cell.model = self.noteBookModel;
         return cell;
         
@@ -125,6 +136,7 @@
 - (NoteBookModel *)noteBookModel {
     if (!_noteBookModel) {
         _noteBookModel = [NoteBookModel new];
+        _noteBookModel.noteBookCoverString = @"AccountBookCover0";
     }
     return _noteBookModel;
 }

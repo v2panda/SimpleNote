@@ -257,7 +257,7 @@
             </objects>
             <point key="canvasLocation" x="808" y="379"/>
         </scene>
-        <!--笔记本-->
+        <!--添加笔记本-->
         <scene sceneID="ybz-ac-5qh">
             <objects>
                 <viewController storyboardIdentifier="EditNoteBookSBID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LOL-nl-RPD" customClass="EditNoteBookViewController" sceneMemberID="viewController">
@@ -362,13 +362,13 @@
                             <constraint firstItem="8Rf-kh-GQl" firstAttribute="centerX" secondItem="aD8-k1-JHq" secondAttribute="centerX" id="waK-55-use"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="笔记本" id="ADP-ed-5eb">
+                    <navigationItem key="navigationItem" title="添加笔记本" id="ADP-ed-5eb">
                         <barButtonItem key="leftBarButtonItem" image="IOS7BackBarButton" id="TGe-YW-TlN">
                             <connections>
                                 <action selector="backBtnDidTouched:" destination="LOL-nl-RPD" id="HH2-gk-Ibt"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="4St-JJ-Kkb">
+                        <barButtonItem key="rightBarButtonItem" title="新增" id="4St-JJ-Kkb">
                             <connections>
                                 <action selector="saveBtnDidTouched:" destination="LOL-nl-RPD" id="gBQ-tA-VPK"/>
                             </connections>
@@ -377,6 +377,7 @@
                     <connections>
                         <outlet property="createCollectionView" destination="2Gs-Lc-SCZ" id="N8J-xc-iwt"/>
                         <outlet property="createTableView" destination="8Rf-kh-GQl" id="Njx-gu-Xjd"/>
+                        <outlet property="saveBtn" destination="4St-JJ-Kkb" id="pMV-3s-JMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tkr-oI-TRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,6 +394,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.45882352939999999" green="0.41568627450000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

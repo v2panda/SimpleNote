@@ -8,7 +8,7 @@
 
 #import "NoteBookDefaultCell.h"
 
-@interface NoteBookDefaultCell ()
+@interface NoteBookDefaultCell () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
 @end
@@ -30,6 +30,13 @@
     }
     
     return cell;
+}
+
+#pragma  mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (self.backNoteTitle) {
+        self.backNoteTitle(textField.text);
+    }
 }
 
 - (void)drawRect:(CGRect)rect

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NoteBookModel.h"
 
-@interface EditNoteBookViewController : UIViewController
+@interface EditNoteBookViewController : SNBasicViewController
+
 
 @end
