@@ -9,6 +9,7 @@
 #import "NoteCoverCell.h"
 
 @interface NoteCoverCell ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverCheckImageView;
@@ -20,7 +21,7 @@
 - (void)setModel:(NoteCoverModel *)model {
     _model = model;
     
-    self.coverImageView.image = [UIImage imageNamed:model.noteCoverString];
+    self.coverImageView.image = model.noteCoverImage;
     self.coverCheckImageView.hidden = !model.isNoteCoverSeleted;
 }
 

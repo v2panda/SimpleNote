@@ -31,7 +31,7 @@
     _model = model;
     self.noteCheckImageView.hidden = !model.isNoteBookSeleted;
     self.noteTitleLabel.text = model.noteBookTitle;
-    self.noteBookCover.image = [UIImage imageNamed:model.noteBookCoverString];
+    self.noteBookCover.image = model.customCoverImage;
 }
 
 - (void)setIsNoteBookEditing:(BOOL)isNoteBookEditing {

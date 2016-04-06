@@ -68,7 +68,14 @@
 
 -  (void)setModel:(NoteBookModel *)model {
     _model = model;
-    self.thumbnailCover.image = [UIImage imageNamed:model.noteBookCoverString];
+    if (model.customCoverImage) {
+        self.thumbnailCover.image = model.customCoverImage;
+    }
+//    if (model.customCoverImage) {
+//        self.thumbnailCover.image = model.customCoverImage;
+//    }else {
+//        self.thumbnailCover.image = [UIImage imageNamed:model.noteBookCoverString];
+//    }
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView

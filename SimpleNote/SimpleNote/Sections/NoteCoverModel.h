@@ -10,7 +10,7 @@
 
 @interface NoteCoverModel : NSObject
 
-@property (nonatomic, strong) NSString *noteCoverString;
+@property (nonatomic, strong) UIImage *noteCoverImage;
 
 @property (nonatomic, assign) BOOL isNoteCoverSeleted;
 

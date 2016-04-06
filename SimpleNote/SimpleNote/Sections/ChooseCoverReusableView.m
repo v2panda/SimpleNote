@@ -9,7 +9,12 @@
 #import "ChooseCoverReusableView.h"
 
 @implementation ChooseCoverReusableView
+
 - (IBAction)ChooseCoverBtnDidTouched:(UIButton *)sender {
-    NSLog(@"ChooseCoverReusableViewID");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.delegate respondsToSelector:@selector(ChooseCoverBtnDidTouched)]) {
+            [self.delegate ChooseCoverBtnDidTouched];
+        }
+    });
 }
 @end

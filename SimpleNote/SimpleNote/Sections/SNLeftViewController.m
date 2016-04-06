@@ -7,13 +7,17 @@
 //
 
 #import "SNLeftViewController.h"
-#import "SNLeftFlowlayout.h"
 #import "NoteBookViewCell.h"
 #import "NoteBookModel.h"
 #import "EditNoteBookViewController.h"
+#import "TZImagePickerController.h"
 
 
-@interface SNLeftViewController () <UICollectionViewDelegate,UICollectionViewDataSource,NoteBookViewCellBtnDelegate>
+@interface SNLeftViewController () <
+UICollectionViewDelegate,
+UICollectionViewDataSource,
+NoteBookViewCellBtnDelegate,
+TZImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avataImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -30,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.noteCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+    self.noteCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0);
     self.noteCollectionView.dataSource = self;
     self.noteCollectionView.delegate = self;
     self.isEditing = YES;
@@ -50,7 +54,7 @@
     for (int i = 0; i < 10; i ++) {
         NoteBookModel *model = [NoteBookModel new];
         model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
-        model.noteBookCoverString = [NSString stringWithFormat:@"AccountBookCover%@",@(i%6)];
+        model.customCoverImage = [UIImage imageNamed:[NSString stringWithFormat:@"AccountBookCover%@",@(i%6)]];
         model.noteBookID = [CreateNoteBookID getNoteBookID];
         NSLog(@"%@",model.noteBookID);
         if (i == 0) {
@@ -58,7 +62,6 @@
         }else {
             model.isNoteBookSeleted = NO;
         }
-        
         [self.notebooksArray addObject:model];
     }
 }
@@ -105,6 +108,19 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)avataImageTapped:(UITapGestureRecognizer *)sender {
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
+    imagePickerVc.allowPickingVideo = NO;
+    imagePickerVc.allowPickingOriginalPhoto = NO;
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+#pragma mark - TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+    self.avataImageView.image  = photos.firstObject;
 }
 
 #pragma mark - UICollectionViewDataSource

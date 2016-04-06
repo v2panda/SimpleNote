@@ -21,11 +21,12 @@
                             <constraint firstAttribute="width" constant="83" id="uVG-gx-Pae"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="默认标题" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vB7-LV-23Q">
-                        <rect key="frame" x="104" y="0.0" width="208" height="59"/>
+                        <rect key="frame" x="104" y="0.0" width="198" height="59"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -37,7 +38,7 @@
                     <constraint firstItem="40D-UQ-Kbq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="655-Wn-rOW"/>
                     <constraint firstItem="vB7-LV-23Q" firstAttribute="leading" secondItem="40D-UQ-Kbq" secondAttribute="trailing" constant="21" id="L5o-lf-3FU"/>
                     <constraint firstItem="vB7-LV-23Q" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="SPh-rX-Lfb"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="vB7-LV-23Q" secondAttribute="trailing" id="d8r-ut-RBN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vB7-LV-23Q" secondAttribute="trailing" constant="10" id="d8r-ut-RBN"/>
                     <constraint firstAttribute="bottom" secondItem="40D-UQ-Kbq" secondAttribute="bottom" id="eiw-yl-XqB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vB7-LV-23Q" secondAttribute="bottom" constant="-8" id="hEi-an-y3w"/>
                     <constraint firstItem="40D-UQ-Kbq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mpD-F5-TFZ"/>
@@ -61,7 +62,7 @@
                             <constraint firstAttribute="width" constant="83" id="8mI-Ch-Bd8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccountBookCover1" translatesAutoresizingMaskIntoConstraints="NO" id="SMb-Tc-D2A">

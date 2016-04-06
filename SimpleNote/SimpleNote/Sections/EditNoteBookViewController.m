@@ -11,17 +11,24 @@
 #import "NoteCoverCell.h"
 #import "NoteCoverModel.h"
 #import "NoteBookModel.h"
+#import "TZImagePickerController.h"
+#import "ChooseCoverReusableView.h"
 
 
-@interface EditNoteBookViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface EditNoteBookViewController () <
+UITableViewDelegate,
+UITableViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDataSource,
+ChooseCoverReusableViewDelegate,
+TZImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *createCollectionView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
 @property (nonatomic, strong) NSMutableArray<NoteCoverModel *> *covers;
-@property (nonatomic, copy) NSString *chooseCover;
 @property (nonatomic, strong) NoteBookModel *noteBookModel;
-
+@property (nonatomic, strong) UIImage *pickerImage;
 @end
 
 @implementation EditNoteBookViewController
@@ -61,7 +68,7 @@
     NSLog(@"Back");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-#warning 默认封面
+
 #pragma mark - UITableViewDataSource UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -81,9 +88,9 @@
         
     }else if (indexPath.row == 1) {
         NoteBookCreateCoverCell *cell = [NoteBookCreateCoverCell cellWithTableView:tableView];
-        if (self.chooseCover) {
+        if (self.pickerImage) {
             NoteBookModel *model = self.noteBookModel;
-            model.noteBookCoverString = self.chooseCover;
+            model.customCoverImage = self.pickerImage;
         }
         cell.model = self.noteBookModel;
         return cell;
@@ -107,7 +114,8 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *reusableview = nil;
     if (kind == UICollectionElementKindSectionFooter){
-        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"ChooseCoverReusableViewID" forIndexPath:indexPath];
+        ChooseCoverReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"ChooseCoverReusableViewID" forIndexPath:indexPath];
+        footerview.delegate = self;
         reusableview = footerview;
     }
     return reusableview;
@@ -121,7 +129,7 @@
     
     NoteCoverModel *model = self.covers[indexPath.row];
     model.isNoteCoverSeleted = YES;
-    self.chooseCover = model.noteCoverString;
+    self.pickerImage = model.noteCoverImage;
     
     [self.createCollectionView reloadData];
     
@@ -134,11 +142,26 @@
     return CGSizeMake(width, width + 20);
 }
 
+#pragma mark - ChooseCoverReusableViewDelegate
+- (void)ChooseCoverBtnDidTouched {
+    
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
+    imagePickerVc.allowPickingVideo = NO;
+    imagePickerVc.allowPickingOriginalPhoto = NO;
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+#pragma mark - TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+    self.pickerImage  = photos.firstObject;
+    [self.createTableView reloadData];
+}
+
 #pragma mark - getters and setters
 - (NoteBookModel *)noteBookModel {
     if (!_noteBookModel) {
         _noteBookModel = [NoteBookModel new];
-        _noteBookModel.noteBookCoverString = @"AccountBookCover0";
+        _noteBookModel.customCoverImage = [UIImage imageNamed:@"AccountBookCover0"];
         _noteBookModel.noteBookID = [CreateNoteBookID getNoteBookID];
     }
     return _noteBookModel;
@@ -149,17 +172,16 @@
         _covers = [NSMutableArray array];
         for (int i = 0; i < 6; i ++) {
             NoteCoverModel *model = [NoteCoverModel new];
-            model.noteCoverString = [NSString stringWithFormat:@"AccountBookCover%d",i];
+            model.noteCoverImage = [UIImage imageNamed:[NSString stringWithFormat:@"AccountBookCover%d",i]];
             [_covers addObject:model];
         }
     }
     return _covers;
 }
 
-- (void)setChooseCover:(NSString *)chooseCover {
-    _chooseCover = chooseCover;
-    
-    if (chooseCover) {
+- (void)setPickerImage:(UIImage *)pickerImage {
+    _pickerImage = pickerImage;
+    if (pickerImage) {
         [self.createTableView reloadData];
     }
 }

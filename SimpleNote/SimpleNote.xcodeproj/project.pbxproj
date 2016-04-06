@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
 		282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FD0A41CB359FF000F25DA /* SNBasicViewController.m */; };
 		284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */; };
 		284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54611CAE0E98006EDCB8 /* UIView+Frame.m */; };
@@ -26,12 +27,13 @@
 		2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE501CAD000B00518F16 /* SNLeftViewController.m */; };
 		2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE531CAD004B00518F16 /* SNMainViewController.m */; };
 		2866CE5B1CAD019300518F16 /* tempasd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE5A1CAD019300518F16 /* tempasd.m */; };
-		2866CE611CAD137B00518F16 /* SNLeftFlowlayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE601CAD137B00518F16 /* SNLeftFlowlayout.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		CCAFFC66A513204BD9DA33A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F9E4EFEE3A4A47E42A8146 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicNavigationController.h; sourceTree = "<group>"; };
+		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
 		282FD0A31CB359FF000F25DA /* SNBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicViewController.h; sourceTree = "<group>"; };
 		282FD0A41CB359FF000F25DA /* SNBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicViewController.m; sourceTree = "<group>"; };
 		284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRootViewController.h; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		2866CE581CAD017700518F16 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		2866CE591CAD019300518F16 /* tempasd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tempasd.h; sourceTree = "<group>"; };
 		2866CE5A1CAD019300518F16 /* tempasd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tempasd.m; sourceTree = "<group>"; };
-		2866CE5F1CAD137B00518F16 /* SNLeftFlowlayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLeftFlowlayout.h; sourceTree = "<group>"; };
-		2866CE601CAD137B00518F16 /* SNLeftFlowlayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLeftFlowlayout.m; sourceTree = "<group>"; };
 		2866CE621CAD16B700518F16 /* SimpleNoteHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNoteHeader.pch; sourceTree = "<group>"; };
 		424214600FB2A82426CE325F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7CD961A61CB40B3200D16398 /* CreateNoteBookID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteBookID.h; sourceTree = "<group>"; };
@@ -106,6 +106,8 @@
 				284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */,
 				282FD0A31CB359FF000F25DA /* SNBasicViewController.h */,
 				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
+				2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */,
+				2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,8 +251,6 @@
 		2866CE5E1CAD134F00518F16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2866CE5F1CAD137B00518F16 /* SNLeftFlowlayout.h */,
-				2866CE601CAD137B00518F16 /* SNLeftFlowlayout.m */,
 				284C54691CAE2572006EDCB8 /* NoteBookModel.h */,
 				284C546A1CAE2572006EDCB8 /* NoteBookModel.m */,
 				2853D7121CB108E6008FB392 /* NoteCoverModel.h */,
@@ -405,6 +405,7 @@
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
 				2866CE5B1CAD019300518F16 /* tempasd.m in Sources */,
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
+				2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
 				2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
@@ -412,7 +413,6 @@
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
-				2866CE611CAD137B00518F16 /* SNLeftFlowlayout.m in Sources */,
 				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,
 				2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */,
 			);

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ChooseCoverReusableViewDelegate <NSObject>
+
+@optional
+- (void)ChooseCoverBtnDidTouched;
+@end
+
 @interface ChooseCoverReusableView : UICollectionReusableView
+
+@property (nonatomic, weak) id <ChooseCoverReusableViewDelegate> delegate;
 
 @end
