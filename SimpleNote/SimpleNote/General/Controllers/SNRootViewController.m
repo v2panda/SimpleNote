@@ -27,6 +27,7 @@ static CGFloat const kLeftPadding = 60.0;
     self.bouncesHorizontally = NO;
     self.fadeMenuView = NO;
     
+    
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainBasicNavID"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SNLeftVCSBID"];
     
@@ -44,6 +45,7 @@ static CGFloat const kLeftPadding = 60.0;
 - (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
 {
     NSLog(@"didShowMenuViewController: %@", NSStringFromClass([menuViewController class]));
+    self.panGestureEnabled = NO;
 }
 
 - (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
@@ -54,6 +56,7 @@ static CGFloat const kLeftPadding = 60.0;
 - (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
 {
     NSLog(@"didHideMenuViewController: %@", NSStringFromClass([menuViewController class]));
+    self.panGestureEnabled = YES;
 }
 
 

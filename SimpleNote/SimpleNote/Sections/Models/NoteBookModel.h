@@ -13,7 +13,6 @@
 @property (nonatomic, strong) NSNumber *noteBookID;
 @property (nonatomic, strong) NSString *noteBookTitle;
 @property (nonatomic, assign) BOOL isNoteBookSeleted;
-
 @property (nonatomic, strong) UIImage *customCoverImage;
 
 @end

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
 		282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FD0A41CB359FF000F25DA /* SNBasicViewController.m */; };
+		28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28328B181CB639320003A612 /* SNNoteCell.m */; };
+		28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28328B191CB639320003A612 /* SNNoteCell.xib */; };
+		28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28328B1D1CB63EBB0003A612 /* NoteModel.m */; };
 		284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */; };
 		284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54611CAE0E98006EDCB8 /* UIView+Frame.m */; };
 		284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */; };
@@ -29,7 +32,6 @@
 		2866CE5B1CAD019300518F16 /* tempasd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE5A1CAD019300518F16 /* tempasd.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
-		7CD961B01CB5663000D16398 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AF1CB5663000D16398 /* NoteCell.m */; };
 		CCAFFC66A513204BD9DA33A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F9E4EFEE3A4A47E42A8146 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,11 @@
 		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
 		282FD0A31CB359FF000F25DA /* SNBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicViewController.h; sourceTree = "<group>"; };
 		282FD0A41CB359FF000F25DA /* SNBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicViewController.m; sourceTree = "<group>"; };
+		28328B171CB639320003A612 /* SNNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNNoteCell.h; sourceTree = "<group>"; };
+		28328B181CB639320003A612 /* SNNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNNoteCell.m; sourceTree = "<group>"; };
+		28328B191CB639320003A612 /* SNNoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNNoteCell.xib; sourceTree = "<group>"; };
+		28328B1C1CB63EBB0003A612 /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteModel.h; sourceTree = "<group>"; };
+		28328B1D1CB63EBB0003A612 /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteModel.m; sourceTree = "<group>"; };
 		284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRootViewController.h; sourceTree = "<group>"; };
 		284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRootViewController.m; sourceTree = "<group>"; };
 		284C54601CAE0E98006EDCB8 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -79,8 +86,6 @@
 		7CD961AA1CB5547300D16398 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
 		7CD961AB1CB5547300D16398 /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
 		7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
-		7CD961AE1CB5663000D16398 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCell.h; path = ../../../../../Documents/NoteCell.h; sourceTree = "<group>"; };
-		7CD961AF1CB5663000D16398 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCell.m; path = ../../../../../Documents/NoteCell.m; sourceTree = "<group>"; };
 		B792EFFCF13D7AF887546C8F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F3F9E4EFEE3A4A47E42A8146 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,10 +116,10 @@
 			children = (
 				284C545D1CAE0DD1006EDCB8 /* SNRootViewController.h */,
 				284C545E1CAE0DD1006EDCB8 /* SNRootViewController.m */,
-				282FD0A31CB359FF000F25DA /* SNBasicViewController.h */,
-				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
 				2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */,
 				2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */,
+				282FD0A31CB359FF000F25DA /* SNBasicViewController.h */,
+				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,8 +196,8 @@
 		2866CE421CACF8C300518F16 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				284C545C1CAE0DD1006EDCB8 /* Controllers */,
 				284C545B1CAE0DD1006EDCB8 /* Categories */,
+				284C545C1CAE0DD1006EDCB8 /* Controllers */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -230,32 +235,33 @@
 		2866CE5C1CAD133A00518F16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2866CE4F1CAD000B00518F16 /* SNLeftViewController.h */,
-				2866CE501CAD000B00518F16 /* SNLeftViewController.m */,
 				2853D6FE1CB0C490008FB392 /* EditNoteBookViewController.h */,
 				2853D6FF1CB0C490008FB392 /* EditNoteBookViewController.m */,
+				2866CE4F1CAD000B00518F16 /* SNLeftViewController.h */,
+				2866CE501CAD000B00518F16 /* SNLeftViewController.m */,
 				2866CE521CAD004B00518F16 /* SNMainViewController.h */,
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2866CE5D1CAD134B00518F16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				284C54631CAE10E8006EDCB8 /* NoteBookViewCell.h */,
-				284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */,
+				2853D70F1CB101ED008FB392 /* ChooseCoverReusableView.h */,
+				2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */,
 				2853D7071CB0F284008FB392 /* NoteBookDefaultCell.h */,
 				2853D7081CB0F284008FB392 /* NoteBookDefaultCell.m */,
 				2853D7091CB0F284008FB392 /* NoteBookDefaultCell.xib */,
+				284C54631CAE10E8006EDCB8 /* NoteBookViewCell.h */,
+				284C54641CAE10E8006EDCB8 /* NoteBookViewCell.m */,
 				2853D70C1CB0FA0C008FB392 /* NoteCoverCell.h */,
 				2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */,
-				2853D70F1CB101ED008FB392 /* ChooseCoverReusableView.h */,
-				2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */,
-				7CD961AE1CB5663000D16398 /* NoteCell.h */,
-				7CD961AF1CB5663000D16398 /* NoteCell.m */,
+				28328B171CB639320003A612 /* SNNoteCell.h */,
+				28328B181CB639320003A612 /* SNNoteCell.m */,
+				28328B191CB639320003A612 /* SNNoteCell.xib */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2866CE5E1CAD134F00518F16 /* Models */ = {
@@ -265,8 +271,10 @@
 				284C546A1CAE2572006EDCB8 /* NoteBookModel.m */,
 				2853D7121CB108E6008FB392 /* NoteCoverModel.h */,
 				2853D7131CB108E6008FB392 /* NoteCoverModel.m */,
+				28328B1C1CB63EBB0003A612 /* NoteModel.h */,
+				28328B1D1CB63EBB0003A612 /* NoteModel.m */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7157E56220D5C5B4E741D8B1 /* Frameworks */ = {
@@ -359,6 +367,7 @@
 				2866CE381CACF83F00518F16 /* LaunchScreen.storyboard in Resources */,
 				2866CE351CACF83F00518F16 /* Assets.xcassets in Resources */,
 				2853D70B1CB0F284008FB392 /* NoteBookDefaultCell.xib in Resources */,
+				28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */,
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */,
+				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
@@ -428,8 +438,8 @@
 				2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
 				2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */,
+				28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
-				7CD961B01CB5663000D16398 /* NoteCell.m in Sources */,
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
