@@ -10,6 +10,7 @@
 #import "SNNoteCell.h"
 #import "NoteModel.h"
 #import "RESideMenu.h"
+#import "EditNoteViewController.h"
 
 @interface SNMainViewController ()<
 UITableViewDataSource,
@@ -64,6 +65,35 @@ CGFloat oldY = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"第%@行笔记被点击了",@(indexPath.row));
+
+    [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:@(indexPath.row)];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {
+    if ([sender isKindOfClass:[UIButton class]]) {
+        EditNoteViewController *vc = [segue destinationViewController];
+        vc.title = @"添加笔记";
+    }else {
+        NSNumber *index = sender;
+        EditNoteViewController *vc = [segue destinationViewController];
+        vc.title = @"编辑笔记";
+        vc.noteModel = self.dataArray[index.integerValue];
+    }
+
+    
+}
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        NSLog(@"Delete");
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [self.notesTableView reloadData];
+        
+    }];
+    deleteAction.backgroundColor = SNColor(0, 180, 87);
+    
+    return @[deleteAction];
 }
 
 #pragma mark - getters and setters
