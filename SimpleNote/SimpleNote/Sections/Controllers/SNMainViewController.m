@@ -28,7 +28,6 @@ UITableViewDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
-    
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -79,8 +78,6 @@ CGFloat oldY = 0;
         vc.title = @"编辑笔记";
         vc.noteModel = self.dataArray[index.integerValue];
     }
-
-    
 }
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,11 +93,24 @@ CGFloat oldY = 0;
     return @[deleteAction];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
+    label.text = @"测试标题";
+    label.font = [UIFont systemFontOfSize:16];
+    label.textColor = [UIColor blackColor];
+    return label;
+}
+
+
 #pragma mark - getters and setters
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        for (int i = 0; i < 20; i ++) {
+        for (int i = 0; i < 2; i ++) {
             NoteModel *model = [NoteModel new];
             model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
             model.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
