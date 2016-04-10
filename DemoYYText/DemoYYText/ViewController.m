@@ -68,6 +68,7 @@
         textView.height -= 64;
     }
     textView.contentInset = UIEdgeInsetsMake(toolbar.bottom, 0, 0, 0);
+    NSLog(@"toolbar.bottom - %@",@(toolbar.bottom));
     textView.scrollIndicatorInsets = textView.contentInset;
     textView.selectedRange = NSMakeRange(text.length, 0);
     [self.view insertSubview:textView belowSubview:toolbar];
@@ -241,7 +242,7 @@
     self.textView.attributedText = text;
 }
 - (void)textView:(YYTextView *)textView didTapHighlight:(YYTextHighlight *)highlight inRange:(NSRange)characterRange rect:(CGRect)rect {
-    NSLog(@"tap text range:...");
+    NSLog(@"tap text range:...%@",highlight.attributes);
 }
 #pragma mark text view
 

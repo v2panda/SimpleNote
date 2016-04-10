@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -335,8 +335,24 @@
                     <view key="view" contentMode="scaleToFill" id="PRA-JR-StW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LtJ-JJ-QUC">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <color key="textColor" red="0.0" green="0.70773535970000001" blue="0.3416908085" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LtJ-JJ-QUC" firstAttribute="centerX" secondItem="PRA-JR-StW" secondAttribute="centerX" id="6Zy-XM-i4w"/>
+                            <constraint firstItem="LtJ-JJ-QUC" firstAttribute="top" secondItem="XMG-0l-i5R" secondAttribute="bottom" id="N3c-cQ-xrh"/>
+                            <constraint firstItem="LtJ-JJ-QUC" firstAttribute="width" secondItem="PRA-JR-StW" secondAttribute="width" id="neA-Pp-ayc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="LtJ-JJ-QUC" id="tje-bk-2lu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bK8-Jj-k3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

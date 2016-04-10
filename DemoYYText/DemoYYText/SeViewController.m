@@ -10,12 +10,18 @@
 #import "YYText.h"
 #import "YYCategories.h"
 #import "YYTextExampleHelper.h"
+#import "TempModel.h"
+
+
 @interface SeViewController ()<YYTextViewDelegate, YYTextKeyboardObserver>
 @property (nonatomic, assign) YYTextView *textView;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UISwitch *verticalSwitch;
 @property (nonatomic, strong) UISwitch *debugSwitch;
 @property (nonatomic, strong) UISwitch *exclusionSwitch;
+
+@property (nonatomic, strong) NSMutableAttributedString *archiveStr;
+
 
 @end
 
@@ -28,14 +34,40 @@
     
     NSData *data = [self.attributedString yy_archiveToData];
     
+    self.archiveStr = [NSMutableAttributedString yy_unarchiveFromData:data];
     
-    NSMutableAttributedString *archiveStr = [NSMutableAttributedString yy_unarchiveFromData:data];
-    
-    NSLog(@"archiveStr :%@",archiveStr);
-    
-    [[NSUserDefaults standardUserDefaults]setObject:@1 forKey:@"TEST"];
-    
-    
+    __block UIImage *tempImage;
+    NSMutableArray<UIImage *> *tempArray = @[].mutableCopy;
+    [self.attributedString enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.attributedString.length)
+                     options:0
+                  usingBlock:^(id value, NSRange range, BOOL *stop) {
+                      //检查类型是否是自定义NSTextAttachment类
+                      if (value && [value isKindOfClass:[YYTextAttachment class]]) {
+                          //替换
+                          YYTextAttachment *tt = (YYTextAttachment *)value;
+                          tempImage = tt.content;
+                          NSLog(@"value - %@-%@",value,tempImage);
+                          [tempArray addObject:tempImage];
+                      }
+    }];
+    __block int i = 0;
+    [self.archiveStr enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.archiveStr.length)
+                                      options:0
+                                   usingBlock:^(id value, NSRange range, BOOL *stop) {
+                                       //检查类型是否是自定义NSTextAttachment类
+                                       if (value && [value isKindOfClass:[YYTextAttachment class]]) {
+                                           
+                                           
+                                           YYTextAttachment *tt = (YYTextAttachment *)value;
+                                           
+                                           UIImage *ima = tempArray[i++];
+                                           [ima imageByResizeToSize:CGSizeMake(128, 128)];
+                                           
+                                           tt.content = ima;
+                                           NSLog(@"archiveStrvalue - %@ - %@ - %@",value,tt.content,ima);
+                                       }
+                                   }];
+    NSLog(@"archiveStr :%@",self.archiveStr);
     
     self.view.backgroundColor = [UIColor whiteColor];
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
@@ -61,7 +93,7 @@
     
     
     YYTextView *textView = [YYTextView new];
-    textView.attributedText = self.attributedString;
+    textView.attributedText = self.archiveStr;
     textView.size = self.view.size;
     textView.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10);
     textView.delegate = self;
@@ -151,6 +183,28 @@
 }
 
 
+- (BOOL)testSave:(TempModel *)tempModel {
+    // 获取doc的目录
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 拼接保存的路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"OAuth.data"];
+    // 存储返回的用户信息
+    return  [NSKeyedArchiver archiveRootObject:tempModel toFile:filePath];
+}
+
+- (TempModel *)tempModel
+{
+    // 获取doc的目录
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 拼接保存的路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"OAuth.data"];
+    // 获取用户存储的授权信息
+    TempModel *OAuth = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if (!OAuth) {
+        OAuth = [[TempModel alloc]init];
+    }
+    return OAuth;
+}
 
 
 - (void)setExclusionPathEnabled:(BOOL)enabled {
@@ -226,7 +280,11 @@
 }
 
 - (void)textView:(YYTextView *)textView didTapHighlight:(YYTextHighlight *)highlight inRange:(NSRange)characterRange rect:(CGRect)rect {
-    NSLog(@"tap text range:...");
+    NSLog(@"tap text range:...%@",highlight.attributes);
+    
+    
+    
+    
 }
 #pragma mark - keyboard
 
@@ -247,5 +305,12 @@
     }
 }
 
+
+- (NSMutableAttributedString *)archiveStr {
+    if (!_archiveStr) {
+        _archiveStr = [[NSMutableAttributedString alloc]init];
+    }
+    return _archiveStr;
+}
 
 @end

@@ -14,6 +14,8 @@
 
 @property (nonatomic, copy) NSString *noteCreateTime;
 
-@property (nonatomic, strong) UIImage *rightImage;
+@property (nonatomic, strong) NSDate *noteCreateDate;
+
+@property (nonatomic, strong) UIImage *thumbnailImage;
 
 @end

@@ -51,6 +51,9 @@ CGFloat oldY = 0;
 }
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count;
@@ -93,15 +96,15 @@ CGFloat oldY = 0;
     return @[deleteAction];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
-    label.text = @"测试标题";
-    label.font = [UIFont systemFontOfSize:16];
-    label.textColor = [UIColor blackColor];
+    
+    NoteModel *model = self.dataArray[section];
+    
+    label.text = [NSString stringWithFormat:@"  %@",model.noteCreateTime];
+    label.backgroundColor = SNColor(246, 246, 246);
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor darkGrayColor];
     return label;
 }
 
@@ -110,12 +113,26 @@ CGFloat oldY = 0;
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        for (int i = 0; i < 2; i ++) {
+        for (int i = 0; i < 10; i ++) {
             NoteModel *model = [NoteModel new];
             model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
             model.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
             [_dataArray addObject:model];
         }
+        
+//        for (int q = 0; q < 3; q ++) {
+//            NSMutableArray *section = @[].mutableCopy;
+//            for (int i = 0; i < 6; i ++) {
+//                
+//                NoteModel *model = [NoteModel new];
+//                model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
+//                model.noteCreateTime = [NSString stringWithFormat:@"%@年%@月%@日",@(2010+q),@(q+5),@(i)];
+//                [section addObject:model];
+//            }
+//            [_dataArray addObject:section];
+//        }
+        
+        
         
     }
     return _dataArray;

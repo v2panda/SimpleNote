@@ -9,7 +9,9 @@
 #import "UIView+Frame.h"
 
 @implementation UIView (Frame)
-
+- (CGFloat)bottom {
+    return self.frame.origin.y + self.frame.size.height;
+}
 - (void)setX:(CGFloat)x
 {
     CGRect frame = self.frame;

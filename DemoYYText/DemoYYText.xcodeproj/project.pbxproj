@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2827FAEC1CB9FF3A004A0A41 /* TempModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2827FAEB1CB9FF3A004A0A41 /* TempModel.m */; };
 		28BD4D331CB7590500387028 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4D321CB7590500387028 /* main.m */; };
 		28BD4D361CB7590500387028 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4D351CB7590500387028 /* AppDelegate.m */; };
 		28BD4D391CB7590500387028 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4D381CB7590500387028 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2827FAEA1CB9FF3A004A0A41 /* TempModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempModel.h; sourceTree = "<group>"; };
+		2827FAEB1CB9FF3A004A0A41 /* TempModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempModel.m; sourceTree = "<group>"; };
 		28BD4D2E1CB7590500387028 /* DemoYYText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoYYText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BD4D321CB7590500387028 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28BD4D341CB7590500387028 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				28BD4D381CB7590500387028 /* ViewController.m */,
 				28BD4D4F1CB7A2C800387028 /* SeViewController.h */,
 				28BD4D501CB7A2C800387028 /* SeViewController.m */,
+				2827FAEA1CB9FF3A004A0A41 /* TempModel.h */,
+				2827FAEB1CB9FF3A004A0A41 /* TempModel.m */,
 				28BD4D481CB75DD200387028 /* YYTextExampleHelper.h */,
 				28BD4D491CB75DD200387028 /* YYTextExampleHelper.m */,
 				28BD4D4B1CB75F0D00387028 /* dribbble256_imageio.png */,
@@ -243,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BD4D391CB7590500387028 /* ViewController.m in Sources */,
+				2827FAEC1CB9FF3A004A0A41 /* TempModel.m in Sources */,
 				28BD4D361CB7590500387028 /* AppDelegate.m in Sources */,
 				28BD4D511CB7A2C800387028 /* SeViewController.m in Sources */,
 				28BD4D331CB7590500387028 /* main.m in Sources */,
@@ -362,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DemoYYText/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PD.DemoYYText;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,6 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DemoYYText/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PD.DemoYYText;
 				PRODUCT_NAME = "$(TARGET_NAME)";
