@@ -52,7 +52,10 @@
     // 插入图片
     UIFont *font = [UIFont systemFontOfSize:16];
     NSMutableAttributedString *attachment = nil;
-    UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
+//    UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
+    NSData *data = [NSData dataNamed:@"dribbble64_imageio.png"];
+    UIImage *image = [[UIImage alloc] initWithData:data scale:2];
+    
     attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
     [text appendAttributedString: attachment];
     
@@ -201,7 +204,10 @@
     NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
     UIFont *font = [UIFont systemFontOfSize:20];
     __block NSMutableAttributedString *attachment = nil;
-    UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
+//    UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
+    NSData *data = [NSData dataNamed:@"dribbble64_imageio.png"];
+    UIImage *image = [[UIImage alloc] initWithData:data scale:2];
+    
     attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
 //    [text appendAttributedString: attachment];
 //    self.textView.attributedText = text;

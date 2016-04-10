@@ -36,37 +36,37 @@
     
     self.archiveStr = [NSMutableAttributedString yy_unarchiveFromData:data];
     
-    __block UIImage *tempImage;
-    NSMutableArray<UIImage *> *tempArray = @[].mutableCopy;
-    [self.attributedString enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.attributedString.length)
-                     options:0
-                  usingBlock:^(id value, NSRange range, BOOL *stop) {
-                      //检查类型是否是自定义NSTextAttachment类
-                      if (value && [value isKindOfClass:[YYTextAttachment class]]) {
-                          //替换
-                          YYTextAttachment *tt = (YYTextAttachment *)value;
-                          tempImage = tt.content;
-                          NSLog(@"value - %@-%@",value,tempImage);
-                          [tempArray addObject:tempImage];
-                      }
-    }];
-    __block int i = 0;
-    [self.archiveStr enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.archiveStr.length)
-                                      options:0
-                                   usingBlock:^(id value, NSRange range, BOOL *stop) {
-                                       //检查类型是否是自定义NSTextAttachment类
-                                       if (value && [value isKindOfClass:[YYTextAttachment class]]) {
-                                           
-                                           
-                                           YYTextAttachment *tt = (YYTextAttachment *)value;
-                                           
-                                           UIImage *ima = tempArray[i++];
-                                           [ima imageByResizeToSize:CGSizeMake(128, 128)];
-                                           
-                                           tt.content = ima;
-                                           NSLog(@"archiveStrvalue - %@ - %@ - %@",value,tt.content,ima);
-                                       }
-                                   }];
+//    __block UIImage *tempImage;
+//    NSMutableArray<UIImage *> *tempArray = @[].mutableCopy;
+//    [self.attributedString enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.attributedString.length)
+//                     options:0
+//                  usingBlock:^(id value, NSRange range, BOOL *stop) {
+//                      //检查类型是否是自定义NSTextAttachment类
+//                      if (value && [value isKindOfClass:[YYTextAttachment class]]) {
+//                          //替换
+//                          YYTextAttachment *tt = (YYTextAttachment *)value;
+//                          tempImage = tt.content;
+//                          NSLog(@"value - %@-%@",value,tempImage);
+//                          [tempArray addObject:tempImage];
+//                      }
+//    }];
+//    __block int i = 0;
+//    [self.archiveStr enumerateAttribute:YYTextAttachmentAttributeName inRange:NSMakeRange(0, self.archiveStr.length)
+//                                      options:0
+//                                   usingBlock:^(id value, NSRange range, BOOL *stop) {
+//                                       //检查类型是否是自定义NSTextAttachment类
+//                                       if (value && [value isKindOfClass:[YYTextAttachment class]]) {
+//                                           
+//                                           
+//                                           YYTextAttachment *tt = (YYTextAttachment *)value;
+//                                           
+//                                           UIImage *ima = tempArray[i++];
+//                                           [ima imageByResizeToSize:CGSizeMake(128, 128)];
+//                                           
+//                                           tt.content = ima;
+//                                           NSLog(@"archiveStrvalue - %@ - %@ - %@",value,tt.content,ima);
+//                                       }
+//                                   }];
     NSLog(@"archiveStr :%@",self.archiveStr);
     
     self.view.backgroundColor = [UIColor whiteColor];
