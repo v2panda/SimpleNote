@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) UIImage *thumbnailImage;
 
+@property (nonatomic, strong) NSData *data;
+
 @end

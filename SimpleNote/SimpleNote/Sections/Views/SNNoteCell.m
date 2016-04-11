@@ -9,8 +9,8 @@
 #import "SNNoteCell.h"
 
 @interface SNNoteCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *rightImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelConstraint;

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NoteModel.h"
 
 @interface NoteBookModel : NSObject
 
@@ -14,5 +15,7 @@
 @property (nonatomic, strong) NSString *noteBookTitle;
 @property (nonatomic, assign) BOOL isNoteBookSeleted;
 @property (nonatomic, strong) UIImage *customCoverImage;
+
+@property (nonatomic, strong) NSMutableArray<NoteModel *> *notesArray;
 
 @end

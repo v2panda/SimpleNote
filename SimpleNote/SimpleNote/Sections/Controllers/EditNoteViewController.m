@@ -15,7 +15,9 @@
 @interface EditNoteViewController ()<
 YYTextViewDelegate,
 YYTextKeyboardObserver,
-TZImagePickerControllerDelegate>
+TZImagePickerControllerDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
 
 @property (nonatomic, assign) YYTextView *textView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
@@ -33,6 +35,10 @@ TZImagePickerControllerDelegate>
     // Do any additional setup after loading the view.
     NSLog(@"EditNoteViewController - %@",self.noteModel);
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(noteSaved)];
+    
+    self.titleTextField.backgroundColor = [UIColor whiteColor];
+    
     [self initYYTextView];
 }
 
@@ -41,6 +47,11 @@ TZImagePickerControllerDelegate>
     text.yy_font = [UIFont fontWithName:@"Avenir Next" size:self.yyFontSize];
     text.yy_lineSpacing = 4;
     text.yy_firstLineHeadIndent = 20;
+    
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"noteData"]) {
+        NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"noteData"];
+        text =  [NSMutableAttributedString yy_unarchiveFromData:data];
+    }
     
     YYTextView *textView = [YYTextView new];
     textView.attributedText = text;
@@ -82,6 +93,7 @@ TZImagePickerControllerDelegate>
 #pragma mark - YYTextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(YYTextView *)textView {
     [self.titleTextField resignFirstResponder];
+    NSLog(@"should.selectedRange.location:%ld",textView.selectedRange.location);
     return YES;
 }
 
@@ -98,8 +110,36 @@ TZImagePickerControllerDelegate>
 }
 
 #pragma mark - event response
+
+- (void)noteSaved {
+    [self.view endEditing:YES];
+    NSData *data = [self.textView.attributedText yy_archiveToData];
+    [[NSUserDefaults standardUserDefaults]setObject:data forKey:@"noteData"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    self.noteModel.data = [self.textView.attributedText yy_archiveToData];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
+
 - (void)openCamera {
     NSLog(@"openCamera");
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        //设置拍照后的图片可被编辑
+        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else
+    {
+        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+    }
 }
 
 - (void)openPhotos {
@@ -132,9 +172,41 @@ TZImagePickerControllerDelegate>
     // 插入图片
     NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
     NSMutableAttributedString *attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:YYFont(18) alignment:YYTextVerticalAlignmentCenter];
-    [text appendAttributedString: attachment];
+    [text insertAttributedString:attachment atIndex:self.textView.selectedRange.location];
     self.textView.attributedText = text;
 }
+
+//当选择一张图片后进入这里
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
+    {
+        //先把图片转成NSData
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        NSData *data;
+        if (UIImagePNGRepresentation(image) == nil)
+        {
+            data = UIImageJPEGRepresentation(image, 1.0);
+        }
+        else
+        {
+            data = UIImagePNGRepresentation(image);
+        }
+        
+    }
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"您取消了选择图片");
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - getters and setters
 
