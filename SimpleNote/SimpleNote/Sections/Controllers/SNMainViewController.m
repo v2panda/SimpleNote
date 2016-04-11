@@ -67,7 +67,7 @@ CGFloat oldY = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"第%@行笔记被点击了",@(indexPath.row));
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:@(indexPath.row)];
 }
 

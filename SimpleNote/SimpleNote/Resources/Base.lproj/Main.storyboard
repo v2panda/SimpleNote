@@ -190,8 +190,8 @@
                                     <action selector="addNoteButtonDidTouched:" destination="AN5-qe-L8c" eventType="touchUpInside" id="4WE-eR-z35"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-Gs-dDB">
-                                <rect key="frame" x="0.0" y="22" width="540" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleNote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-Gs-dDB">
+                                <rect key="frame" x="101" y="22" width="439" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="OoQ-e4-IEz"/>
                                 </constraints>
@@ -207,7 +207,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.45882352941176469" green="0.41568627450980389" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="width" secondItem="LAL-vG-WdE" secondAttribute="width" id="6Kc-Lk-QsE"/>
+                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="width" secondItem="LAL-vG-WdE" secondAttribute="width" constant="-101" id="6Kc-Lk-QsE"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="top" secondItem="8Nv-ZA-Rpp" secondAttribute="bottom" constant="130" id="CTq-LP-dew"/>
                             <constraint firstItem="hF0-Gs-dDB" firstAttribute="leading" secondItem="OOm-RN-37f" secondAttribute="trailing" id="FIA-xz-CUI"/>
                             <constraint firstItem="LAL-vG-WdE" firstAttribute="width" secondItem="1Vq-oK-qjn" secondAttribute="width" id="GB1-3X-VkF"/>
@@ -222,7 +222,7 @@
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="top" secondItem="LAL-vG-WdE" secondAttribute="bottom" constant="10" id="hGj-e5-Dte"/>
                             <constraint firstItem="OOm-RN-37f" firstAttribute="leading" secondItem="oOR-CZ-T5G" secondAttribute="leadingMargin" constant="8" id="hte-7C-eKf"/>
                             <constraint firstItem="hF0-Gs-dDB" firstAttribute="height" secondItem="OOm-RN-37f" secondAttribute="height" id="kfP-ke-HhB"/>
-                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="centerX" secondItem="LAL-vG-WdE" secondAttribute="centerX" id="qIq-HX-ssu"/>
+                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="centerX" secondItem="LAL-vG-WdE" secondAttribute="centerX" constant="50.5" id="qIq-HX-ssu"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="leading" secondItem="oOR-CZ-T5G" secondAttribute="leading" id="rHX-jP-hOv"/>
                         </constraints>
                         <variation key="default">
@@ -370,16 +370,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Rf-kh-GQl">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="LOL-nl-RPD" id="dRP-ya-qlV"/>
-                                    <outlet property="delegate" destination="LOL-nl-RPD" id="mDf-l3-lpH"/>
-                                </connections>
-                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-Lc-SCZ">
-                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
+                                <rect key="frame" x="0.0" y="184" width="600" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dZf-W8-Kf5">
                                     <size key="itemSize" width="140" height="150"/>
@@ -450,18 +442,36 @@
                                     <outlet property="delegate" destination="LOL-nl-RPD" id="vza-On-QyZ"/>
                                 </connections>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Rf-kh-GQl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Hbn-dh-VRO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="LOL-nl-RPD" id="dRP-ya-qlV"/>
+                                    <outlet property="delegate" destination="LOL-nl-RPD" id="mDf-l3-lpH"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Lp-Zp-OfG" firstAttribute="top" secondItem="2Gs-Lc-SCZ" secondAttribute="bottom" id="1H3-fP-8ZS"/>
                             <constraint firstItem="2Gs-Lc-SCZ" firstAttribute="width" secondItem="aD8-k1-JHq" secondAttribute="width" id="2RQ-Mj-Dla"/>
-                            <constraint firstItem="2Gs-Lc-SCZ" firstAttribute="top" secondItem="8Rf-kh-GQl" secondAttribute="bottom" constant="50" id="FiQ-iD-OAp"/>
+                            <constraint firstItem="8Rf-kh-GQl" firstAttribute="top" secondItem="w11-Qk-vCA" secondAttribute="bottom" id="EbL-kH-iOn"/>
+                            <constraint firstItem="2Gs-Lc-SCZ" firstAttribute="top" secondItem="8Rf-kh-GQl" secondAttribute="bottom" id="FiQ-iD-OAp"/>
                             <constraint firstItem="2Gs-Lc-SCZ" firstAttribute="centerX" secondItem="aD8-k1-JHq" secondAttribute="centerX" id="NwN-pJ-4WN"/>
                             <constraint firstItem="8Rf-kh-GQl" firstAttribute="height" secondItem="aD8-k1-JHq" secondAttribute="height" constant="-480" id="PQp-ff-U0Q"/>
                             <constraint firstItem="8Rf-kh-GQl" firstAttribute="centerY" secondItem="aD8-k1-JHq" secondAttribute="centerY" constant="-240" id="V8a-Rx-BJ9"/>
                             <constraint firstItem="8Rf-kh-GQl" firstAttribute="width" secondItem="aD8-k1-JHq" secondAttribute="width" id="wGl-fA-HR7"/>
                             <constraint firstItem="8Rf-kh-GQl" firstAttribute="centerX" secondItem="aD8-k1-JHq" secondAttribute="centerX" id="waK-55-use"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PQp-ff-U0Q"/>
+                                <exclude reference="V8a-Rx-BJ9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="添加笔记本" id="ADP-ed-5eb">
                         <barButtonItem key="leftBarButtonItem" image="IOS7BackBarButton" id="TGe-YW-TlN">
