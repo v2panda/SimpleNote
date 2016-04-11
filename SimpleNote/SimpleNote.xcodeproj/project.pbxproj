@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
+		282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */; };
+		282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */; };
 		282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FD0A41CB359FF000F25DA /* SNBasicViewController.m */; };
 		28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28328B181CB639320003A612 /* SNNoteCell.m */; };
 		28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28328B191CB639320003A612 /* SNNoteCell.xib */; };
@@ -39,6 +41,10 @@
 /* Begin PBXFileReference section */
 		2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicNavigationController.h; sourceTree = "<group>"; };
 		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
+		282AC65F1CBB9302002F9A49 /* NSData+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PDAdd.h"; sourceTree = "<group>"; };
+		282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PDAdd.m"; sourceTree = "<group>"; };
+		282AC6621CBB9E72002F9A49 /* UIImage+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PDAdd.h"; sourceTree = "<group>"; };
+		282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PDAdd.m"; sourceTree = "<group>"; };
 		282FD0A31CB359FF000F25DA /* SNBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicViewController.h; sourceTree = "<group>"; };
 		282FD0A41CB359FF000F25DA /* SNBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicViewController.m; sourceTree = "<group>"; };
 		28328B171CB639320003A612 /* SNNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNNoteCell.h; sourceTree = "<group>"; };
@@ -110,6 +116,10 @@
 			children = (
 				284C54601CAE0E98006EDCB8 /* UIView+Frame.h */,
 				284C54611CAE0E98006EDCB8 /* UIView+Frame.m */,
+				282AC65F1CBB9302002F9A49 /* NSData+PDAdd.h */,
+				282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */,
+				282AC6621CBB9E72002F9A49 /* UIImage+PDAdd.h */,
+				282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -436,8 +446,10 @@
 				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
 				7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */,
+				282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
+				282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */,
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
 				2866CE5B1CAD019300518F16 /* tempasd.m in Sources */,
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,

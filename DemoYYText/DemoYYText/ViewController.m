@@ -11,14 +11,16 @@
 #import "YYCategories.h"
 #import "YYTextExampleHelper.h"
 #import "SeViewController.h"
+#import "TZImagePickerController.h"
 
-@interface ViewController ()<YYTextViewDelegate, YYTextKeyboardObserver>
+
+@interface ViewController ()<YYTextViewDelegate, YYTextKeyboardObserver,TZImagePickerControllerDelegate>
 @property (nonatomic, assign) YYTextView *textView;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UISwitch *verticalSwitch;
 @property (nonatomic, strong) UISwitch *debugSwitch;
 @property (nonatomic, strong) UISwitch *exclusionSwitch;
-
+@property (nonatomic, strong) UIImage *pickerImage;
 
 @end
 
@@ -199,24 +201,50 @@
     }
 }
 
+#pragma mark - TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+    self.pickerImage  = photos.firstObject;
+}
+
+- (void)setPickerImage:(UIImage *)pickerImage {
+    if (pickerImage) {
+        if (pickerImage.size.width > self.view.width && pickerImage.size.height > self.view.height) {
+            pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(self.view.width - 20, 200)];
+        }else if (pickerImage.size.height > self.view.height || pickerImage.size.height > self.view.height) {
+            pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(200, 200)];
+        }
+    }
+    _pickerImage = pickerImage;
+}
+
 - (void)insertImage {
+    
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+//    imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
+    imagePickerVc.allowPickingVideo = NO;
+    imagePickerVc.allowPickingOriginalPhoto = NO;
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+    
+    
+    
     // 插入图片
     NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
     UIFont *font = [UIFont systemFontOfSize:20];
     __block NSMutableAttributedString *attachment = nil;
-//    UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
-    NSData *data = [NSData dataNamed:@"dribbble64_imageio.png"];
+
+    NSData *data = [NSData dataNamed:@"dribbble256_imageio.png"];
     UIImage *image = [[UIImage alloc] initWithData:data scale:2];
     
+    if (self.pickerImage) {
+        image = self.pickerImage;
+    }else {
+        return;
+    }
+    
     attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
-//    [text appendAttributedString: attachment];
-//    self.textView.attributedText = text;
-    
-    
-//    NSMutableAttributedString *one = [[NSMutableAttributedString alloc] initWithString:@"Another Link"];
-//    one.yy_font = [UIFont boldSystemFontOfSize:30];
-//    one.yy_color = [UIColor redColor];
+
     attachment.yy_color = [UIColor darkGrayColor];
+    
     YYTextBorder *border = [YYTextBorder new];
     border.cornerRadius = 50;
     border.insets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -234,14 +262,6 @@
     [highlight setColor:[UIColor whiteColor]];
     [highlight setBackgroundBorder:highlightBorder];
 
-//    highlight.tapAction = ^(UIView *containerView, NSAttributedString *text1, NSRange range, CGRect rect) {
-//        [self showMessage:[NSString stringWithFormat:@"Tap"]];
-        
-//        attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:CGSizeMake(image.size.width + 100, image.size.height + 100) alignToFont:font alignment:YYTextVerticalAlignmentCenter];
-//        
-//        [text appendAttributedString: attachment];
-//        self.textView.attributedText = text;
-//    };
     [attachment yy_setTextHighlight:highlight range:attachment.yy_rangeOfAll];
     
     [text appendAttributedString: attachment];
@@ -249,6 +269,8 @@
 }
 - (void)textView:(YYTextView *)textView didTapHighlight:(YYTextHighlight *)highlight inRange:(NSRange)characterRange rect:(CGRect)rect {
     NSLog(@"tap text range:...%@",highlight.attributes);
+    
+    
 }
 #pragma mark text view
 
@@ -322,7 +344,6 @@
             clipped = YES;
         }
     }
-    
     if (!clipped) {
         _textView.frame = self.view.bounds;
     }

@@ -11,6 +11,8 @@
 
 #import "Common.h"
 #import "UIView+Frame.h"
+#import "NSData+PDAdd.h"
+#import "UIImage+PDAdd.h"
 #import "SNBasicViewController.h"
 #import "CreateNoteBookID.h"
 
