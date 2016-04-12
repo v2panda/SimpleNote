@@ -28,6 +28,7 @@
     _model = model;
     self.titleLabel.text = model.noteTitle;
     self.timeLabel.text = model.noteCreateTime;
+    NSLog(@"model.noteID : %@",model.noteID);
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {

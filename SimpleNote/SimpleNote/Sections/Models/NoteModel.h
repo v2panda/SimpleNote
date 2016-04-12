@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NoteModel : NSObject
+@interface NoteModel : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *notebookName;
 
@@ -19,8 +19,6 @@
 @property (nonatomic, copy) NSString *noteCreateTime;
 
 @property (nonatomic, strong) NSDate *noteCreateDate;
-
-@property (nonatomic, strong) UIImage *thumbnailImage;
 
 @property (nonatomic, strong) NSData *data;
 

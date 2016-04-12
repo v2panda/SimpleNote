@@ -27,11 +27,8 @@ static CGFloat const kLeftPadding = 60.0;
     self.bouncesHorizontally = NO;
     self.fadeMenuView = NO;
     
-    
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainBasicNavID"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SNLeftVCSBID"];
-    
-    self.backgroundImage = [UIImage imageNamed:@"Stars"];
     self.delegate = self;
 }
 

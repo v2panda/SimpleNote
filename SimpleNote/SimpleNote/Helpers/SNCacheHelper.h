@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "NoteModel.h"
+#import "NoteBookModel.h"
 
 @interface SNCacheHelper : NSObject
 
 + (instancetype)sharedManager;
 
-- (BOOL)storeNoteBook:(NoteModel *)note;
+- (BOOL)storeNote:(NoteModel *)note;
+
+- (BOOL)storeNoteBook:(NoteBookModel *)notebook;
+
+- (NSMutableArray<NoteBookModel *> *)readAllNoteBooks;
 
 @end

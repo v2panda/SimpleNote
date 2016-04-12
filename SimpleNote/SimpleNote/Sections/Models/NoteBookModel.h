@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "NoteModel.h"
 
-@interface NoteBookModel : NSObject
+@interface NoteBookModel : NSObject<NSCoding>
 
 @property (nonatomic, strong) NSNumber *noteBookID;
 @property (nonatomic, strong) NSString *noteBookTitle;
-@property (nonatomic, assign) BOOL isNoteBookSeleted;
+@property (nonatomic, assign) NSNumber *isNoteBookSeleted;
 @property (nonatomic, strong) UIImage *customCoverImage;
 
 @property (nonatomic, strong) NSMutableArray<NoteModel *> *notesArray;

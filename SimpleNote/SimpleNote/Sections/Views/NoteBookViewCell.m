@@ -29,7 +29,14 @@
 - (void)setModel:(NoteBookModel *)model
 {
     _model = model;
-    self.noteCheckImageView.hidden = !model.isNoteBookSeleted;
+    self.noteCheckImageView.hidden = ({
+        BOOL Hidden = YES;
+        if ([model.isNoteBookSeleted isEqualToNumber:@(1)]) {
+            Hidden = NO;
+        }
+        Hidden;
+    });
+    
     self.noteTitleLabel.text = model.noteBookTitle;
     self.noteBookCover.image = model.customCoverImage;
 }

@@ -12,6 +12,7 @@
 #import "EditNoteBookViewController.h"
 #import "TZImagePickerController.h"
 #import "RESideMenu.h"
+#import "SNCacheHelper.h"
 
 @interface SNLeftViewController () <
 UICollectionViewDelegate,
@@ -29,6 +30,7 @@ TZImagePickerControllerDelegate>
 @end
 
 @implementation SNLeftViewController
+@synthesize notebooksArray = _notebooksArray;
 
 #pragma mark - lifecycle
 
@@ -69,8 +71,10 @@ TZImagePickerControllerDelegate>
     model.noteBookTitle = @"默认标题";
     model.customCoverImage = [UIImage imageNamed:@"AccountBookCover2"];
     model.noteBookID = [CreateNoteBookID getNoteBookID];
-    model.isNoteBookSeleted = YES;
-    [self.notebooksArray addObject:model];
+    model.isNoteBookSeleted = @(1);
+    
+    self.notebooksArray = [[SNCacheHelper sharedManager]readAllNoteBooks];
+//    [self.notebooksArray addObject:model];
 }
 
 #pragma mark - event response
@@ -152,10 +156,10 @@ TZImagePickerControllerDelegate>
     NSLog(@"didSelectItemAtIndexPath - %@",@(indexPath.row));
     
     for (NoteBookModel *model in self.notebooksArray) {
-        model.isNoteBookSeleted = NO;
+        model.isNoteBookSeleted = @(0);
     }
     NoteBookModel *model = self.notebooksArray[indexPath.row];
-    model.isNoteBookSeleted = YES;
+    model.isNoteBookSeleted = @(1);
     
     [self.noteCollectionView reloadData];
     
@@ -198,10 +202,10 @@ TZImagePickerControllerDelegate>
     }
     
     NoteBookModel *model = self.notebooksArray[noteBookID];
-    if (model.isNoteBookSeleted) {
+    if ([model.isNoteBookSeleted isEqualToNumber:@(1)]) {
         [self.notebooksArray removeObjectAtIndex:noteBookID];
         NoteBookModel *firstModel = [self.notebooksArray firstObject];
-        firstModel.isNoteBookSeleted = YES;
+        firstModel.isNoteBookSeleted = @(1);
     }else {
         [self.notebooksArray removeObjectAtIndex:noteBookID];
     }
@@ -211,10 +215,17 @@ TZImagePickerControllerDelegate>
 }
 
 #pragma mark - getters and setters
+
+- (void)setNotebooksArray:(NSMutableArray<NoteBookModel *> *)notebooksArray {
+    if ( _notebooksArray != notebooksArray ) {
+        _notebooksArray = [notebooksArray mutableCopy];
+    }
+}
+
 - (NSMutableArray<NoteBookModel *> *)notebooksArray
 {
     if (!_notebooksArray) {
-        _notebooksArray = [NSMutableArray array];
+        _notebooksArray = @[].mutableCopy;
     }
     return _notebooksArray;
 }

@@ -18,11 +18,14 @@ UITableViewDataSource,
 UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *notesTableView;
-@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *headers;
 @end
 
+
 @implementation SNMainViewController
+@synthesize dataArray = _dataArray;
 
 - (void)awakeFromNib {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openNoteBook:) name:kOpenNoteBook object:nil];
@@ -31,7 +34,6 @@ UITableViewDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
 
@@ -52,13 +54,6 @@ CGFloat oldY = 0;
 - (void)openNoteBook:(NSNotification *)notification {
     NoteBookModel *model = (NoteBookModel *)notification.object;
     
-    for (int i = 0; i < 5; i ++) {
-        NoteModel *del = [NoteModel new];
-        del.noteTitle = [NSString stringWithFormat:@"123题%@",@(i)];
-        del.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
-        [model.notesArray addObject:del];
-    }
-    
     self.dataArray = model.notesArray;
     
     [self.notesTableView reloadData];
@@ -72,7 +67,7 @@ CGFloat oldY = 0;
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return self.headers.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -119,9 +114,7 @@ CGFloat oldY = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 100)];
     
-    NoteModel *model = self.dataArray[section];
-    
-    label.text = [NSString stringWithFormat:@"  %@",model.noteCreateTime];
+    label.text = [NSString stringWithFormat:@"  %@",self.headers[section]];
     label.backgroundColor = SNColor(246, 246, 246);
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor darkGrayColor];
@@ -130,6 +123,22 @@ CGFloat oldY = 0;
 
 
 #pragma mark - getters and setters
+
+- (void)setDataArray:(NSMutableArray *)dataArray {
+    
+    if (dataArray) {
+        NSMutableArray *temp = @[].mutableCopy;
+        for (NoteModel *model in dataArray) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy年MM月"];
+            NSString *sectionHeader = [formatter stringFromDate:model.noteCreateDate];
+            [temp addObject:sectionHeader];
+        }
+        self.headers = [temp valueForKeyPath:@"@distinctUnionOfObjects.self"];
+    }
+    _dataArray = dataArray;
+}
+
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
@@ -158,5 +167,11 @@ CGFloat oldY = 0;
     return _dataArray;
 }
 
+- (NSMutableArray *)headers {
+    if (!_headers) {
+        _headers = @[@"123"].mutableCopy;
+    }
+    return _headers;
+}
 
 @end

@@ -9,6 +9,7 @@
 #import "EditNoteViewController.h"
 #import "YYText.h"
 #import "TZImagePickerController.h"
+#import "SNCacheHelper.h"
 
 #define YYFont(_i_) [UIFont fontWithName:@"Avenir Next" size:_i_]
 
@@ -109,6 +110,9 @@ UINavigationControllerDelegate>
     [self.view endEditing:YES];
     
     self.noteModel.data = [self.textView.attributedText yy_archiveToData];
+    
+    [[SNCacheHelper sharedManager]storeNote:self.noteModel];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
