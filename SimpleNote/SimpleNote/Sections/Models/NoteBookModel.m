@@ -10,4 +10,16 @@
 
 @implementation NoteBookModel
 
+- (NSMutableArray<NoteModel *> *)notesArray {
+    if (!_notesArray) {
+        
+        NoteModel *model = [NoteModel new];
+        model.notebookName = self.noteBookTitle;
+        model.noteTitle = @"默认笔记";
+        
+        _notesArray = @[model].mutableCopy;
+    }
+    return _notesArray;
+}
+
 @end

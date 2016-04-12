@@ -35,7 +35,7 @@ static CGFloat const kLeftPadding = 60.0;
     self.delegate = self;
 }
 
-#pragma mark RESideMenu Delegate
+#pragma mark RESideMenuDelegate
 
 - (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
 {

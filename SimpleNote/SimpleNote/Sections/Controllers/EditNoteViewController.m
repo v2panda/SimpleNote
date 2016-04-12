@@ -48,11 +48,6 @@ UINavigationControllerDelegate>
     text.yy_lineSpacing = 4;
     text.yy_firstLineHeadIndent = 20;
     
-    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"noteData"]) {
-        NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"noteData"];
-        text =  [NSMutableAttributedString yy_unarchiveFromData:data];
-    }
-    
     YYTextView *textView = [YYTextView new];
     textView.attributedText = text;
     textView.size = self.view.size;
@@ -93,7 +88,6 @@ UINavigationControllerDelegate>
 #pragma mark - YYTextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(YYTextView *)textView {
     [self.titleTextField resignFirstResponder];
-    NSLog(@"should.selectedRange.location:%ld",textView.selectedRange.location);
     return YES;
 }
 
@@ -113,20 +107,12 @@ UINavigationControllerDelegate>
 
 - (void)noteSaved {
     [self.view endEditing:YES];
-    NSData *data = [self.textView.attributedText yy_archiveToData];
-    [[NSUserDefaults standardUserDefaults]setObject:data forKey:@"noteData"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
     
     self.noteModel.data = [self.textView.attributedText yy_archiveToData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
 - (void)openCamera {
-    NSLog(@"openCamera");
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
     {
@@ -143,11 +129,11 @@ UINavigationControllerDelegate>
 }
 
 - (void)openPhotos {
-    NSLog(@"openPhotos");
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
     imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
     imagePickerVc.allowPickingVideo = NO;
     imagePickerVc.allowPickingOriginalPhoto = NO;
+    self.modalPresentationStyle=UIModalPresentationOverCurrentContext;
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
 
@@ -185,19 +171,12 @@ UINavigationControllerDelegate>
     //当选择的类型是图片
     if ([type isEqualToString:@"public.image"])
     {
-        //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        NSData *data;
-        if (UIImagePNGRepresentation(image) == nil)
-        {
-            data = UIImageJPEGRepresentation(image, 1.0);
-        }
-        else
-        {
-            data = UIImagePNGRepresentation(image);
-        }
+        
+        self.pickerImage = image;
         
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

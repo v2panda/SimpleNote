@@ -11,7 +11,7 @@
 #import "NoteBookModel.h"
 #import "EditNoteBookViewController.h"
 #import "TZImagePickerController.h"
-
+#import "RESideMenu.h"
 
 @interface SNLeftViewController () <
 UICollectionViewDelegate,
@@ -51,19 +51,26 @@ TZImagePickerControllerDelegate>
 
 - (void)simulateData {
     
-    for (int i = 0; i < 10; i ++) {
-        NoteBookModel *model = [NoteBookModel new];
-        model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
-        model.customCoverImage = [UIImage imageNamed:[NSString stringWithFormat:@"AccountBookCover%@",@(i%6)]];
-        model.noteBookID = [CreateNoteBookID getNoteBookID];
-        NSLog(@"%@",model.noteBookID);
-        if (i == 0) {
-            model.isNoteBookSeleted = YES;
-        }else {
-            model.isNoteBookSeleted = NO;
-        }
-        [self.notebooksArray addObject:model];
-    }
+//    for (int i = 0; i < 10; i ++) {
+//        NoteBookModel *model = [NoteBookModel new];
+//        model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
+//        model.customCoverImage = [UIImage imageNamed:[NSString stringWithFormat:@"AccountBookCover%@",@(i%6)]];
+//        model.noteBookID = [CreateNoteBookID getNoteBookID];
+//        NSLog(@"%@",model.noteBookID);
+//        if (i == 0) {
+//            model.isNoteBookSeleted = YES;
+//        }else {
+//            model.isNoteBookSeleted = NO;
+//        }
+//        [self.notebooksArray addObject:model];
+//    }
+    
+    NoteBookModel *model = [NoteBookModel new];
+    model.noteBookTitle = @"默认标题";
+    model.customCoverImage = [UIImage imageNamed:@"AccountBookCover2"];
+    model.noteBookID = [CreateNoteBookID getNoteBookID];
+    model.isNoteBookSeleted = YES;
+    [self.notebooksArray addObject:model];
 }
 
 #pragma mark - event response
@@ -151,6 +158,10 @@ TZImagePickerControllerDelegate>
     model.isNoteBookSeleted = YES;
     
     [self.noteCollectionView reloadData];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kOpenNoteBook object:model];
+    
+    [self.sideMenuViewController hideMenuViewController];
     
 }
 

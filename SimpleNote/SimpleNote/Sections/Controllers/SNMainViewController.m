@@ -11,6 +11,7 @@
 #import "NoteModel.h"
 #import "RESideMenu.h"
 #import "EditNoteViewController.h"
+#import "NoteBookModel.h"
 
 @interface SNMainViewController ()<
 UITableViewDataSource,
@@ -18,15 +19,19 @@ UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *notesTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @end
 
 @implementation SNMainViewController
 
+- (void)awakeFromNib {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openNoteBook:) name:kOpenNoteBook object:nil];
+}
+
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
 
@@ -44,6 +49,21 @@ CGFloat oldY = 0;
 }
 
 #pragma mark - event response
+- (void)openNoteBook:(NSNotification *)notification {
+    NoteBookModel *model = (NoteBookModel *)notification.object;
+    
+    for (int i = 0; i < 5; i ++) {
+        NoteModel *del = [NoteModel new];
+        del.noteTitle = [NSString stringWithFormat:@"123题%@",@(i)];
+        del.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
+        [model.notesArray addObject:del];
+    }
+    
+    self.dataArray = model.notesArray;
+    
+    [self.notesTableView reloadData];
+}
+
 - (IBAction)leftBtnDidTouched:(UIBarButtonItem *)sender {
     if ([self respondsToSelector:@selector(presentLeftMenuViewController:)]) {
         [self presentLeftMenuViewController:nil];

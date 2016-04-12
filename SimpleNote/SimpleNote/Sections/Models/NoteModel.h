@@ -10,7 +10,11 @@
 
 @interface NoteModel : NSObject
 
+@property (nonatomic, copy) NSString *notebookName;
+
 @property (nonatomic, copy) NSString *noteTitle;
+
+@property (nonatomic, copy) NSString *noteID;
 
 @property (nonatomic, copy) NSString *noteCreateTime;
 
