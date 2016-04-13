@@ -28,6 +28,13 @@
     _model = model;
     self.titleLabel.text = model.noteTitle;
     self.timeLabel.text = model.noteCreateTime;
+    if (model.noteThumbnail) {
+        self.rightImageView.image = model.noteThumbnail;
+    }else {
+        self.rightImageView.image = nil;
+        self.titleLabelConstraint.priority = 999;
+    }
+    
     NSLog(@"model.noteID : %@",model.noteID);
 }
 
@@ -38,12 +45,6 @@
     if (cell == nil) {
         cell =[[[NSBundle mainBundle]loadNibNamed:@"SNNoteCell" owner:self options:nil] lastObject];
     }
-    
-//    if (indexPath.row == 2) {
-//        cell.titleLabel.text = @"要长长长长长长长长长长长长长长长长长长长长长长长";
-//        cell.rightImageView.hidden = YES;
-//        cell.titleLabelConstraint.priority = 999;
-//    }
     
     return cell;
 }

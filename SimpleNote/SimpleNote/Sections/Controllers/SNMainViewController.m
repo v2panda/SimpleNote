@@ -16,12 +16,14 @@
 
 @interface SNMainViewController ()<
 UITableViewDataSource,
-UITableViewDelegate>
+UITableViewDelegate,
+EditNoteEndedDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *notesTableView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *headers;
+@property (nonatomic, strong) NoteBookModel *notebookModel;
 @end
 
 
@@ -35,11 +37,10 @@ UITableViewDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-   
-    
+    self.notesTableView.tableFooterView = [UIView new];
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
+
 
 #pragma mark - UIScrollViewDelegate
 CGFloat oldY = 0;
@@ -53,11 +54,15 @@ CGFloat oldY = 0;
         self.bottomView.hidden = NO;
     }
 }
+#pragma mark - EditNoteEndedDelegate
+- (void)reloadNotes {
+    [self.notesTableView reloadData];
+}
 
 #pragma mark - event response
 - (void)openNoteBook:(NSNotification *)notification {
     NoteBookModel *model = (NoteBookModel *)notification.object;
-    
+    self.notebookModel = model;
     self.dataArray = model.notesArray;
     
     [self.notesTableView reloadData];
@@ -94,11 +99,20 @@ CGFloat oldY = 0;
     if ([sender isKindOfClass:[UIButton class]]) {
         EditNoteViewController *vc = [segue destinationViewController];
         vc.title = @"添加笔记";
+        NoteModel *model = [NoteModel new];
+        model.notebookName = self.notebookModel.noteBookID.stringValue;
+        model.noteTitle = @"默认笔记";
+        model.noteCreateDate = [NSDate date];
+        vc.noteModel = model;
+        vc.notebookModel = self.notebookModel;
+        vc.delegate = self;
     }else {
         NSNumber *index = sender;
         EditNoteViewController *vc = [segue destinationViewController];
         vc.title = @"编辑笔记";
         vc.noteModel = self.dataArray[index.integerValue];
+        vc.notebookModel = self.notebookModel;
+        vc.delegate = self;
     }
 }
 
@@ -106,7 +120,14 @@ CGFloat oldY = 0;
 {
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSLog(@"Delete");
+        
+        if (self.dataArray.count == 1) {
+            kTipAlert(@"删除笔记失败，不能删除唯一的笔记");
+            return;
+        }
+        
         [self.dataArray removeObjectAtIndex:indexPath.row];
+        [[SNCacheHelper sharedManager]storeNoteBook:self.notebookModel];
         [self.notesTableView reloadData];
         
     }];
@@ -146,23 +167,17 @@ CGFloat oldY = 0;
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-//        for (int i = 0; i < 10; i ++) {
-//            NoteModel *model = [NoteModel new];
-//            model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
-//            model.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
-//            [_dataArray addObject:model];
-//        }
-         _dataArray = [[SNCacheHelper sharedManager]readAllNotes:@"2"];
-        
-        
-        
+        NSNumber *nowNotebook =  (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+        NoteBookModel *model = [[SNCacheHelper sharedManager]readNoteBook:nowNotebook.stringValue];
+        self.notebookModel = model;
+        self.dataArray = model.notesArray;
     }
     return _dataArray;
 }
 
 - (NSMutableArray *)headers {
     if (!_headers) {
-        _headers = @[@"123"].mutableCopy;
+        _headers = @[@""].mutableCopy;
     }
     return _headers;
 }

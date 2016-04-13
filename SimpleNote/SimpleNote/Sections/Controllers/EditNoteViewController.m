@@ -18,7 +18,8 @@ YYTextViewDelegate,
 YYTextKeyboardObserver,
 TZImagePickerControllerDelegate,
 UIImagePickerControllerDelegate,
-UINavigationControllerDelegate>
+UINavigationControllerDelegate,
+UITextFieldDelegate>
 
 @property (nonatomic, assign) YYTextView *textView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
@@ -44,13 +45,15 @@ UINavigationControllerDelegate>
 }
 
 - (void)initYYTextView {
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the season of light, it was the season of darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us. We were all going direct to heaven, we were all going direct the other way.\n\n这是最好的时代，这是最坏的时代；这是智慧的时代，这是愚蠢的时代；这是信仰的时期，这是怀疑的时期；这是光明的季节，这是黑暗的季节；这是希望之春，这是失望之冬；人们面前有着各样事物，人们面前一无所有；人们正在直登天堂，人们正在直下地狱。"];
+//    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the season of light, it was the season of darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us. We were all going direct to heaven, we were all going direct the other way.\n\n这是最好的时代，这是最坏的时代；这是智慧的时代，这是愚蠢的时代；这是信仰的时期，这是怀疑的时期；这是光明的季节，这是黑暗的季节；这是希望之春，这是失望之冬；人们面前有着各样事物，人们面前一无所有；人们正在直登天堂，人们正在直下地狱。"];
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@""];
     text.yy_font = [UIFont fontWithName:@"Avenir Next" size:self.yyFontSize];
     text.yy_lineSpacing = 4;
     text.yy_firstLineHeadIndent = 20;
     
     if (self.noteModel.data) {
         text = [NSMutableAttributedString yy_unarchiveFromData:self.noteModel.data];
+        self.titleTextField.text = self.noteModel.noteTitle;
     }
     
     
@@ -98,6 +101,15 @@ UINavigationControllerDelegate>
 }
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField.text.length > 30) {
+        kTipAlert(@"标题长度不能超过30个字符");
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -115,9 +127,21 @@ UINavigationControllerDelegate>
     [self.view endEditing:YES];
     
     self.noteModel.data = [self.textView.attributedText yy_archiveToData];
+    self.noteModel.noteTitle = self.titleTextField.text;
     
-    [[SNCacheHelper sharedManager]storeNote:self.noteModel];
+    if ([self.notebookModel.notesArray containsObject:self.noteModel]) {
+        for (__strong NoteModel *model in self.notebookModel.notesArray) {
+            if ([model.noteID isEqualToString:self.noteModel.noteID]) {
+                model = self.noteModel;
+            }
+        }
+    }else {
+        [self.notebookModel.notesArray addObject:self.noteModel];
+    }
     
+    [[SNCacheHelper sharedManager]storeNoteBook:self.notebookModel];
+    
+    [self.delegate reloadNotes];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -205,6 +229,7 @@ UINavigationControllerDelegate>
         }else if (pickerImage.size.width > self.view.width || pickerImage.size.height > self.view.height) {
             pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(200, 200)];
         }
+        self.noteModel.noteThumbnail = pickerImage;
         [self insertImage:pickerImage];
     }
     _pickerImage = pickerImage;

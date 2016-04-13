@@ -78,6 +78,16 @@
     return array;
 }
 
+- (NoteBookModel *)readNoteBook:(NSString *)notebookID {
+    NSString *basePath = [self basePath:notebookID];
+    YYDiskCache *yy = [[YYDiskCache alloc] initWithPath:basePath];
+    NoteBookModel *model = (NoteBookModel *)[yy objectForKey:notebookID];
+    return model;
+}
+
+- (BOOL)deleteNote {
+    return YES;
+}
 
 
 - (NSString *)basePath:(NSString *)notebookName {

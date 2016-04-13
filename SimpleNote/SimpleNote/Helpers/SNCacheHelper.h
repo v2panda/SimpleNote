@@ -22,4 +22,6 @@
 
 - (NSMutableArray<NoteModel *> *)readAllNotes:(NSString *)noteBook;
 
+- (NoteBookModel *)readNoteBook:(NSString *)notebookID;
+
 @end

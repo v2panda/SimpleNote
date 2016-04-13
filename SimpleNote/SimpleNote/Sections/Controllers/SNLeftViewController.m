@@ -69,6 +69,7 @@ TZImagePickerControllerDelegate>
         if ( [model.noteBookID isEqualToNumber:tempModel.noteBookID]) {
             tempModel = model;
             isAdd = NO;
+             [[SNCacheHelper sharedManager]storeNoteBook:model];
             [self.noteCollectionView reloadData];
             return;
         }else {
@@ -176,7 +177,6 @@ TZImagePickerControllerDelegate>
     NSLog(@"Delete");
     
     if (self.notebooksArray.count == 1) {
-        // 不让删
         kTipAlert(@"删除笔记本失败，不能删除正在使用的笔记本");
         return;
     }

@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSDate *noteCreateDate;
 
+@property (nonatomic, strong) UIImage *noteThumbnail;
+
 @property (nonatomic, strong) NSData *data;
 
 @end

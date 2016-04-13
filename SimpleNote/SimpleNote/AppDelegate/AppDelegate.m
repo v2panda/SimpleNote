@@ -35,6 +35,7 @@
         [[NSUserDefaults standardUserDefaults]synchronize];
         
         [[SNCacheHelper sharedManager]storeNoteBook:model];
+
         [userDefaults setBool:YES forKey:@"FileIfNeeded"];
         [userDefaults synchronize];
     }

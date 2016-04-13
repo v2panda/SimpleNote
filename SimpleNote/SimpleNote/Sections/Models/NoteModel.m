@@ -14,7 +14,7 @@
 #define kNoteCreateDateKey     @"kNoteCreateDate"
 #define kNoteIDKey     @"kNoteID"
 #define kDataKey    @"kData"
-
+#define kNoteThumbnailKey    @"kNoteThumbnail"
 
 @implementation NoteModel
 
@@ -47,6 +47,7 @@
     [encoder encodeObject:self.noteCreateTime forKey:kNoteCreateTimeKey];
     [encoder encodeObject:self.noteCreateDate forKey:kNoteCreateDateKey];
     [encoder encodeObject:self.data forKey:kDataKey];
+    [encoder encodeObject:self.noteThumbnail forKey:kNoteThumbnailKey];
 }
 /**
  *  解归档一个数据的时候会调用
@@ -62,7 +63,7 @@
         self.noteCreateDate = [decoder decodeObjectForKey:kNoteCreateDateKey];
         self.noteCreateTime = [decoder decodeObjectForKey:kNoteCreateTimeKey];
         self.data = [decoder decodeObjectForKey:kDataKey];
-        
+        self.noteThumbnail = [decoder decodeObjectForKey:kNoteThumbnailKey];
     }
     return self;
 }

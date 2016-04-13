@@ -50,7 +50,7 @@ TZImagePickerControllerDelegate>
 #pragma mark - event response
 - (void)getNoteBookModel:(NSNotification *)noteBookInfo {
     self.noteBookModel = (NoteBookModel *)noteBookInfo.object;
-    if (self.noteBookModel.noteBookTitle) {
+    if (self.noteBookModel.noteBookID) {
         self.navigationItem.rightBarButtonItem.title = @"保存";
         self.title = @"编辑笔记本";
     }

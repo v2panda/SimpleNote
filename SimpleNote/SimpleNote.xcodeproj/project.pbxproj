@@ -36,6 +36,7 @@
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
 		7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961B21CB6964800D16398 /* EditNoteViewController.m */; };
+		7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */; };
 		CCAFFC66A513204BD9DA33A6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F9E4EFEE3A4A47E42A8146 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,8 @@
 		7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
 		7CD961B11CB6964800D16398 /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
 		7CD961B21CB6964800D16398 /* EditNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewController.m; sourceTree = "<group>"; };
+		7CD961DF1CBE93AF00D16398 /* NSString+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PDAdd.h"; sourceTree = "<group>"; };
+		7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PDAdd.m"; sourceTree = "<group>"; };
 		B792EFFCF13D7AF887546C8F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F3F9E4EFEE3A4A47E42A8146 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +126,8 @@
 				282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */,
 				282AC6621CBB9E72002F9A49 /* UIImage+PDAdd.h */,
 				282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */,
+				7CD961DF1CBE93AF00D16398 /* NSString+PDAdd.h */,
+				7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
+				7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */,
 				7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
 				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,
