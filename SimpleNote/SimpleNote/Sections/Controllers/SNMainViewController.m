@@ -12,6 +12,7 @@
 #import "RESideMenu.h"
 #import "EditNoteViewController.h"
 #import "NoteBookModel.h"
+#import "SNCacheHelper.h"
 
 @interface SNMainViewController ()<
 UITableViewDataSource,
@@ -34,6 +35,9 @@ UITableViewDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
 
@@ -142,24 +146,13 @@ CGFloat oldY = 0;
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        for (int i = 0; i < 10; i ++) {
-            NoteModel *model = [NoteModel new];
-            model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
-            model.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
-            [_dataArray addObject:model];
-        }
-        
-//        for (int q = 0; q < 3; q ++) {
-//            NSMutableArray *section = @[].mutableCopy;
-//            for (int i = 0; i < 6; i ++) {
-//                
-//                NoteModel *model = [NoteModel new];
-//                model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
-//                model.noteCreateTime = [NSString stringWithFormat:@"%@年%@月%@日",@(2010+q),@(q+5),@(i)];
-//                [section addObject:model];
-//            }
-//            [_dataArray addObject:section];
+//        for (int i = 0; i < 10; i ++) {
+//            NoteModel *model = [NoteModel new];
+//            model.noteTitle = [NSString stringWithFormat:@"测试测试标题标题%@",@(i)];
+//            model.noteCreateTime = [NSString stringWithFormat:@"%@/%@/%@",@(i+10),@(i+2),@(i+5)];
+//            [_dataArray addObject:model];
 //        }
+         _dataArray = [[SNCacheHelper sharedManager]readAllNotes:@"2"];
         
         
         

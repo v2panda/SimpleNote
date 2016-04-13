@@ -49,6 +49,11 @@ UINavigationControllerDelegate>
     text.yy_lineSpacing = 4;
     text.yy_firstLineHeadIndent = 20;
     
+    if (self.noteModel.data) {
+        text = [NSMutableAttributedString yy_unarchiveFromData:self.noteModel.data];
+    }
+    
+    
     YYTextView *textView = [YYTextView new];
     textView.attributedText = text;
     textView.size = self.view.size;

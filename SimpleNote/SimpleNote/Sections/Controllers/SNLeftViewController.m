@@ -47,34 +47,15 @@ TZImagePickerControllerDelegate>
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
 }
 
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)simulateData {
     
-//    for (int i = 0; i < 10; i ++) {
-//        NoteBookModel *model = [NoteBookModel new];
-//        model.noteBookTitle = [NSString stringWithFormat:@"标题%@",@(i)];
-//        model.customCoverImage = [UIImage imageNamed:[NSString stringWithFormat:@"AccountBookCover%@",@(i%6)]];
-//        model.noteBookID = [CreateNoteBookID getNoteBookID];
-//        NSLog(@"%@",model.noteBookID);
-//        if (i == 0) {
-//            model.isNoteBookSeleted = YES;
-//        }else {
-//            model.isNoteBookSeleted = NO;
-//        }
-//        [self.notebooksArray addObject:model];
-//    }
-    
-    NoteBookModel *model = [NoteBookModel new];
-    model.noteBookTitle = @"默认标题";
-    model.customCoverImage = [UIImage imageNamed:@"AccountBookCover2"];
-    model.noteBookID = [CreateNoteBookID getNoteBookID];
-    model.isNoteBookSeleted = @(1);
-    
     self.notebooksArray = [[SNCacheHelper sharedManager]readAllNoteBooks];
-//    [self.notebooksArray addObject:model];
+    
 }
 
 #pragma mark - event response
@@ -95,6 +76,7 @@ TZImagePickerControllerDelegate>
         }
     }
     if (isAdd) {
+        [[SNCacheHelper sharedManager]storeNoteBook:model];
         [self.notebooksArray addObject:model];
         [self.noteCollectionView reloadData];
     }
@@ -155,11 +137,10 @@ TZImagePickerControllerDelegate>
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"didSelectItemAtIndexPath - %@",@(indexPath.row));
     
-    for (NoteBookModel *model in self.notebooksArray) {
-        model.isNoteBookSeleted = @(0);
-    }
     NoteBookModel *model = self.notebooksArray[indexPath.row];
-    model.isNoteBookSeleted = @(1);
+    [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
     
     [self.noteCollectionView reloadData];
     
@@ -197,15 +178,16 @@ TZImagePickerControllerDelegate>
     if (self.notebooksArray.count == 1) {
         // 不让删
         kTipAlert(@"删除笔记本失败，不能删除正在使用的笔记本");
-        
         return;
     }
     
     NoteBookModel *model = self.notebooksArray[noteBookID];
-    if ([model.isNoteBookSeleted isEqualToNumber:@(1)]) {
+    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+    if (isShow && [model.noteBookID isEqualToNumber:isShow]) {
         [self.notebooksArray removeObjectAtIndex:noteBookID];
         NoteBookModel *firstModel = [self.notebooksArray firstObject];
-        firstModel.isNoteBookSeleted = @(1);
+        [[NSUserDefaults standardUserDefaults]setObject:firstModel.noteBookID forKey:@"isNoteBookSeleted"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }else {
         [self.notebooksArray removeObjectAtIndex:noteBookID];
     }

@@ -20,4 +20,6 @@
 
 - (NSMutableArray<NoteBookModel *> *)readAllNoteBooks;
 
+- (NSMutableArray<NoteModel *> *)readAllNotes:(NSString *)noteBook;
+
 @end

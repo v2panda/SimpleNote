@@ -30,10 +30,11 @@
         model.noteBookTitle = @"默认标题";
         model.customCoverImage = [UIImage imageNamed:@"AccountBookCover2"];
         model.noteBookID = [CreateNoteBookID getNoteBookID];
-        model.isNoteBookSeleted = @(1);
+        
+        [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
         
         [[SNCacheHelper sharedManager]storeNoteBook:model];
-        
         [userDefaults setBool:YES forKey:@"FileIfNeeded"];
         [userDefaults synchronize];
     }

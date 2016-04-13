@@ -29,13 +29,14 @@
 - (void)setModel:(NoteBookModel *)model
 {
     _model = model;
-    self.noteCheckImageView.hidden = ({
-        BOOL Hidden = YES;
-        if ([model.isNoteBookSeleted isEqualToNumber:@(1)]) {
-            Hidden = NO;
+    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+    if (isShow) {
+        if ([model.noteBookID isEqualToNumber:isShow]) {
+            self.noteCheckImageView.hidden = NO;
+        }else {
+            self.noteCheckImageView.hidden = YES;
         }
-        Hidden;
-    });
+    }
     
     self.noteTitleLabel.text = model.noteBookTitle;
     self.noteBookCover.image = model.customCoverImage;

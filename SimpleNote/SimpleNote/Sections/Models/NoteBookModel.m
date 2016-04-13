@@ -7,18 +7,17 @@
 //
 
 #import "NoteBookModel.h"
-#define kNoteTitleKey       @"kNoteTitle"
-#define kNotebookNameKey     @"kNotebookName"
-#define kNoteCreateTimeKey     @"kNoteCreateTime"
-#define kNoteCreateDateKey     @"kNoteCreateDate"
-#define kNoteIDKey     @"kNoteID"
-#define kDataKey    @"kData"
+#define kNoteBookTitleKey       @"kNoteBookTitle"
+#define kCustomCoverImageKey     @"kCustomCoverImage"
+#define kNotesArrayKey     @"kNotesArray"
+#define kNoteBookIDKey     @"kNoteBookID"
+
 @implementation NoteBookModel
 
 - (NSMutableArray<NoteModel *> *)notesArray {
     if (!_notesArray) {
         NoteModel *model = [NoteModel new];
-        model.notebookName = self.noteBookTitle;
+        model.notebookName = self.noteBookID.stringValue;
         model.noteTitle = @"默认笔记";
         model.noteCreateDate = [NSDate date];
         _notesArray = @[model].mutableCopy;
@@ -33,11 +32,10 @@
  */
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:self.noteBookID forKey:kNotebookNameKey];
-    [encoder encodeObject:self.noteBookTitle forKey:kNoteTitleKey];
-    [encoder encodeObject:self.notesArray forKey:kNoteIDKey];
-    [encoder encodeObject:self.customCoverImage forKey:kNoteCreateTimeKey];
-//    [encoder encodeObject:self.isNoteBookSeleted  forKey:kNoteCreateDateKey];
+    [encoder encodeObject:self.noteBookID forKey:kNoteBookIDKey];
+    [encoder encodeObject:self.noteBookTitle forKey:kNoteBookTitleKey];
+    [encoder encodeObject:self.notesArray forKey:kNotesArrayKey];
+    [encoder encodeObject:self.customCoverImage forKey:kCustomCoverImageKey];
 }
 /**
  *  解归档一个数据的时候会调用
@@ -47,10 +45,10 @@
 - (id)initWithCoder:(NSCoder *)decoder
 {
     if (self = [super init]) {
-        self.noteBookID = [decoder decodeObjectForKey:kNotebookNameKey];
-        self.noteBookTitle = [decoder decodeObjectForKey:kNoteTitleKey];
-        self.notesArray = [decoder decodeObjectForKey:kNoteIDKey];
-        self.customCoverImage = [decoder decodeObjectForKey:kNoteCreateTimeKey];
+        self.noteBookID = [decoder decodeObjectForKey:kNoteBookIDKey];
+        self.noteBookTitle = [decoder decodeObjectForKey:kNoteBookTitleKey];
+        self.notesArray = [decoder decodeObjectForKey:kNotesArrayKey];
+        self.customCoverImage = [decoder decodeObjectForKey:kCustomCoverImageKey];
     }
     return self;
 }
