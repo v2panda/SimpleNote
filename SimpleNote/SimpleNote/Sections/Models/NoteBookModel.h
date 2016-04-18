@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSNumber *noteBookID;
 @property (nonatomic, strong) NSString *noteBookTitle;
-@property (nonatomic, strong) UIImage *customCoverImage;
+@property (nonatomic, strong) NSData *customCoverImageData;
 @property (nonatomic, strong) NSMutableArray<NoteModel *> *notesArray;
 
 @end

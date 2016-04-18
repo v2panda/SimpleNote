@@ -5,3 +5,4 @@ pod 'RESideMenu', '~> 4.0.7'
 pod 'TZImagePickerController'
 pod "YYText"
 pod 'YYCache'
+pod 'Realm'

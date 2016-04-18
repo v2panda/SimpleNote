@@ -15,7 +15,7 @@ static NSString *const kNoteBookIDKey = @"kNoteBookID";
 + (void)initialize
 {
     if (![UserDefaults objectForKey:kNoteBookIDKey]) {
-        [UserDefaults setInteger:1 forKey:kNoteBookIDKey];
+        [UserDefaults setInteger:1000 forKey:kNoteBookIDKey];
     }
 }
 

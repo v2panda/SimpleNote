@@ -14,13 +14,9 @@
 
 + (instancetype)sharedManager;
 
-- (BOOL)storeNote:(NoteModel *)note;
-
 - (BOOL)storeNoteBook:(NoteBookModel *)notebook;
 
 - (NSMutableArray<NoteBookModel *> *)readAllNoteBooks;
-
-- (NSMutableArray<NoteModel *> *)readAllNotes:(NSString *)noteBook;
 
 - (NoteBookModel *)readNoteBook:(NSString *)notebookID;
 

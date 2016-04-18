@@ -35,7 +35,7 @@
     [encoder encodeObject:self.noteBookID forKey:kNoteBookIDKey];
     [encoder encodeObject:self.noteBookTitle forKey:kNoteBookTitleKey];
     [encoder encodeObject:self.notesArray forKey:kNotesArrayKey];
-    [encoder encodeObject:self.customCoverImage forKey:kCustomCoverImageKey];
+    [encoder encodeObject:self.customCoverImageData forKey:kCustomCoverImageKey];
 }
 /**
  *  解归档一个数据的时候会调用
@@ -48,7 +48,7 @@
         self.noteBookID = [decoder decodeObjectForKey:kNoteBookIDKey];
         self.noteBookTitle = [decoder decodeObjectForKey:kNoteBookTitleKey];
         self.notesArray = [decoder decodeObjectForKey:kNotesArrayKey];
-        self.customCoverImage = [decoder decodeObjectForKey:kCustomCoverImageKey];
+        self.customCoverImageData = [decoder decodeObjectForKey:kCustomCoverImageKey];
     }
     return self;
 }

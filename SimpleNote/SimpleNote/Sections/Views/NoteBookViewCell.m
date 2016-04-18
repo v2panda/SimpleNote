@@ -39,7 +39,7 @@
     }
     
     self.noteTitleLabel.text = model.noteBookTitle;
-    self.noteBookCover.image = model.customCoverImage;
+    self.noteBookCover.image = [UIImage imageWithData:model.customCoverImageData];
 }
 
 - (void)setIsNoteBookEditing:(BOOL)isNoteBookEditing {

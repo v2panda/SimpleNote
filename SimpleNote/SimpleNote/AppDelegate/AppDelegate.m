@@ -28,7 +28,7 @@
         
         NoteBookModel *model = [NoteBookModel new];
         model.noteBookTitle = @"默认标题";
-        model.customCoverImage = [UIImage imageNamed:@"AccountBookCover2"];
+        model.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
         model.noteBookID = [CreateNoteBookID getNoteBookID];
         
         [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];

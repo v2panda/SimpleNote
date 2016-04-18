@@ -229,7 +229,7 @@ UITextFieldDelegate>
         }else if (pickerImage.size.width > self.view.width || pickerImage.size.height > self.view.height) {
             pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(200, 200)];
         }
-        self.noteModel.noteThumbnail = pickerImage;
+        self.noteModel.noteThumbnailData = UIImagePNGRepresentation(pickerImage);
         [self insertImage:pickerImage];
     }
     _pickerImage = pickerImage;

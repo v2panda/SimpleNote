@@ -90,7 +90,7 @@ TZImagePickerControllerDelegate>
         NoteBookCreateCoverCell *cell = [NoteBookCreateCoverCell cellWithTableView:tableView];
         if (self.pickerImage) {
             NoteBookModel *model = self.noteBookModel;
-            model.customCoverImage = self.pickerImage;
+            model.customCoverImageData = UIImagePNGRepresentation(self.pickerImage);
         }
         cell.model = self.noteBookModel;
         return cell;
@@ -161,7 +161,7 @@ TZImagePickerControllerDelegate>
 - (NoteBookModel *)noteBookModel {
     if (!_noteBookModel) {
         _noteBookModel = [NoteBookModel new];
-        _noteBookModel.customCoverImage = [UIImage imageNamed:@"AccountBookCover0"];
+        _noteBookModel.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover0"]);
         _noteBookModel.noteBookID = [CreateNoteBookID getNoteBookID];
     }
     return _noteBookModel;

@@ -68,8 +68,8 @@
 
 -  (void)setModel:(NoteBookModel *)model {
     _model = model;
-    if (model.customCoverImage) {
-        self.thumbnailCover.image = model.customCoverImage;
+    if (model.customCoverImageData) {
+        self.thumbnailCover.image = [UIImage imageWithData:model.customCoverImageData];
     }
 }
 

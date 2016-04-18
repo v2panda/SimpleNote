@@ -28,8 +28,8 @@
     _model = model;
     self.titleLabel.text = model.noteTitle;
     self.timeLabel.text = model.noteCreateTime;
-    if (model.noteThumbnail) {
-        self.rightImageView.image = model.noteThumbnail;
+    if (model.noteThumbnailData) {
+        self.rightImageView.image = [UIImage imageWithData:model.noteThumbnailData];
     }else {
         self.rightImageView.image = nil;
         self.titleLabelConstraint.priority = 999;

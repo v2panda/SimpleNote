@@ -47,7 +47,7 @@
     [encoder encodeObject:self.noteCreateTime forKey:kNoteCreateTimeKey];
     [encoder encodeObject:self.noteCreateDate forKey:kNoteCreateDateKey];
     [encoder encodeObject:self.data forKey:kDataKey];
-    [encoder encodeObject:self.noteThumbnail forKey:kNoteThumbnailKey];
+    [encoder encodeObject:self.noteThumbnailData forKey:kNoteThumbnailKey];
 }
 /**
  *  解归档一个数据的时候会调用
@@ -63,7 +63,7 @@
         self.noteCreateDate = [decoder decodeObjectForKey:kNoteCreateDateKey];
         self.noteCreateTime = [decoder decodeObjectForKey:kNoteCreateTimeKey];
         self.data = [decoder decodeObjectForKey:kDataKey];
-        self.noteThumbnail = [decoder decodeObjectForKey:kNoteThumbnailKey];
+        self.noteThumbnailData = [decoder decodeObjectForKey:kNoteThumbnailKey];
     }
     return self;
 }
