@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NoteBookModel.h"
+#import "NoteModel.h"
 
 @protocol EditNoteEndedDelegate <NSObject>
 
@@ -18,7 +18,7 @@
 @interface EditNoteViewController : UIViewController
 
 @property (nonatomic, strong) NoteModel *noteModel;
-@property (nonatomic, strong) NoteBookModel *notebookModel;
+
 @property (nonatomic, weak) id<EditNoteEndedDelegate> delegate;
 
 @end

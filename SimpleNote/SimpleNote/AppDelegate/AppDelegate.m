@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SNCacheHelper.h"
+#import "SNRealmHelper.h"
 #import "NoteBookModel.h"
 
 @interface AppDelegate ()
@@ -34,7 +34,8 @@
         [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
         [[NSUserDefaults standardUserDefaults]synchronize];
         
-        [[SNCacheHelper sharedManager]storeNoteBook:model];
+        
+        [SNRealmHelper addNewNoteBook:model];
 
         [userDefaults setBool:YES forKey:@"FileIfNeeded"];
         [userDefaults synchronize];

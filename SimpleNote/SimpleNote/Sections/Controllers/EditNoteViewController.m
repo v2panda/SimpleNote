@@ -9,7 +9,7 @@
 #import "EditNoteViewController.h"
 #import "YYText.h"
 #import "TZImagePickerController.h"
-#import "SNCacheHelper.h"
+#import "SNRealmHelper.h"
 
 #define YYFont(_i_) [UIFont fontWithName:@"Avenir Next" size:_i_]
 
@@ -34,11 +34,9 @@ UITextFieldDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSLog(@"EditNoteViewController - %@",self.noteModel);
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(noteSaved)];
-    
+
     self.titleTextField.backgroundColor = [UIColor whiteColor];
     
     [self initYYTextView];
@@ -47,17 +45,19 @@ UITextFieldDelegate>
 - (void)initYYTextView {
 //    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the season of light, it was the season of darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us. We were all going direct to heaven, we were all going direct the other way.\n\n这是最好的时代，这是最坏的时代；这是智慧的时代，这是愚蠢的时代；这是信仰的时期，这是怀疑的时期；这是光明的季节，这是黑暗的季节；这是希望之春，这是失望之冬；人们面前有着各样事物，人们面前一无所有；人们正在直登天堂，人们正在直下地狱。"];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@""];
-    text.yy_font = [UIFont fontWithName:@"Avenir Next" size:self.yyFontSize];
+    text.yy_font = YYFont(self.yyFontSize);
     text.yy_lineSpacing = 4;
     text.yy_firstLineHeadIndent = 20;
     
+    YYTextView *textView = [YYTextView new];
+    
     if (self.noteModel.data) {
         text = [NSMutableAttributedString yy_unarchiveFromData:self.noteModel.data];
-        self.titleTextField.text = self.noteModel.noteTitle;
+    }else {
+        textView.font = YYFont(self.yyFontSize);
     }
+    self.titleTextField.text = self.noteModel.noteTitle;
     
-    
-    YYTextView *textView = [YYTextView new];
     textView.attributedText = text;
     textView.size = self.view.size;
     textView.textContainerInset = UIEdgeInsetsMake(35, 10, 10, 10);
@@ -126,20 +126,17 @@ UITextFieldDelegate>
 - (void)noteSaved {
     [self.view endEditing:YES];
     
-    self.noteModel.data = [self.textView.attributedText yy_archiveToData];
-    self.noteModel.noteTitle = self.titleTextField.text;
-    
-    if ([self.notebookModel.notesArray containsObject:self.noteModel]) {
-        for (__strong NoteModel *model in self.notebookModel.notesArray) {
-            if ([model.noteID isEqualToString:self.noteModel.noteID]) {
-                model = self.noteModel;
-            }
+    [SNRealmHelper updateDataInRealm:^{
+        self.noteModel.data = [self.textView.attributedText yy_archiveToData];
+        self.noteModel.noteTitle = self.titleTextField.text;
+        if (self.pickerImage) {
+            self.noteModel.noteThumbnailData = UIImagePNGRepresentation(self.pickerImage);
         }
-    }else {
-        [self.notebookModel.notesArray addObject:self.noteModel];
-    }
+    }];
     
-    [[SNCacheHelper sharedManager]storeNoteBook:self.notebookModel];
+    if (![[SNRealmHelper readAllNotesFromNotebook] containsObject:self.noteModel]) {
+        [SNRealmHelper addNewNote:self.noteModel];
+    }
     
     [self.delegate reloadNotes];
     [self.navigationController popViewControllerAnimated:YES];
@@ -151,7 +148,6 @@ UITextFieldDelegate>
     {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        //设置拍照后的图片可被编辑
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         [self presentViewController:picker animated:YES completion:nil];
@@ -171,11 +167,17 @@ UITextFieldDelegate>
 }
 
 - (void)increaseFont {
-    self.textView.font = YYFont(++self.yyFontSize);
+    NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
+    self.yyFontSize = text.yy_font.pointSize;
+    text.yy_font = YYFont(++self.yyFontSize);
+    self.textView.attributedText = text;
 }
 
 - (void)decreaseFont {
-    self.textView.font = YYFont(--self.yyFontSize);
+    NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
+    self.yyFontSize = text.yy_font.pointSize;
+    text.yy_font = YYFont(--self.yyFontSize);
+    self.textView.attributedText = text;
 }
 
 - (void)rotateText {
@@ -188,20 +190,16 @@ UITextFieldDelegate>
 }
 
 - (void)insertImage:(UIImage *)image {
-    // 插入图片
     NSMutableAttributedString *text = [self.textView.attributedText mutableCopy];
     NSMutableAttributedString *attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:YYFont(18) alignment:YYTextVerticalAlignmentCenter];
     [text insertAttributedString:attachment atIndex:self.textView.selectedRange.location];
     self.textView.attributedText = text;
 }
 
-//当选择一张图片后进入这里
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     
-    //当选择的类型是图片
     if ([type isEqualToString:@"public.image"])
     {
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -210,17 +208,24 @@ UITextFieldDelegate>
         
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    NSLog(@"您取消了选择图片");
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 #pragma mark - getters and setters
+
+- (NoteModel *)noteModel {
+    if (!_noteModel) {
+        _noteModel = [NoteModel new];
+        _noteModel.owner = [SNRealmHelper getNowNoteBook];
+        _noteModel.noteTitle = @"默认笔记";
+        _noteModel.noteCreateDate = [NSDate date];
+    }
+    return _noteModel;
+}
 
 - (void)setPickerImage:(UIImage *)pickerImage {
     if (pickerImage) {
@@ -229,12 +234,10 @@ UITextFieldDelegate>
         }else if (pickerImage.size.width > self.view.width || pickerImage.size.height > self.view.height) {
             pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(200, 200)];
         }
-        self.noteModel.noteThumbnailData = UIImagePNGRepresentation(pickerImage);
         [self insertImage:pickerImage];
     }
     _pickerImage = pickerImage;
 }
-
 
 - (NSInteger)yyFontSize {
     if (!_yyFontSize) {

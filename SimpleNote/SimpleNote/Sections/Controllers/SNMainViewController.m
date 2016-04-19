@@ -12,7 +12,7 @@
 #import "RESideMenu.h"
 #import "EditNoteViewController.h"
 #import "NoteBookModel.h"
-#import "SNCacheHelper.h"
+#import "SNRealmHelper.h"
 
 @interface SNMainViewController ()<
 UITableViewDataSource,
@@ -23,7 +23,7 @@ EditNoteEndedDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *headers;
-@property (nonatomic, strong) NoteBookModel *notebookModel;
+//@property (nonatomic, strong) NoteBookModel *notebookModel;
 @end
 
 
@@ -37,6 +37,7 @@ EditNoteEndedDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@",[SNRealmHelper getLocalPath]);
     self.notesTableView.tableFooterView = [UIView new];
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
@@ -54,24 +55,19 @@ CGFloat oldY = 0;
         self.bottomView.hidden = NO;
     }
 }
+
 #pragma mark - EditNoteEndedDelegate
 - (void)reloadNotes {
+    self.dataArray = [SNRealmHelper readAllNotesFromNotebook];
     [self.notesTableView reloadData];
 }
 
 #pragma mark - event response
 - (void)openNoteBook:(NSNotification *)notification {
-    NoteBookModel *model = (NoteBookModel *)notification.object;
-    self.notebookModel = model;
-    self.dataArray = model.notesArray;
+    
+    self.dataArray = [SNRealmHelper readAllNotesFromNotebook];
     
     [self.notesTableView reloadData];
-}
-
-- (IBAction)leftBtnDidTouched:(UIBarButtonItem *)sender {
-    if ([self respondsToSelector:@selector(presentLeftMenuViewController:)]) {
-        [self presentLeftMenuViewController:nil];
-    }
 }
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
@@ -90,7 +86,6 @@ CGFloat oldY = 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"第%@行笔记被点击了",@(indexPath.row));
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:@(indexPath.row)];
 }
@@ -99,19 +94,12 @@ CGFloat oldY = 0;
     if ([sender isKindOfClass:[UIButton class]]) {
         EditNoteViewController *vc = [segue destinationViewController];
         vc.title = @"添加笔记";
-        NoteModel *model = [NoteModel new];
-        model.notebookName = self.notebookModel.noteBookID.stringValue;
-        model.noteTitle = @"默认笔记";
-        model.noteCreateDate = [NSDate date];
-        vc.noteModel = model;
-        vc.notebookModel = self.notebookModel;
         vc.delegate = self;
     }else {
         NSNumber *index = sender;
         EditNoteViewController *vc = [segue destinationViewController];
         vc.title = @"编辑笔记";
         vc.noteModel = self.dataArray[index.integerValue];
-        vc.notebookModel = self.notebookModel;
         vc.delegate = self;
     }
 }
@@ -126,8 +114,9 @@ CGFloat oldY = 0;
             return;
         }
         
+        [SNRealmHelper deleteNote:self.dataArray[indexPath.row]];
         [self.dataArray removeObjectAtIndex:indexPath.row];
-        [[SNCacheHelper sharedManager]storeNoteBook:self.notebookModel];
+        
         [self.notesTableView reloadData];
         
     }];
@@ -167,10 +156,7 @@ CGFloat oldY = 0;
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        NSNumber *nowNotebook =  (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
-        NoteBookModel *model = [[SNCacheHelper sharedManager]readNoteBook:nowNotebook.stringValue];
-        self.notebookModel = model;
-        self.dataArray = model.notesArray;
+        self.dataArray = [SNRealmHelper readAllNotesFromNotebook];
     }
     return _dataArray;
 }

@@ -9,7 +9,6 @@
 #import <Realm/Realm.h>
 #import <UIKit/UIKit.h>
 
-RLM_ARRAY_TYPE(NoteModel)
 @interface NoteBookModel : RLMObject
 
 @property (nonatomic, strong) NSNumber<RLMInt> *noteBookID;

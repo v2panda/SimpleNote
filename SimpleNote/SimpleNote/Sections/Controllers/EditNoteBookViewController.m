@@ -13,6 +13,7 @@
 #import "NoteBookModel.h"
 #import "TZImagePickerController.h"
 #import "ChooseCoverReusableView.h"
+#import "SNRealmHelper.h"
 
 
 @interface EditNoteBookViewController () <
@@ -90,7 +91,9 @@ TZImagePickerControllerDelegate>
         NoteBookCreateCoverCell *cell = [NoteBookCreateCoverCell cellWithTableView:tableView];
         if (self.pickerImage) {
             NoteBookModel *model = self.noteBookModel;
-            model.customCoverImageData = UIImagePNGRepresentation(self.pickerImage);
+            [SNRealmHelper updateDataInRealm:^{
+                model.customCoverImageData = UIImagePNGRepresentation(self.pickerImage);
+            }];
         }
         cell.model = self.noteBookModel;
         return cell;
@@ -154,7 +157,6 @@ TZImagePickerControllerDelegate>
 #pragma mark - TZImagePickerControllerDelegate
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
     self.pickerImage  = photos.firstObject;
-    [self.createTableView reloadData];
 }
 
 #pragma mark - getters and setters
@@ -180,10 +182,15 @@ TZImagePickerControllerDelegate>
 }
 
 - (void)setPickerImage:(UIImage *)pickerImage {
-    _pickerImage = pickerImage;
     if (pickerImage) {
+        if (pickerImage.size.width > self.view.width && pickerImage.size.height > self.view.height) {
+            pickerImage = [pickerImage imageByScalingAndCroppingForSize:CGSizeMake(self.view.width - 20, self.view.height - 100)];
+        }else if (pickerImage.size.width > self.view.width || pickerImage.size.height > self.view.height) {
+            pickerImage = [pickerImage imageByResizeToSize:CGSizeMake(200, 200)];
+        }
         [self.createTableView reloadData];
     }
+    _pickerImage = pickerImage;
 }
 
 @end

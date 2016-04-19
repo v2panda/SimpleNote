@@ -6,14 +6,14 @@
 //  Copyright © 2016年 v2panda. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "NoteModel.h"
+#import <Realm/Realm.h>
 
-@interface NoteBookModel : NSObject<NSCoding>
+@interface NoteBookModel : RLMObject
 
-@property (nonatomic, strong) NSNumber *noteBookID;
+@property (nonatomic, strong) NSNumber<RLMInt> *noteBookID;
+
 @property (nonatomic, strong) NSString *noteBookTitle;
+
 @property (nonatomic, strong) NSData *customCoverImageData;
-@property (nonatomic, strong) NSMutableArray<NoteModel *> *notesArray;
 
 @end

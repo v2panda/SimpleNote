@@ -12,7 +12,7 @@
 #import "EditNoteBookViewController.h"
 #import "TZImagePickerController.h"
 #import "RESideMenu.h"
-#import "SNCacheHelper.h"
+#import "SNRealmHelper.h"
 
 @interface SNLeftViewController () <
 UICollectionViewDelegate,
@@ -30,7 +30,6 @@ TZImagePickerControllerDelegate>
 @end
 
 @implementation SNLeftViewController
-@synthesize notebooksArray = _notebooksArray;
 
 #pragma mark - lifecycle
 
@@ -43,7 +42,6 @@ TZImagePickerControllerDelegate>
     self.avataImageView.layer.cornerRadius = self.avataImageView.width / 2;
     self.avataImageView.layer.masksToBounds = YES;
     
-    [self simulateData];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
 }
 
@@ -52,24 +50,17 @@ TZImagePickerControllerDelegate>
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-- (void)simulateData {
-    
-    self.notebooksArray = [[SNCacheHelper sharedManager]readAllNoteBooks];
-    
-}
-
 #pragma mark - event response
 
 - (void)saveNoteBookModel:(NSNotification *)noteBookInfo {
     NoteBookModel *model = (NoteBookModel *)noteBookInfo.object;
     
     BOOL isAdd = NO;
-    
     for (__strong NoteBookModel *tempModel in self.notebooksArray) {
         if ( [model.noteBookID isEqualToNumber:tempModel.noteBookID]) {
             tempModel = model;
             isAdd = NO;
-             [[SNCacheHelper sharedManager]storeNoteBook:model];
+             [SNRealmHelper updateNoteBook:model];
             [self.noteCollectionView reloadData];
             return;
         }else {
@@ -77,7 +68,7 @@ TZImagePickerControllerDelegate>
         }
     }
     if (isAdd) {
-        [[SNCacheHelper sharedManager]storeNoteBook:model];
+        [SNRealmHelper addNewNoteBook:model];
         [self.notebooksArray addObject:model];
         [self.noteCollectionView reloadData];
     }
@@ -95,10 +86,9 @@ TZImagePickerControllerDelegate>
     }
     
     [self.noteCollectionView reloadData];
-    
 }
+
 - (IBAction)addNoteButtonDidTouched:(UIButton *)sender {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
     [self presentViewController:vc animated:YES completion:nil];
@@ -125,10 +115,8 @@ TZImagePickerControllerDelegate>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NoteBookViewCell *cell = [NoteBookViewCell cellWithCollectionView:collectionView forIndexPath:indexPath];
-    
     cell.model = self.notebooksArray[indexPath.row];
     cell.isNoteBookEditing = self.isEditing;
-    
     cell.delegate = self;
     return cell;
 }
@@ -142,13 +130,11 @@ TZImagePickerControllerDelegate>
     [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
-    
     [self.noteCollectionView reloadData];
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:kOpenNoteBook object:model];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kOpenNoteBook object:nil];
     
     [self.sideMenuViewController hideMenuViewController];
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -184,30 +170,27 @@ TZImagePickerControllerDelegate>
     NoteBookModel *model = self.notebooksArray[noteBookID];
     NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
     if (isShow && [model.noteBookID isEqualToNumber:isShow]) {
+        [SNRealmHelper deleteNoteBook:model];
         [self.notebooksArray removeObjectAtIndex:noteBookID];
         NoteBookModel *firstModel = [self.notebooksArray firstObject];
         [[NSUserDefaults standardUserDefaults]setObject:firstModel.noteBookID forKey:@"isNoteBookSeleted"];
         [[NSUserDefaults standardUserDefaults]synchronize];
+        [[NSNotificationCenter defaultCenter]postNotificationName:kOpenNoteBook object:nil];
     }else {
+        [SNRealmHelper deleteNoteBook:model];
         [self.notebooksArray removeObjectAtIndex:noteBookID];
     }
 
     [self.noteCollectionView reloadData];
-    
 }
 
 #pragma mark - getters and setters
-
-- (void)setNotebooksArray:(NSMutableArray<NoteBookModel *> *)notebooksArray {
-    if ( _notebooksArray != notebooksArray ) {
-        _notebooksArray = [notebooksArray mutableCopy];
-    }
-}
 
 - (NSMutableArray<NoteBookModel *> *)notebooksArray
 {
     if (!_notebooksArray) {
         _notebooksArray = @[].mutableCopy;
+        _notebooksArray = [SNRealmHelper readAllNoteBooks];
     }
     return _notebooksArray;
 }

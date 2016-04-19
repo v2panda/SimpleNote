@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -308,13 +308,7 @@
                             <constraint firstItem="GSr-PJ-cPD" firstAttribute="centerX" secondItem="QSi-GR-kPw" secondAttribute="centerX" id="zrD-cW-NBi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="至简笔记" id="qse-8S-Nm0">
-                        <barButtonItem key="leftBarButtonItem" image="IOS7BackBarButton" id="fMH-va-8E2">
-                            <connections>
-                                <action selector="leftBtnDidTouched:" destination="LbM-sn-ztP" id="ZK9-ia-lTf"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="至简笔记" id="qse-8S-Nm0"/>
                     <connections>
                         <outlet property="bottomView" destination="xwz-zK-dZF" id="MH3-f1-Ivc"/>
                         <outlet property="notesTableView" destination="GSr-PJ-cPD" id="jF0-3r-Gzu"/>
