@@ -18,7 +18,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self InitFileIfNeeded];
+    
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Welcome" bundle:nil];
+//    self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"WelcomeNavigationController"];
+    
     return YES;
 }
 

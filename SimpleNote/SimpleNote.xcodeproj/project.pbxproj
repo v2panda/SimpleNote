@@ -24,6 +24,11 @@
 		2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */; };
 		2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */; };
 		2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7131CB108E6008FB392 /* NoteCoverModel.m */; };
+		286409621CC75984006A628B /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286409611CC75984006A628B /* Welcome.storyboard */; };
+		286409661CC75D99006A628B /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409651CC75D99006A628B /* WelcomeViewController.m */; };
+		286409691CC75DD4006A628B /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409681CC75DD4006A628B /* StepOneViewController.m */; };
+		2864096C1CC75DDE006A628B /* StepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096B1CC75DDE006A628B /* StepTwoViewController.m */; };
+		2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096E1CC75DE9006A628B /* StepThreeViewController.m */; };
 		2866CE2A1CACF83F00518F16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE291CACF83F00518F16 /* main.m */; };
 		2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE2C1CACF83F00518F16 /* AppDelegate.m */; };
 		2866CE331CACF83F00518F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE311CACF83F00518F16 /* Main.storyboard */; };
@@ -31,7 +36,6 @@
 		2866CE381CACF83F00518F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */; };
 		2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE501CAD000B00518F16 /* SNLeftViewController.m */; };
 		2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE531CAD004B00518F16 /* SNMainViewController.m */; };
-		2866CE5B1CAD019300518F16 /* tempasd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE5A1CAD019300518F16 /* tempasd.m */; };
 		28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
@@ -73,6 +77,15 @@
 		2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCoverReusableView.m; sourceTree = "<group>"; };
 		2853D7121CB108E6008FB392 /* NoteCoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCoverModel.h; sourceTree = "<group>"; };
 		2853D7131CB108E6008FB392 /* NoteCoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCoverModel.m; sourceTree = "<group>"; };
+		286409611CC75984006A628B /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		286409641CC75D99006A628B /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		286409651CC75D99006A628B /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		286409671CC75DD4006A628B /* StepOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneViewController.h; sourceTree = "<group>"; };
+		286409681CC75DD4006A628B /* StepOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneViewController.m; sourceTree = "<group>"; };
+		2864096A1CC75DDE006A628B /* StepTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepTwoViewController.h; sourceTree = "<group>"; };
+		2864096B1CC75DDE006A628B /* StepTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepTwoViewController.m; sourceTree = "<group>"; };
+		2864096D1CC75DE9006A628B /* StepThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepThreeViewController.h; sourceTree = "<group>"; };
+		2864096E1CC75DE9006A628B /* StepThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepThreeViewController.m; sourceTree = "<group>"; };
 		2866CE251CACF83F00518F16 /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2866CE291CACF83F00518F16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2866CE2B1CACF83F00518F16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,8 +99,6 @@
 		2866CE521CAD004B00518F16 /* SNMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainViewController.h; sourceTree = "<group>"; };
 		2866CE531CAD004B00518F16 /* SNMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainViewController.m; sourceTree = "<group>"; };
 		2866CE581CAD017700518F16 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		2866CE591CAD019300518F16 /* tempasd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tempasd.h; sourceTree = "<group>"; };
-		2866CE5A1CAD019300518F16 /* tempasd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tempasd.m; sourceTree = "<group>"; };
 		2866CE621CAD16B700518F16 /* SimpleNoteHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNoteHeader.pch; sourceTree = "<group>"; };
 		28DB7A931CC476E700BB01B0 /* SNRealmHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRealmHelper.h; sourceTree = "<group>"; };
 		28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRealmHelper.m; sourceTree = "<group>"; };
@@ -143,6 +154,21 @@
 				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		286409631CC75D82006A628B /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				286409641CC75D99006A628B /* WelcomeViewController.h */,
+				286409651CC75D99006A628B /* WelcomeViewController.m */,
+				286409671CC75DD4006A628B /* StepOneViewController.h */,
+				286409681CC75DD4006A628B /* StepOneViewController.m */,
+				2864096A1CC75DDE006A628B /* StepTwoViewController.h */,
+				2864096B1CC75DDE006A628B /* StepTwoViewController.m */,
+				2864096D1CC75DE9006A628B /* StepThreeViewController.h */,
+				2864096E1CC75DE9006A628B /* StepThreeViewController.m */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		2866CE1C1CACF83F00518F16 = {
@@ -210,8 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				7CD961A91CB5547300D16398 /* AMScrollingNavbar */,
-				2866CE591CAD019300518F16 /* tempasd.h */,
-				2866CE5A1CAD019300518F16 /* tempasd.m */,
 			);
 			path = Venders;
 			sourceTree = "<group>";
@@ -232,6 +256,7 @@
 				2866CE391CACF83F00518F16 /* Info.plist */,
 				2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */,
 				2866CE311CACF83F00518F16 /* Main.storyboard */,
+				286409611CC75984006A628B /* Welcome.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -266,6 +291,7 @@
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
 				7CD961B11CB6964800D16398 /* EditNoteViewController.h */,
 				7CD961B21CB6964800D16398 /* EditNoteViewController.m */,
+				286409631CC75D82006A628B /* Welcome */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -394,6 +420,7 @@
 				2853D70B1CB0F284008FB392 /* NoteBookDefaultCell.xib in Resources */,
 				28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */,
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
+				286409621CC75984006A628B /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,14 +488,17 @@
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
 				282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */,
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
-				2866CE5B1CAD019300518F16 /* tempasd.m in Sources */,
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
 				2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
 				2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */,
 				28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
+				2864096C1CC75DDE006A628B /* StepTwoViewController.m in Sources */,
+				286409661CC75D99006A628B /* WelcomeViewController.m in Sources */,
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
+				286409691CC75DD4006A628B /* StepOneViewController.m in Sources */,
+				2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
