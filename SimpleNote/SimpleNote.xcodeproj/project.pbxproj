@@ -37,6 +37,7 @@
 		2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE501CAD000B00518F16 /* SNLeftViewController.m */; };
 		2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE531CAD004B00518F16 /* SNMainViewController.m */; };
 		28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */; };
+		7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
 		7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961B21CB6964800D16398 /* EditNoteViewController.m */; };
@@ -103,6 +104,7 @@
 		28DB7A931CC476E700BB01B0 /* SNRealmHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRealmHelper.h; sourceTree = "<group>"; };
 		28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRealmHelper.m; sourceTree = "<group>"; };
 		424214600FB2A82426CE325F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Login&Register.storyboard"; path = "../Sections/Controllers/Login&Register/Login&Register.storyboard"; sourceTree = "<group>"; };
 		7CD961A61CB40B3200D16398 /* CreateNoteBookID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteBookID.h; sourceTree = "<group>"; };
 		7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteBookID.m; sourceTree = "<group>"; };
 		7CD961AA1CB5547300D16398 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				2866CE341CACF83F00518F16 /* Assets.xcassets */,
 				2866CE391CACF83F00518F16 /* Info.plist */,
+				7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */,
 				2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */,
 				2866CE311CACF83F00518F16 /* Main.storyboard */,
 				286409611CC75984006A628B /* Welcome.storyboard */,
@@ -291,6 +294,7 @@
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
 				7CD961B11CB6964800D16398 /* EditNoteViewController.h */,
 				7CD961B21CB6964800D16398 /* EditNoteViewController.m */,
+				7CA44B3F1CDDDECC0010098E /* Login&Register */,
 				286409631CC75D82006A628B /* Welcome */,
 			);
 			path = Controllers;
@@ -334,6 +338,13 @@
 				F3F9E4EFEE3A4A47E42A8146 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CA44B3F1CDDDECC0010098E /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login&Register";
 			sourceTree = "<group>";
 		};
 		7CD961A91CB5547300D16398 /* AMScrollingNavbar */ = {
@@ -421,6 +432,7 @@
 				28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */,
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
 				286409621CC75984006A628B /* Welcome.storyboard in Resources */,
+				7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

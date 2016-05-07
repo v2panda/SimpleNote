@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.interactivePopGestureRecognizer.delegate =(id)self;
+//    self.interactivePopGestureRecognizer.delegate =(id)self;
 }
 /**
  *  设置导航条主题

@@ -23,7 +23,7 @@ EditNoteEndedDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *headers;
-//@property (nonatomic, strong) NoteBookModel *notebookModel;
+
 @end
 
 
@@ -64,7 +64,6 @@ CGFloat oldY = 0;
 
 #pragma mark - event response
 - (void)openNoteBook:(NSNotification *)notification {
-    
     self.dataArray = [SNRealmHelper readAllNotesFromNotebook];
     
     [self.notesTableView reloadData];
