@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SimpleNote" translatesAutoresizingMaskIntoConstraints="NO" id="7lL-QZ-AMD">
-                                <rect key="frame" x="143" y="110" width="80" height="70"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SimpleNote" translatesAutoresizingMaskIntoConstraints="NO" id="7lL-QZ-AMD">
+                                <rect key="frame" x="143" y="154" width="80" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="7w1-pN-RtE"/>
                                     <constraint firstAttribute="height" constant="70" id="9SF-9v-Smb"/>
@@ -33,22 +33,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJN-1F-gXm">
-                                <rect key="frame" x="243" y="95" width="196" height="94"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="94" id="EnA-R0-O66"/>
-                                    <constraint firstAttribute="height" constant="94" id="bRp-NG-KhX"/>
-                                    <constraint firstAttribute="width" constant="196" id="bi0-RP-j5h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="bRp-NG-KhX"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2Z-a2-5kE">
                                 <rect key="frame" x="40" y="534" width="520" height="45"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,6 +59,22 @@
                                     <segue destination="2l4-97-kh5" kind="show" id="98n-2P-QtQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJN-1F-gXm">
+                                <rect key="frame" x="243" y="139" width="196" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="EnA-R0-O66"/>
+                                    <constraint firstAttribute="height" constant="94" id="bRp-NG-KhX"/>
+                                    <constraint firstAttribute="width" constant="196" id="bi0-RP-j5h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bRp-NG-KhX"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="1104" y="323"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="P51-wM-5Vb">
             <objects>
-                <viewController id="2l4-97-kh5" sceneMemberID="viewController">
+                <viewController id="2l4-97-kh5" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FOI-Rp-hd5"/>
                         <viewControllerLayoutGuide type="bottom" id="yof-gg-B4u"/>
@@ -108,8 +108,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SimpleNote" translatesAutoresizingMaskIntoConstraints="NO" id="7Ue-wC-dS7">
-                                <rect key="frame" x="143" y="110" width="80" height="70"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SimpleNote" translatesAutoresizingMaskIntoConstraints="NO" id="7Ue-wC-dS7">
+                                <rect key="frame" x="143" y="154" width="80" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="2p3-Vc-rdL"/>
                                     <constraint firstAttribute="width" constant="80" id="WN5-H6-bh4"/>
@@ -118,13 +118,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="fFs-KT-wy3"/>
                                         <exclude reference="WN5-H6-bh4"/>
+                                        <exclude reference="fFs-KT-wy3"/>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGH-5t-TbI">
-                                <rect key="frame" x="243" y="95" width="196" height="94"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGH-5t-TbI">
+                                <rect key="frame" x="243" y="139" width="196" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="9qp-gM-nbZ"/>
                                     <constraint firstAttribute="width" constant="196" id="Drv-gn-0bM"/>
@@ -160,7 +160,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN0-MC-QLz">
                                 <rect key="frame" x="20" y="520" width="560" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <state key="normal" title="下一步"/>
+                                <state key="normal" title="下一步">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="1764" y="300"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="1mH-IL-JO3">
             <objects>
-                <viewController id="kvp-ee-nIA" sceneMemberID="viewController">
+                <viewController id="kvp-ee-nIA" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X6b-Uo-6rG"/>
                         <viewControllerLayoutGuide type="bottom" id="NPj-HB-MYB"/>
@@ -201,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SimpleNote" translatesAutoresizingMaskIntoConstraints="NO" id="ZUq-RJ-KZr">
-                                <rect key="frame" x="143" y="110" width="80" height="70"/>
+                                <rect key="frame" x="143" y="154" width="80" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Bdg-EK-eNG"/>
                                     <constraint firstAttribute="width" constant="80" id="MVS-Oy-ts9"/>
@@ -210,13 +212,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="bJW-zZ-FmG"/>
                                         <exclude reference="Bdg-EK-eNG"/>
+                                        <exclude reference="bJW-zZ-FmG"/>
                                     </mask>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleNote" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaf-6U-dy7">
-                                <rect key="frame" x="243" y="95" width="196" height="94"/>
+                                <rect key="frame" x="243" y="139" width="196" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="WaC-sc-LXq"/>
                                     <constraint firstAttribute="height" constant="94" id="Wnu-bL-f3I"/>
@@ -253,8 +255,11 @@
                                 <rect key="frame" x="20" y="520" width="560" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="登录">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginBtnDidTouched:" destination="kvp-ee-nIA" eventType="touchUpInside" id="rTZ-hb-Xw3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -277,6 +282,11 @@
                             <constraint firstItem="zaf-6U-dy7" firstAttribute="top" secondItem="X6b-Uo-6rG" secondAttribute="bottom" constant="75" id="qMu-XN-T8X"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginBtn" destination="KYa-03-XYy" id="QcZ-Or-p9g"/>
+                        <outlet property="passwordTf" destination="O1x-oI-8Jg" id="dxX-lW-9Iu"/>
+                        <outlet property="userNameTf" destination="Lp4-70-roQ" id="HII-4g-CpE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ow-HH-CHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,7 +295,7 @@
         <!--Navigation Controller-->
         <scene sceneID="52d-xf-gVE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hch-cb-L7f" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Login&amp;RegisterID" automaticallyAdjustsScrollViewInsets="NO" id="hch-cb-L7f" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="xd3-zS-AYZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -19,10 +19,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
     [self InitFileIfNeeded];
     
-//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Welcome" bundle:nil];
-//    self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"WelcomeNavigationController"];
+    [AVOSCloud setApplicationId:@"bKlBx1uLlzqzmozQmyLVPYeo-gzGzoHsz"
+                      clientKey:@"eXMjUwHcsnw8t1G96XHpvQHI"];
+//    [AVUser logOut];
+    AVUser *currentUser = [AVUser currentUser];
+    if (currentUser != nil) {
+        // 跳转到首页
+        NSLog(@"已登录");
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
+        self.window.rootViewController = vc;
+        
+    } else {
+        //缓存用户对象为空时，可打开用户注册界面…
+        NSLog(@"未登录");
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
+        self.window.rootViewController = vc;
+    }
+    
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

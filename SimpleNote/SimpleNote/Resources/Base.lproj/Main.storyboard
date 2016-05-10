@@ -179,7 +179,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-vG-WdE">
-                                <rect key="frame" x="0.0" y="90" width="540" height="50"/>
+                                <rect key="frame" x="270" y="90" width="270" height="50"/>
                                 <color key="backgroundColor" red="0.3921568627" green="0.34901960780000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1MW-9O-YIJ"/>
@@ -191,7 +191,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录/注册" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-Gs-dDB">
-                                <rect key="frame" x="101" y="22" width="439" height="60"/>
+                                <rect key="frame" x="108" y="22" width="88" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="OoQ-e4-IEz"/>
                                 </constraints>
@@ -204,31 +204,48 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzl-wp-vUO">
+                                <rect key="frame" x="0.0" y="90" width="270" height="50"/>
+                                <color key="backgroundColor" red="0.3921568627" green="0.34901960780000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="设置" image="SettingBarButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingButtonDidTouched:" destination="AN5-qe-L8c" eventType="touchUpInside" id="1vz-2M-tmr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.45882352941176469" green="0.41568627450980389" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="width" secondItem="LAL-vG-WdE" secondAttribute="width" constant="-101" id="6Kc-Lk-QsE"/>
+                            <constraint firstItem="Dzl-wp-vUO" firstAttribute="height" secondItem="LAL-vG-WdE" secondAttribute="height" id="1D0-Rr-OiX"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="top" secondItem="8Nv-ZA-Rpp" secondAttribute="bottom" constant="130" id="CTq-LP-dew"/>
                             <constraint firstItem="hF0-Gs-dDB" firstAttribute="leading" secondItem="OOm-RN-37f" secondAttribute="trailing" id="FIA-xz-CUI"/>
-                            <constraint firstItem="LAL-vG-WdE" firstAttribute="width" secondItem="1Vq-oK-qjn" secondAttribute="width" id="GB1-3X-VkF"/>
+                            <constraint firstItem="LAL-vG-WdE" firstAttribute="width" secondItem="1Vq-oK-qjn" secondAttribute="width" multiplier="0.5" id="GB1-3X-VkF"/>
                             <constraint firstItem="xqc-WN-qCl" firstAttribute="top" secondItem="1Vq-oK-qjn" secondAttribute="bottom" id="Gyj-Qn-i3A"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="leading" secondItem="3C7-No-tq0" secondAttribute="leading" id="Inz-vC-KAl"/>
                             <constraint firstItem="3C7-No-tq0" firstAttribute="bottom" secondItem="1Vq-oK-qjn" secondAttribute="bottom" id="Ody-nS-eiz"/>
                             <constraint firstItem="LAL-vG-WdE" firstAttribute="top" secondItem="hF0-Gs-dDB" secondAttribute="bottom" constant="8" id="PJQ-hA-3of"/>
                             <constraint firstItem="OOm-RN-37f" firstAttribute="centerX" secondItem="1Vq-oK-qjn" secondAttribute="centerX" id="Pm9-uR-EJT"/>
+                            <constraint firstItem="1Vq-oK-qjn" firstAttribute="top" secondItem="Dzl-wp-vUO" secondAttribute="bottom" constant="10" id="VXl-Sd-x3A"/>
                             <constraint firstAttribute="trailing" secondItem="1Vq-oK-qjn" secondAttribute="trailing" constant="60" id="ZN2-a1-q0Y"/>
+                            <constraint firstAttribute="trailing" secondItem="LAL-vG-WdE" secondAttribute="trailing" constant="60" id="cYM-lT-VKi"/>
                             <constraint firstItem="LAL-vG-WdE" firstAttribute="centerX" secondItem="1Vq-oK-qjn" secondAttribute="centerX" id="crU-Hp-gm6"/>
                             <constraint firstItem="OOm-RN-37f" firstAttribute="top" secondItem="8Nv-ZA-Rpp" secondAttribute="bottom" constant="2" id="dJE-Ku-nRB"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="top" secondItem="LAL-vG-WdE" secondAttribute="bottom" constant="10" id="hGj-e5-Dte"/>
                             <constraint firstItem="OOm-RN-37f" firstAttribute="leading" secondItem="oOR-CZ-T5G" secondAttribute="leadingMargin" constant="8" id="hte-7C-eKf"/>
+                            <constraint firstItem="Dzl-wp-vUO" firstAttribute="leading" secondItem="oOR-CZ-T5G" secondAttribute="leading" id="j0F-1X-hP3"/>
                             <constraint firstItem="hF0-Gs-dDB" firstAttribute="height" secondItem="OOm-RN-37f" secondAttribute="height" id="kfP-ke-HhB"/>
                             <constraint firstItem="hF0-Gs-dDB" firstAttribute="centerX" secondItem="LAL-vG-WdE" secondAttribute="centerX" constant="50.5" id="qIq-HX-ssu"/>
                             <constraint firstItem="1Vq-oK-qjn" firstAttribute="leading" secondItem="oOR-CZ-T5G" secondAttribute="leading" id="rHX-jP-hOv"/>
+                            <constraint firstItem="Dzl-wp-vUO" firstAttribute="width" secondItem="LAL-vG-WdE" secondAttribute="width" id="uNI-F5-kbV"/>
+                            <constraint firstItem="hF0-Gs-dDB" firstAttribute="leading" secondItem="OOm-RN-37f" secondAttribute="trailing" constant="20" id="x4d-FQ-Lvm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Pm9-uR-EJT"/>
                                 <exclude reference="FIA-xz-CUI"/>
+                                <exclude reference="qIq-HX-ssu"/>
+                                <exclude reference="crU-Hp-gm6"/>
                             </mask>
                         </variation>
                     </view>
@@ -237,6 +254,8 @@
                         <outlet property="avataImageView" destination="OOm-RN-37f" id="tt8-o4-Rax"/>
                         <outlet property="noteCollectionView" destination="1Vq-oK-qjn" id="E77-wb-e1x"/>
                         <outlet property="noteEditButton" destination="3C7-No-tq0" id="Sqt-73-t5C"/>
+                        <outlet property="settingButton" destination="Dzl-wp-vUO" id="1Um-7N-P8p"/>
+                        <outlet property="topLabel" destination="hF0-Gs-dDB" id="Nto-f7-tu9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDF-YC-nll" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,6 +568,7 @@
         <image name="Circled User Male" width="33" height="33"/>
         <image name="IOS7BackBarButton" width="10" height="18"/>
         <image name="KDAccessoryViewCheckmark" width="16" height="16"/>
+        <image name="SettingBarButton" width="26" height="26"/>
         <image name="add_account_book_icon" width="22" height="18"/>
         <image name="edit_account_book_btn_highlighted" width="77" height="77"/>
         <image name="edit_account_book_btn_normal" width="77" height="77"/>

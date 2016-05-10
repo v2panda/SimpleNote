@@ -24,6 +24,8 @@ TZImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *noteEditButton;
 @property (weak, nonatomic) IBOutlet UIButton *addNoteButton;
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
+@property (weak, nonatomic) IBOutlet UIButton *settingButton;
 
 @property (nonatomic, assign) BOOL isEditing;
 @property (nonatomic, copy) NSMutableArray<NoteBookModel *> *notebooksArray;
@@ -41,6 +43,10 @@ TZImagePickerControllerDelegate>
     self.isEditing = YES;
     self.avataImageView.layer.cornerRadius = self.avataImageView.width / 2;
     self.avataImageView.layer.masksToBounds = YES;
+    
+    if ([AVUser currentUser]) {
+        self.topLabel.text = [AVUser currentUser].username;
+    }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
 }
@@ -72,6 +78,10 @@ TZImagePickerControllerDelegate>
         [self.notebooksArray addObject:model];
         [self.noteCollectionView reloadData];
     }
+    
+}
+- (IBAction)settingButtonDidTouched:(UIButton *)sender {
+    
     
 }
 

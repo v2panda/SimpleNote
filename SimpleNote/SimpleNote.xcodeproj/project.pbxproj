@@ -38,6 +38,8 @@
 		2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE531CAD004B00518F16 /* SNMainViewController.m */; };
 		28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */; };
 		7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */; };
+		7CA44B441CE213E30010098E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B431CE213E30010098E /* LoginViewController.m */; };
+		7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B461CE213EF0010098E /* RegisterViewController.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
 		7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961B21CB6964800D16398 /* EditNoteViewController.m */; };
@@ -105,6 +107,10 @@
 		28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRealmHelper.m; sourceTree = "<group>"; };
 		424214600FB2A82426CE325F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Login&Register.storyboard"; path = "../Sections/Controllers/Login&Register/Login&Register.storyboard"; sourceTree = "<group>"; };
+		7CA44B421CE213E30010098E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7CA44B431CE213E30010098E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7CA44B451CE213EF0010098E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		7CA44B461CE213EF0010098E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		7CD961A61CB40B3200D16398 /* CreateNoteBookID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteBookID.h; sourceTree = "<group>"; };
 		7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteBookID.m; sourceTree = "<group>"; };
 		7CD961AA1CB5547300D16398 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
@@ -343,6 +349,10 @@
 		7CA44B3F1CDDDECC0010098E /* Login&Register */ = {
 			isa = PBXGroup;
 			children = (
+				7CA44B421CE213E30010098E /* LoginViewController.h */,
+				7CA44B431CE213E30010098E /* LoginViewController.m */,
+				7CA44B451CE213EF0010098E /* RegisterViewController.h */,
+				7CA44B461CE213EF0010098E /* RegisterViewController.m */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -491,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA44B441CE213E30010098E /* LoginViewController.m in Sources */,
 				282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */,
 				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
@@ -515,6 +526,7 @@
 				28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
 				7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */,
+				7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */,
 				7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
 				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,

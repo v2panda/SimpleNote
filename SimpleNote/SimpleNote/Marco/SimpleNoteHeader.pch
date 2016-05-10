@@ -16,5 +16,6 @@
 #import "NSString+PDAdd.h"
 #import "SNBasicViewController.h"
 #import "CreateNoteBookID.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 #endif /* SimpleNoteHeader_pch */
