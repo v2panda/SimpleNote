@@ -59,7 +59,7 @@ UITextFieldDelegate>
     
     textView.attributedText = text;
     textView.size = self.view.size;
-    textView.textContainerInset = UIEdgeInsetsMake(35, 10, 10, 10);
+    textView.textContainerInset = UIEdgeInsetsMake(45, 10, 10, 10);
     textView.delegate = self;
     textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     textView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);

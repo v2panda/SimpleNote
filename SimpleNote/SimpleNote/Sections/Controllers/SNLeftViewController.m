@@ -81,8 +81,11 @@ TZImagePickerControllerDelegate>
     
 }
 - (IBAction)settingButtonDidTouched:(UIButton *)sender {
+    NSLog(@"settingButtonDidTouched");
     
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingNAID"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)noteEditButtonDidTouched:(UIButton *)sender {

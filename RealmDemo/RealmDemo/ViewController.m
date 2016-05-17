@@ -123,6 +123,7 @@ UITableViewDataSource>
             }];
         }];
     }else if(indexPath.row == 6) {
+        
         NSString *fileId = @"571498f7ebcb7d0055c794b5";
         //第一步先得到文件实例, 其中会包含文件的地址
         [AVFile getFileWithObjectId:fileId withBlock:^(AVFile *file, NSError *error) {

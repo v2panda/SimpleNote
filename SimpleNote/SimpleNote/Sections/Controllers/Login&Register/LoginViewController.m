@@ -18,13 +18,13 @@
 @end
 
 @implementation LoginViewController
-
+#pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-
+#pragma mark - event response
 - (IBAction)loginBtnDidTouched:(UIButton *)sender {
     [AVUser logInWithUsernameInBackground:self.userNameTf.text password:self.passwordTf.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
@@ -39,6 +39,7 @@
     }];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

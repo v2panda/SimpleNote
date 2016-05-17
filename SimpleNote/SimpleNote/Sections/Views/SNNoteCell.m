@@ -45,7 +45,7 @@
     if (cell == nil) {
         cell =[[[NSBundle mainBundle]loadNibNamed:@"SNNoteCell" owner:self options:nil] lastObject];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

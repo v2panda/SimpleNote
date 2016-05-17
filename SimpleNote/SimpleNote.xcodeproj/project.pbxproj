@@ -29,6 +29,7 @@
 		286409691CC75DD4006A628B /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409681CC75DD4006A628B /* StepOneViewController.m */; };
 		2864096C1CC75DDE006A628B /* StepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096B1CC75DDE006A628B /* StepTwoViewController.m */; };
 		2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096E1CC75DE9006A628B /* StepThreeViewController.m */; };
+		2865A58F1CEAFA7700709CD9 /* SNSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2865A58E1CEAFA7700709CD9 /* SNSettingViewController.m */; };
 		2866CE2A1CACF83F00518F16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE291CACF83F00518F16 /* main.m */; };
 		2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE2C1CACF83F00518F16 /* AppDelegate.m */; };
 		2866CE331CACF83F00518F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE311CACF83F00518F16 /* Main.storyboard */; };
@@ -89,6 +90,8 @@
 		2864096B1CC75DDE006A628B /* StepTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepTwoViewController.m; sourceTree = "<group>"; };
 		2864096D1CC75DE9006A628B /* StepThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepThreeViewController.h; sourceTree = "<group>"; };
 		2864096E1CC75DE9006A628B /* StepThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepThreeViewController.m; sourceTree = "<group>"; };
+		2865A58D1CEAFA7700709CD9 /* SNSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSettingViewController.h; sourceTree = "<group>"; };
+		2865A58E1CEAFA7700709CD9 /* SNSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSettingViewController.m; sourceTree = "<group>"; };
 		2866CE251CACF83F00518F16 /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2866CE291CACF83F00518F16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2866CE2B1CACF83F00518F16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				2866CE501CAD000B00518F16 /* SNLeftViewController.m */,
 				2853D6FE1CB0C490008FB392 /* EditNoteBookViewController.h */,
 				2853D6FF1CB0C490008FB392 /* EditNoteBookViewController.m */,
+				2865A58D1CEAFA7700709CD9 /* SNSettingViewController.h */,
+				2865A58E1CEAFA7700709CD9 /* SNSettingViewController.m */,
 				2866CE521CAD004B00518F16 /* SNMainViewController.h */,
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
 				7CD961B11CB6964800D16398 /* EditNoteViewController.h */,
@@ -505,6 +510,7 @@
 				282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */,
 				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
+				2865A58F1CEAFA7700709CD9 /* SNSettingViewController.m in Sources */,
 				7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */,
 				282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
