@@ -13,6 +13,8 @@
 
 @interface SNRealmHelper : NSObject
 
++ (void)setDefaultRealmForUser:(NSString *)username;
+
 + (NSString *)getLocalPath;
 
 + (void)initDefaultNotebook;

@@ -13,6 +13,7 @@
 #import "TZImagePickerController.h"
 #import "RESideMenu.h"
 #import "SNRealmHelper.h"
+#import "AppDelegate.h"
 
 @interface SNLeftViewController () <
 UICollectionViewDelegate,
@@ -49,6 +50,7 @@ TZImagePickerControllerDelegate>
     }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDownInfo) name:kDownLoadAllNote object:nil];
 }
 
 
@@ -80,6 +82,15 @@ TZImagePickerControllerDelegate>
     }
     
 }
+
+- (void)getDownInfo {
+//    self.notebooksArray = [SNRealmHelper readAllNoteBooks].mutableCopy;
+//    [self.noteCollectionView reloadData];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [delegate reLaunching];
+}
+
 - (IBAction)settingButtonDidTouched:(UIButton *)sender {
     NSLog(@"settingButtonDidTouched");
     
@@ -89,6 +100,7 @@ TZImagePickerControllerDelegate>
 }
 
 - (IBAction)noteEditButtonDidTouched:(UIButton *)sender {
+    
     self.isEditing = !self.isEditing;
     if (self.isEditing) {
         [self.noteEditButton setImage:[UIImage imageNamed:@"finish_edit_account_book_btn_normal"] forState:UIControlStateNormal];
@@ -121,7 +133,6 @@ TZImagePickerControllerDelegate>
 }
 
 #pragma mark - UICollectionViewDataSource
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.notebooksArray.count;
 }

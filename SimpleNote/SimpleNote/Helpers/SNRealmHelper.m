@@ -11,6 +11,24 @@
 
 @implementation SNRealmHelper
 
++ (void)setDefaultRealmForUser:(NSString *)username {
+    
+    if ([NSString isBlankString:username]) {
+        username = @"default";
+    }
+    
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    
+    // 使用默认的目录，但是使用用户名来替换默认的文件名
+    config.fileURL = [[[config.fileURL URLByDeletingLastPathComponent]
+                       URLByAppendingPathComponent:username]
+                      URLByAppendingPathExtension:@"realm"];
+    
+    // 将这个配置应用到默认的 Realm 数据库当中
+    [RLMRealmConfiguration setDefaultConfiguration:config];
+}
+
+
 + (NSString *)getLocalPath {
     NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     return documentsDirectory;
@@ -26,12 +44,13 @@
     note.noteTitle = @"默认笔记";
     note.noteID = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]].stringValue;
     note.owner = notebook;
-    
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [realm addObject:note];
     [realm addObject:notebook];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)addNewNoteBook:(NoteBookModel *)notebook {
@@ -40,45 +59,55 @@
     note.noteID = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]].stringValue;
     note.noteCreateDate = [NSDate date];
     note.owner = notebook;
-    
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [realm addObject:note];
     [realm addObject:notebook];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)addNewNote:(NoteModel *)note {
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [realm addObject:note];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)updateNoteBook:(NoteBookModel *)notebook {
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [NoteBookModel createOrUpdateInRealm:realm withValue:notebook];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)updateNote:(NoteModel *)note {
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     [NoteModel createOrUpdateInRealm:realm withValue:note];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)updateDataInRealm:(void(^)())block {
+    @autoreleasepool {
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     if (block) {
         block();
     }
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)deleteNoteBook:(NoteBookModel *)notebook {
+    @autoreleasepool {
     RLMResults *result = [NoteModel objectsWhere:@"owner = %@",notebook];
     
     RLMRealm *realm = [RLMRealm defaultRealm];
@@ -88,13 +117,18 @@
     }
     [realm deleteObject:notebook];
     [realm commitWriteTransaction];
+    }
 }
 
 + (void)deleteNote:(NoteModel *)note {
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    [realm deleteObject:note];
-    [realm commitWriteTransaction];
+    @autoreleasepool {
+        // 所有 Realm 的使用操作
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:note];
+        [realm commitWriteTransaction];
+    }
+    
 }
 
 + (NSMutableArray *)readAllNoteBooks {

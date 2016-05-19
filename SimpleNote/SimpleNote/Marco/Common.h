@@ -18,8 +18,13 @@
 /**是否5.5寸屏*/
 #define is6plus_Inch    ([UIScreen mainScreen].bounds.size.height == 736)
 
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
 /**自定义颜色*/
 #define SNColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:255/255.0]
+
+
 
 /** weakify - strongify **/
 #define weakify(var) __weak typeof(var) SNWeak_##var = var;
@@ -29,10 +34,14 @@ _Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = SNWeak_##var; \
 _Pragma("clang diagnostic pop")
 
+
+static NSString * const kCurrentRealm = @"kUserDefaultCurrentRealm";
+
 /** KNotificationName **/
 static NSString * const kNoteEditBtnTouched = @"kNotificationNoteEditBtnTouched";
 static NSString * const kNoteBookAddedSaved = @"kNotificationNoteBookAddedSaved";
 static NSString * const kOpenNoteBook = @"kNotificationOpenNoteBook";
+static NSString * const kDownLoadAllNote = @"kNotificationDownLoadAllNote";
 
 /**kTipAlert**/
 #define kTipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]

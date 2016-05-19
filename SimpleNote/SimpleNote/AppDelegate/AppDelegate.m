@@ -10,6 +10,7 @@
 #import "SNRealmHelper.h"
 #import "NoteBookModel.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -18,14 +19,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    [self reLaunching];
+    return YES;
+}
+- (void)reLaunching {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    NSString *currentRealm = (NSString *)[[NSUserDefaults standardUserDefaults]objectForKey:kCurrentRealm];
+    NSLog(@"AppDelegate - currentRealm : %@",currentRealm);
+    [SNRealmHelper setDefaultRealmForUser:currentRealm];
+    
     [self InitFileIfNeeded];
     
     [AVOSCloud setApplicationId:@"bKlBx1uLlzqzmozQmyLVPYeo-gzGzoHsz"
                       clientKey:@"eXMjUwHcsnw8t1G96XHpvQHI"];
-//    [AVUser logOut];
+    //    [AVUser logOut];
     AVUser *currentUser = [AVUser currentUser];
     if (currentUser != nil) {
         // 跳转到首页
@@ -46,10 +54,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    return YES;
 }
-
 - (void)InitFileIfNeeded {
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (![userDefaults objectForKey:@"FileIfNeeded"]) {
         
@@ -60,7 +67,6 @@
         
         [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
         [[NSUserDefaults standardUserDefaults]synchronize];
-        
         
         [SNRealmHelper addNewNoteBook:model];
 
