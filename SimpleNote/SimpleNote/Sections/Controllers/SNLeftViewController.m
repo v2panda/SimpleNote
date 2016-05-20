@@ -127,8 +127,9 @@ TZImagePickerControllerDelegate>
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
 
+
 #pragma mark - TZImagePickerControllerDelegate
-- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
     self.avataImageView.image  = photos.firstObject;
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
+		2829202F1CEEAAD300512F8F /* SNProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2829202E1CEEAAD300512F8F /* SNProgressView.m */; };
 		282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */; };
 		282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */; };
 		282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FD0A41CB359FF000F25DA /* SNBasicViewController.m */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicNavigationController.h; sourceTree = "<group>"; };
 		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
+		2829202D1CEEAAD300512F8F /* SNProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressView.h; sourceTree = "<group>"; };
+		2829202E1CEEAAD300512F8F /* SNProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNProgressView.m; sourceTree = "<group>"; };
 		282AC65F1CBB9302002F9A49 /* NSData+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PDAdd.h"; sourceTree = "<group>"; };
 		282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PDAdd.m"; sourceTree = "<group>"; };
 		282AC6621CBB9E72002F9A49 /* UIImage+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PDAdd.h"; sourceTree = "<group>"; };
@@ -347,6 +350,8 @@
 				2833D8DC1CED997900485FE1 /* CurrentUserCell.h */,
 				2833D8DD1CED997900485FE1 /* CurrentUserCell.m */,
 				2833D8DE1CED997900485FE1 /* CurrentUserCell.xib */,
+				2829202D1CEEAAD300512F8F /* SNProgressView.h */,
+				2829202E1CEEAAD300512F8F /* SNProgressView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
 				286409691CC75DD4006A628B /* StepOneViewController.m in Sources */,
 				2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */,
+				2829202F1CEEAAD300512F8F /* SNProgressView.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,

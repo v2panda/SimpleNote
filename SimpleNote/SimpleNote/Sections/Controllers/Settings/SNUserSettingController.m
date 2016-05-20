@@ -7,13 +7,15 @@
 //
 
 #import "SNUserSettingController.h"
+#import "TZImagePickerController.h"
 
-@interface SNUserSettingController ()
+@interface SNUserSettingController () <TZImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) UIImageView * titleIMg;
+@property (nonatomic, strong) UIImage *pickerImage;
 @end
 
 #define MaxIconWH  70.0  //用户头像最大的尺寸
@@ -43,10 +45,13 @@
     [self.titleIMg removeFromSuperview];
 }
 
-
-- (IBAction)editButtonDidTouched:(UIButton *)sender {
-    NSLog(@"editButtonDidTouched");
+#pragma mark - TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
+    self.titleIMg.image  = photos.firstObject;
+    self.pickerImage = photos.firstObject;
+    [self.tableView reloadData];
 }
+
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,6 +65,8 @@
     
     if(indexPath.row == 0) {
         cell.textLabel.text = @"头像";
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:self.pickerImage];
+        cell.accessoryView = imageView;
     }else if (indexPath.row == 1) {
         cell.textLabel.text = @"昵称";
     }else if (indexPath.row == 2) {
@@ -77,6 +84,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"indexPath : %ld",indexPath.row);
+    if(indexPath.row == 0) {
+        TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+        imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
+        imagePickerVc.allowPickingVideo = NO;
+        imagePickerVc.allowPickingOriginalPhoto = NO;
+        [self presentViewController:imagePickerVc animated:YES completion:nil];
+    }else if (indexPath.row == 1) {
+        
+    }else if (indexPath.row == 2) {
+        
+    }else if (indexPath.row == 3) {
+        
+    }else if (indexPath.row == 4) {
+        
+    }
+
 }
 
 

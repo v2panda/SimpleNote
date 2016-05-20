@@ -12,6 +12,7 @@
 #import "CurrentUserCell.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SNUserSettingController.h"
+#import "SNProgressView.h"
 
 @interface SNSettingViewController ()<UITableViewDelegate,
 UITableViewDataSource>
@@ -19,6 +20,8 @@ UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, copy) NSString *fileID;
+
+@property (nonatomic, strong) SNProgressView *progressView;
 
 @end
 
@@ -93,7 +96,7 @@ UITableViewDataSource>
         cell.userLabel.text = [AVUser currentUser].username;
         return cell;
     }else if (indexPath.section == 1){
-        UITableViewCell *cell = [UITableViewCell new];
+        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
             cell.textLabel.text = @"同步笔记到云端";
@@ -108,8 +111,12 @@ UITableViewDataSource>
             cell.textLabel.text = @"意见反馈";
             cell.imageView.image = [UIImage imageNamed:@"Read Message Filled-22"];
         }else if (indexPath.row == 4) {
-            cell.textLabel.text = @"给App评分";
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.textLabel.text = @"版本信息";
             cell.imageView.image = [UIImage imageNamed:@"Trophy"];
+            NSDictionary *md =[NSBundle mainBundle].infoDictionary;
+            NSString *currentVersion = md[@"CFBundleShortVersionString"];
+            cell.detailTextLabel.text = currentVersion;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -136,7 +143,8 @@ UITableViewDataSource>
     }else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             NSLog(@"upload default.realm to leancloud");
-            NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.absoluteString;
+            NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.relativePath;
+            
             AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"SimpleNote%@",[AVUser currentUser].objectId] contentsAtPath: realmPath];
             
             [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -147,6 +155,11 @@ UITableViewDataSource>
                 [self getFileID];
             } progressBlock:^(NSInteger percentDone) {
                 NSLog(@"percentDone : %ld",percentDone);
+                self.progressView.hidden = NO;
+                self.progressView.progressValue = percentDone / 100.f;
+                if (percentDone == 100) {
+                    self.progressView.hidden = YES;
+                }
             }];
         }else if (indexPath.row == 1) {
             NSLog(@"downl default.realm from leancloud");
@@ -211,6 +224,11 @@ UITableViewDataSource>
                     }
                 } progressBlock:^(NSInteger percentDone) {
                     NSLog(@"percentDone : %ld",percentDone);
+                    self.progressView.hidden = NO;
+                    self.progressView.progressValue = percentDone / 100.f;
+                    if (percentDone == 100) {
+                        self.progressView.hidden = YES;
+                    }
                 }];
             }];
 
@@ -222,10 +240,10 @@ UITableViewDataSource>
             NSLog(@"给App评分");
         }
     }else if (indexPath.section == 2) {
-        [AVUser logOut];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出当前账户" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [AVUser logOut];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
             [self presentViewController:vc animated:YES completion:nil];
@@ -238,7 +256,17 @@ UITableViewDataSource>
 }
 
 
-
+#pragma mark - getters and setters
+- (SNProgressView *)progressView {
+    if (!_progressView) {
+        _progressView = [SNProgressView viewWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, SCREEN_HEIGHT/2 -80, 80, 80) circlesSize:CGRectMake(30, 5, 30, 5)];
+        _progressView.layer.cornerRadius = 10;
+        _progressView.progressValue = 0.2;
+        _progressView.hidden = YES;
+        [self.view addSubview:_progressView];
+    }
+    return _progressView;
+}
 
 
 
