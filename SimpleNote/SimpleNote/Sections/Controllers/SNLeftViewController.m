@@ -10,7 +10,6 @@
 #import "NoteBookViewCell.h"
 #import "NoteBookModel.h"
 #import "EditNoteBookViewController.h"
-#import "TZImagePickerController.h"
 #import "RESideMenu.h"
 #import "SNRealmHelper.h"
 #import "AppDelegate.h"
@@ -18,8 +17,7 @@
 @interface SNLeftViewController () <
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-NoteBookViewCellBtnDelegate,
-TZImagePickerControllerDelegate>
+NoteBookViewCellBtnDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avataImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -119,20 +117,6 @@ TZImagePickerControllerDelegate>
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
     [self presentViewController:vc animated:YES completion:nil];
-}
-
-- (IBAction)avataImageTapped:(UITapGestureRecognizer *)sender {
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-    imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
-    imagePickerVc.allowPickingVideo = NO;
-    imagePickerVc.allowPickingOriginalPhoto = NO;
-    [self presentViewController:imagePickerVc animated:YES completion:nil];
-}
-
-
-#pragma mark - TZImagePickerControllerDelegate
-- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
-    self.avataImageView.image  = photos.firstObject;
 }
 
 #pragma mark - UICollectionViewDataSource

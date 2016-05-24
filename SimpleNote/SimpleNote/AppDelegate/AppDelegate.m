@@ -15,7 +15,7 @@
 @interface AppDelegate ()
 
 @end
-
+static char pdListenTabbarViewMove[] = "listenTabViewMove";
 @implementation AppDelegate
 
 
@@ -27,14 +27,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     NSString *currentRealm = (NSString *)[[NSUserDefaults standardUserDefaults]objectForKey:kCurrentRealm];
-    NSLog(@"AppDelegate - currentRealm : %@",currentRealm);
     [SNRealmHelper setDefaultRealmForUser:currentRealm];
     
     [self InitFileIfNeeded];
     
     [AVOSCloud setApplicationId:@"bKlBx1uLlzqzmozQmyLVPYeo-gzGzoHsz"
                       clientKey:@"eXMjUwHcsnw8t1G96XHpvQHI"];
-    //    [AVUser logOut];
     AVUser *currentUser = [AVUser currentUser];
     if (currentUser != nil) {
         // 跳转到首页
@@ -56,6 +54,22 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    self.screenshotView = [[PDScreenShotView alloc] initWithFrame:CGRectMake(0, 0, self.window.frame.size.width, self.window.frame.size.height)];
+    [self.window insertSubview:_screenshotView atIndex:0];
+    
+    [self.window.rootViewController.view addObserver:self forKeyPath:@"transform" options:NSKeyValueObservingOptionNew context:pdListenTabbarViewMove];
+    
+    self.screenshotView.hidden = YES;
+    
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == pdListenTabbarViewMove)
+    {
+        NSValue *value  = [change objectForKey:NSKeyValueChangeNewKey];
+        CGAffineTransform newTransform = [value CGAffineTransformValue];
+        [self.screenshotView showEffectChange:CGPointMake(newTransform.tx, 0) ];
+    }
 }
 - (void)InitFileIfNeeded {
     

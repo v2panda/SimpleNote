@@ -24,6 +24,8 @@ UITableViewDataSource>
 
 @property (nonatomic, strong) SNProgressView *progressView;
 
+@property (nonatomic, assign) BOOL isDown;
+
 @end
 
 @implementation SNSettingViewController
@@ -31,7 +33,7 @@ UITableViewDataSource>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
 //    [self followScrollView:self.tableView withDelay:20.0];
     [self getFileID];
@@ -39,6 +41,7 @@ UITableViewDataSource>
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.isDown = NO;
     [self.tableView reloadData];
 }
 
@@ -58,6 +61,9 @@ UITableViewDataSource>
 
 #pragma mark - event response
 - (IBAction)backItemDidTouched:(UIBarButtonItem *)sender {
+    if (self.isDown) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:kDownLoadAllNote object:nil];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -164,7 +170,7 @@ UITableViewDataSource>
             NSURL *urlToShare = [NSURL URLWithString:@"http://www.v2panda.com/"];
             NSArray *activityItems = @[textToShare, description,imageToShare, urlToShare];
             
-            PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:@"http://www.v2panda.com/" atTitle:@"v2panda.com " atShareContentArray:activityItems];
+            PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:@"http://www.v2panda.com/" atTitle:@"v2panda.com" atShareContentArray:activityItems];
             NSArray *apps = @[act1];
             //创建
             UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:apps];
@@ -224,6 +230,7 @@ UITableViewDataSource>
         if (percentDone == 100) {
             self.progressView.hidden = YES;
             self.view.userInteractionEnabled = YES;
+            kTipAlert(@"同步成功");
         }
     }];
 }
@@ -297,7 +304,9 @@ UITableViewDataSource>
             self.progressView.progressValue = percentDone / 100.f;
             if (percentDone == 100) {
                 self.progressView.hidden = YES;
-                [[NSNotificationCenter defaultCenter]postNotificationName:kDownLoadAllNote object:nil];
+                self.view.userInteractionEnabled = YES;
+                self.isDown = YES;
+                kTipAlert(@"下载成功");
             }
         }];
     }];

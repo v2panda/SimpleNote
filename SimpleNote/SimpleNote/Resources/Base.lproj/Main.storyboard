@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -174,9 +174,6 @@
                                     <constraint firstAttribute="width" constant="60" id="6nb-pi-ZCy"/>
                                     <constraint firstAttribute="height" constant="60" id="joa-ZV-soi"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="XUC-vf-mcz" appends="YES" id="CTg-K8-B6O"/>
-                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-vG-WdE">
                                 <rect key="frame" x="270" y="90" width="270" height="50"/>
@@ -259,11 +256,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDF-YC-nll" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="XUC-vf-mcz">
-                    <connections>
-                        <action selector="avataImageTapped:" destination="AN5-qe-L8c" id="GkJ-q3-xuc"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="98" y="1098"/>
         </scene>
@@ -634,14 +626,14 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="145"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有能者辩驳" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxi-fo-ZLG">
-                                        <rect key="frame" x="30" y="90" width="540" height="45"/>
+                                        <rect key="frame" x="30" y="93" width="540" height="42"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-Cd-Fwf">
-                                        <rect key="frame" x="271" y="61" width="59" height="24"/>
-                                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="22"/>
+                                        <rect key="frame" x="270" y="57" width="61" height="31"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -738,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="2873" y="1098"/>
         </scene>
-        <!--Basic Navigation Controller-->
+        <!--Screen Shot Nav Controller-->
         <scene sceneID="rNJ-lj-ast">
             <objects>
-                <navigationController storyboardIdentifier="SettingNAID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ygl-DI-Au5" customClass="SNBasicNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingNAID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ygl-DI-Au5" customClass="PDScreenShotNavController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vou-ha-Dg8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

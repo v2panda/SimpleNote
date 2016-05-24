@@ -9,6 +9,12 @@
 #ifndef Common_h
 #define Common_h
 
+#ifdef DEBUG
+#define NSLog(...)          NSLog(__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
+
 /**是否3.5寸屏*/
 #define is4s_Inch    ([UIScreen mainScreen].bounds.size.height == 480.0)
 /**是否4寸屏 */

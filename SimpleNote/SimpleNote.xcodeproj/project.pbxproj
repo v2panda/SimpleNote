@@ -36,11 +36,6 @@
 		2854B4691CF2D87000C5A88D /* SNUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B4681CF2D87000C5A88D /* SNUserModel.m */; };
 		2854B46C1CF2D91200C5A88D /* SNUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B46B1CF2D91200C5A88D /* SNUserTool.m */; };
 		2854B46F1CF30FF100C5A88D /* SNFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B46E1CF30FF100C5A88D /* SNFeedbackController.m */; };
-		286409621CC75984006A628B /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286409611CC75984006A628B /* Welcome.storyboard */; };
-		286409661CC75D99006A628B /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409651CC75D99006A628B /* WelcomeViewController.m */; };
-		286409691CC75DD4006A628B /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409681CC75DD4006A628B /* StepOneViewController.m */; };
-		2864096C1CC75DDE006A628B /* StepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096B1CC75DDE006A628B /* StepTwoViewController.m */; };
-		2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2864096E1CC75DE9006A628B /* StepThreeViewController.m */; };
 		2866CE2A1CACF83F00518F16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE291CACF83F00518F16 /* main.m */; };
 		2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2866CE2C1CACF83F00518F16 /* AppDelegate.m */; };
 		2866CE331CACF83F00518F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE311CACF83F00518F16 /* Main.storyboard */; };
@@ -52,6 +47,8 @@
 		7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */; };
 		7CA44B441CE213E30010098E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B431CE213E30010098E /* LoginViewController.m */; };
 		7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B461CE213EF0010098E /* RegisterViewController.m */; };
+		7CB597761CF4899400BDA0FA /* PDScreenShotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB597751CF4899400BDA0FA /* PDScreenShotView.m */; };
+		7CB597791CF48ABD00BDA0FA /* PDScreenShotNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB597781CF48ABD00BDA0FA /* PDScreenShotNavController.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961AC1CB5547300D16398 /* UIViewController+ScrollingNavbar.m */; };
 		7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961B21CB6964800D16398 /* EditNoteViewController.m */; };
@@ -115,15 +112,6 @@
 		2854B46B1CF2D91200C5A88D /* SNUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserTool.m; sourceTree = "<group>"; };
 		2854B46D1CF30FF100C5A88D /* SNFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFeedbackController.h; sourceTree = "<group>"; };
 		2854B46E1CF30FF100C5A88D /* SNFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFeedbackController.m; sourceTree = "<group>"; };
-		286409611CC75984006A628B /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
-		286409641CC75D99006A628B /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
-		286409651CC75D99006A628B /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
-		286409671CC75DD4006A628B /* StepOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneViewController.h; sourceTree = "<group>"; };
-		286409681CC75DD4006A628B /* StepOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepOneViewController.m; sourceTree = "<group>"; };
-		2864096A1CC75DDE006A628B /* StepTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepTwoViewController.h; sourceTree = "<group>"; };
-		2864096B1CC75DDE006A628B /* StepTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepTwoViewController.m; sourceTree = "<group>"; };
-		2864096D1CC75DE9006A628B /* StepThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepThreeViewController.h; sourceTree = "<group>"; };
-		2864096E1CC75DE9006A628B /* StepThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepThreeViewController.m; sourceTree = "<group>"; };
 		2866CE251CACF83F00518F16 /* SimpleNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2866CE291CACF83F00518F16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2866CE2B1CACF83F00518F16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -146,6 +134,10 @@
 		7CA44B431CE213E30010098E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7CA44B451CE213EF0010098E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		7CA44B461CE213EF0010098E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7CB597741CF4899400BDA0FA /* PDScreenShotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScreenShotView.h; sourceTree = "<group>"; };
+		7CB597751CF4899400BDA0FA /* PDScreenShotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScreenShotView.m; sourceTree = "<group>"; };
+		7CB597771CF48ABD00BDA0FA /* PDScreenShotNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScreenShotNavController.h; sourceTree = "<group>"; };
+		7CB597781CF48ABD00BDA0FA /* PDScreenShotNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScreenShotNavController.m; sourceTree = "<group>"; };
 		7CD961A61CB40B3200D16398 /* CreateNoteBookID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteBookID.h; sourceTree = "<group>"; };
 		7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteBookID.m; sourceTree = "<group>"; };
 		7CD961AA1CB5547300D16398 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
@@ -212,23 +204,10 @@
 				2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */,
 				282FD0A31CB359FF000F25DA /* SNBasicViewController.h */,
 				282FD0A41CB359FF000F25DA /* SNBasicViewController.m */,
+				7CB597771CF48ABD00BDA0FA /* PDScreenShotNavController.h */,
+				7CB597781CF48ABD00BDA0FA /* PDScreenShotNavController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		286409631CC75D82006A628B /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				286409641CC75D99006A628B /* WelcomeViewController.h */,
-				286409651CC75D99006A628B /* WelcomeViewController.m */,
-				286409671CC75DD4006A628B /* StepOneViewController.h */,
-				286409681CC75DD4006A628B /* StepOneViewController.m */,
-				2864096A1CC75DDE006A628B /* StepTwoViewController.h */,
-				2864096B1CC75DDE006A628B /* StepTwoViewController.m */,
-				2864096D1CC75DE9006A628B /* StepThreeViewController.h */,
-				2864096E1CC75DE9006A628B /* StepThreeViewController.m */,
-			);
-			path = Welcome;
 			sourceTree = "<group>";
 		};
 		2866CE1C1CACF83F00518F16 = {
@@ -319,7 +298,6 @@
 				7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */,
 				2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */,
 				2866CE311CACF83F00518F16 /* Main.storyboard */,
-				286409611CC75984006A628B /* Welcome.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -356,7 +334,6 @@
 				2866CE531CAD004B00518F16 /* SNMainViewController.m */,
 				7CD961B11CB6964800D16398 /* EditNoteViewController.h */,
 				7CD961B21CB6964800D16398 /* EditNoteViewController.m */,
-				286409631CC75D82006A628B /* Welcome */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -381,6 +358,8 @@
 				2833D8DE1CED997900485FE1 /* CurrentUserCell.xib */,
 				2829202D1CEEAAD300512F8F /* SNProgressView.h */,
 				2829202E1CEEAAD300512F8F /* SNProgressView.m */,
+				7CB597741CF4899400BDA0FA /* PDScreenShotView.h */,
+				7CB597751CF4899400BDA0FA /* PDScreenShotView.m */,
 				2809D1151CF451E0004BF73B /* PDActivity.h */,
 				2809D1161CF451E0004BF73B /* PDActivity.m */,
 			);
@@ -507,7 +486,6 @@
 				2853D70B1CB0F284008FB392 /* NoteBookDefaultCell.xib in Resources */,
 				28328B1B1CB639320003A612 /* SNNoteCell.xib in Resources */,
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
-				286409621CC75984006A628B /* Welcome.storyboard in Resources */,
 				2833D8E01CED997900485FE1 /* CurrentUserCell.xib in Resources */,
 				7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */,
 			);
@@ -576,6 +554,7 @@
 				2809D1171CF451E0004BF73B /* PDActivity.m in Sources */,
 				7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */,
 				282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */,
+				7CB597791CF48ABD00BDA0FA /* PDScreenShotNavController.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
 				2854B4691CF2D87000C5A88D /* SNUserModel.m in Sources */,
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
@@ -591,12 +570,9 @@
 				28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */,
 				2833D8EB1CEDBECD00485FE1 /* SNUserSettingController.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
-				2864096C1CC75DDE006A628B /* StepTwoViewController.m in Sources */,
 				2833D8EA1CEDBECD00485FE1 /* SNSettingViewController.m in Sources */,
-				286409661CC75D99006A628B /* WelcomeViewController.m in Sources */,
+				7CB597761CF4899400BDA0FA /* PDScreenShotView.m in Sources */,
 				2866CE2A1CACF83F00518F16 /* main.m in Sources */,
-				286409691CC75DD4006A628B /* StepOneViewController.m in Sources */,
-				2864096F1CC75DE9006A628B /* StepThreeViewController.m in Sources */,
 				2829202F1CEEAAD300512F8F /* SNProgressView.m in Sources */,
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */,
