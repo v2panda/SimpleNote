@@ -10,9 +10,9 @@
 #import <Realm/Realm.h>
 #import "SNRealmHelper.h"
 #import "CurrentUserCell.h"
-#import <BlocksKit/BlocksKit.h>
 #import "SNUserSettingController.h"
 #import "SNProgressView.h"
+#import "UIAlertController+PDAdd.h"
 
 @interface SNSettingViewController ()<UITableViewDelegate,
 UITableViewDataSource>
@@ -35,10 +35,12 @@ UITableViewDataSource>
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    [self followScrollView:self.tableView withDelay:20.0];
     [self getFileID];
-
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 #pragma mark - event response
 
@@ -50,6 +52,7 @@ UITableViewDataSource>
         NSLog(@"realmFileID : %@",[object objectForKey:@"realmFileID"]);
         fileId = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
         self.fileID = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
+        NSLog(@"self.fileID : %@",self.fileID);
     }];
     NSLog(@"fileId - %@",fileId);
 
@@ -57,7 +60,6 @@ UITableViewDataSource>
 
 #pragma mark - event response
 - (IBAction)backItemDidTouched:(UIBarButtonItem *)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:kDownLoadAllNote object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -92,8 +94,8 @@ UITableViewDataSource>
 
     if (indexPath.section == 0) {
         CurrentUserCell *cell = [CurrentUserCell cellWithTableView:tableView];
-        cell.userImageView.image = [UIImage imageNamed:@"SimpleNote"];
-        cell.userLabel.text = [AVUser currentUser].username;
+        [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
+        cell.userLabel.text = [SNUserTool userInfo].nickName;
         return cell;
     }else if (indexPath.section == 1){
         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
@@ -142,117 +144,142 @@ UITableViewDataSource>
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            NSLog(@"upload default.realm to leancloud");
-            NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.relativePath;
             
-            AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"SimpleNote%@",[AVUser currentUser].objectId] contentsAtPath: realmPath];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"同步笔记到云端" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
+                [self uploadToCloud];
+            } cancelActionShow:YES];
+            [self presentViewController:alertController animated:YES completion:nil];
             
-            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                NSLog(@"file.url : %@",file.url);//返回一个唯一的 Url 地址
-                NSLog(@"objectId : %@",file.objectId);
-                [[AVUser currentUser] setObject:file.objectId forKey:@"realmFileID"];
-                [[AVUser currentUser] saveInBackground];
-                [self getFileID];
-            } progressBlock:^(NSInteger percentDone) {
-                NSLog(@"percentDone : %ld",percentDone);
-                self.progressView.hidden = NO;
-                self.progressView.progressValue = percentDone / 100.f;
-                if (percentDone == 100) {
-                    self.progressView.hidden = YES;
-                }
-            }];
+            
         }else if (indexPath.row == 1) {
-            NSLog(@"downl default.realm from leancloud");
-            
-            if([NSString isBlankString:self.fileID]) {
-                kTipAlert(@"无远端笔记");
-            }
-            
-            //第一步先得到文件实例, 其中会包含文件的地址
-            [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
-                //文件实例获取成功可以再进一步获取文件内容
-                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    if (data) {
-                        //获取到了文件内容
-                        NSLog(@"获取到了文件内容");
-                        
-                        NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-                        
-                        NSString *realmPath ;
-                        
-                        NSString *currentRealm = [[NSUserDefaults standardUserDefaults]stringForKey:kCurrentRealm];
-                        
-                        if ([currentRealm isEqualToString:[AVUser currentUser].username]) {
-                            
-                            realmPath = [documentsDirectory stringByAppendingPathComponent:@"default.realm"];
-                            
-                            [[NSUserDefaults standardUserDefaults]setObject:@"default" forKey:kCurrentRealm];
-                            [[NSUserDefaults standardUserDefaults]synchronize];
-                        }else {
-                            
-                            realmPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.realm",[AVUser currentUser].username]];
-                            
-                            [[NSUserDefaults standardUserDefaults]setObject:[AVUser currentUser].username forKey:kCurrentRealm];
-                            [[NSUserDefaults standardUserDefaults]synchronize];
-                        }
-                        
-                        BOOL success = NO;
-                        
-                        NSFileManager *manager = [NSFileManager defaultManager];
-                        RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-                        NSArray<NSURL *> *realmFileURLs = @[
-                                                            config.fileURL,
-                                                            [config.fileURL URLByAppendingPathExtension:@"lock"],
-                                                            [config.fileURL URLByAppendingPathExtension:@"log_a"],
-                                                            [config.fileURL URLByAppendingPathExtension:@"log_b"],
-                                                            [config.fileURL URLByAppendingPathExtension:@"note"]
-                                                            ];
-                        for (NSURL *URL in realmFileURLs) {
-                            NSError *error = nil;
-                            success =  [manager removeItemAtURL:URL error:&error];
-                            if (error) {
-                                // 处理错误
-                            }
-                        }
-                        
-                        if (success) {
-                            [data writeToFile:realmPath atomically:YES];
-                            
-                        }else {
-                            kTipAlert(@"删除本地文件失败");
-                        }
-                    }
-                } progressBlock:^(NSInteger percentDone) {
-                    NSLog(@"percentDone : %ld",percentDone);
-                    self.progressView.hidden = NO;
-                    self.progressView.progressValue = percentDone / 100.f;
-                    if (percentDone == 100) {
-                        self.progressView.hidden = YES;
-                    }
-                }];
-            }];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"下载笔记到本地" message:@"下载操作会覆盖本地笔记，请提前同步笔记。" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
+                [self downloadFromCloud];
+            } cancelActionShow:YES];
+            [self presentViewController:alertController animated:YES completion:nil];
 
         }else if (indexPath.row == 2) {
             NSLog(@"分享App");
         }else if (indexPath.row == 3) {
             NSLog(@"意见反馈");
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNFeedbackControllerID"];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if (indexPath.row == 4) {
             NSLog(@"给App评分");
         }
     }else if (indexPath.section == 2) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出当前账户" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出当前账户" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
             [AVUser logOut];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
             [self presentViewController:vc animated:YES completion:nil];
-        }];
-        [alertController addAction:cancelAction];
-        [alertController addAction:okAction];
-        
+        } cancelActionShow:YES];
         [self presentViewController:alertController animated:YES completion:nil];
     }
+}
+
+
+#pragma mark - privatemethod
+- (void)uploadToCloud {
+    if(![NSString isBlankString:self.fileID]) {
+        [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
+            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"删除成功");
+            }];;
+        }];
+    }
+    
+    NSLog(@"upload default.realm to leancloud");
+    NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.relativePath;
+    AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"SimpleNote%@",[AVUser currentUser].objectId] contentsAtPath: realmPath];
+    
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"file.url : %@",file.url);//返回一个唯一的 Url 地址
+        NSLog(@"objectId : %@",file.objectId);
+        [[AVUser currentUser] setObject:file.objectId forKey:@"realmFileID"];
+        [[AVUser currentUser] saveInBackground];
+        self.fileID = file.objectId;
+    } progressBlock:^(NSInteger percentDone) {
+        NSLog(@"percentDone : %ld",percentDone);
+        self.progressView.hidden = NO;
+        self.progressView.progressValue = percentDone / 100.f;
+        if (percentDone == 100) {
+            self.progressView.hidden = YES;
+        }
+    }];
+}
+
+- (void)downloadFromCloud {
+    NSLog(@"downl default.realm from leancloud");
+    
+    if([NSString isBlankString:self.fileID]) {
+        kTipAlert(@"无远端笔记");
+    }
+    
+    //第一步先得到文件实例, 其中会包含文件的地址
+    [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
+        //文件实例获取成功可以再进一步获取文件内容
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (data) {
+                //获取到了文件内容
+                NSLog(@"获取到了文件内容");
+                
+                NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+                
+                NSString *realmPath ;
+                
+                NSString *currentRealm = [[NSUserDefaults standardUserDefaults]stringForKey:kCurrentRealm];
+                
+                if ([currentRealm isEqualToString:[AVUser currentUser].username]) {
+                    
+                    realmPath = [documentsDirectory stringByAppendingPathComponent:@"default.realm"];
+                    
+                    [[NSUserDefaults standardUserDefaults]setObject:@"default" forKey:kCurrentRealm];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }else {
+                    
+                    realmPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.realm",[AVUser currentUser].username]];
+                    
+                    [[NSUserDefaults standardUserDefaults]setObject:[AVUser currentUser].username forKey:kCurrentRealm];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }
+                
+                BOOL success = NO;
+                
+                NSFileManager *manager = [NSFileManager defaultManager];
+                RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+                NSArray<NSURL *> *realmFileURLs = @[
+                                                    config.fileURL,
+                                                    [config.fileURL URLByAppendingPathExtension:@"lock"],
+                                                    [config.fileURL URLByAppendingPathExtension:@"log_a"],
+                                                    [config.fileURL URLByAppendingPathExtension:@"log_b"],
+                                                    [config.fileURL URLByAppendingPathExtension:@"note"]
+                                                    ];
+                for (NSURL *URL in realmFileURLs) {
+                    NSError *error = nil;
+                    success =  [manager removeItemAtURL:URL error:&error];
+                    if (error) {
+                        // 处理错误
+                    }
+                }
+                
+                if (success) {
+                    [data writeToFile:realmPath atomically:YES];
+                    
+                }else {
+                    kTipAlert(@"删除本地文件失败");
+                }
+            }
+        } progressBlock:^(NSInteger percentDone) {
+            NSLog(@"percentDone : %ld",percentDone);
+            self.progressView.hidden = NO;
+            self.progressView.progressValue = percentDone / 100.f;
+            if (percentDone == 100) {
+                self.progressView.hidden = YES;
+                [[NSNotificationCenter defaultCenter]postNotificationName:kDownLoadAllNote object:nil];
+            }
+        }];
+    }];
 }
 
 

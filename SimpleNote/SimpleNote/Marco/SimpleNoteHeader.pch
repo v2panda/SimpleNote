@@ -17,5 +17,6 @@
 #import "SNBasicViewController.h"
 #import "CreateNoteBookID.h"
 #import <AVOSCloud/AVOSCloud.h>
-
+#import "SNUserTool.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #endif /* SimpleNoteHeader_pch */

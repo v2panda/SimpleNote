@@ -11,6 +11,7 @@
 #import "NoteBookModel.h"
 
 
+
 @interface AppDelegate ()
 
 @end
@@ -38,6 +39,7 @@
     if (currentUser != nil) {
         // 跳转到首页
         NSLog(@"已登录");
+        [SNUserTool getUserInfo];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
         self.window.rootViewController = vc;

@@ -29,6 +29,7 @@
     [AVUser logInWithUsernameInBackground:self.userNameTf.text password:self.passwordTf.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
             NSLog(@"登录成功");
+            [SNUserTool getUserInfo];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
             [self presentViewController:vc animated:YES completion:nil];

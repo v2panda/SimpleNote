@@ -4,8 +4,7 @@ inhibit_all_warnings!
 pod 'RESideMenu', '~> 4.0.7'
 pod 'TZImagePickerController'
 pod "YYText"
-pod 'YYCache'
 pod 'Realm'
 pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础服务模块
 pod 'AVOSCloudCrashReporting' # 错误报告模块
-pod 'BlocksKit'
+pod 'SDWebImage'

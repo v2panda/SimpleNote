@@ -43,6 +43,7 @@ static NSString * const kNoteBookAddedSaved = @"kNotificationNoteBookAddedSaved"
 static NSString * const kOpenNoteBook = @"kNotificationOpenNoteBook";
 static NSString * const kDownLoadAllNote = @"kNotificationDownLoadAllNote";
 
+
 /**kTipAlert**/
 #define kTipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
 

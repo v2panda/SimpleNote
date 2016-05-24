@@ -15,6 +15,7 @@
 #import "SNRealmHelper.h"
 
 
+
 @interface SNMainViewController ()<
 UITableViewDataSource,
 UITableViewDelegate,
@@ -38,7 +39,8 @@ EditNoteEndedDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    SNUserModel *model = [SNUserTool userInfo];
+    NSLog(@"userName - %@",model.userName);
     NSLog(@"%@",[SNRealmHelper getLocalPath]);
     self.notesTableView.tableFooterView = [UIView new];
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];

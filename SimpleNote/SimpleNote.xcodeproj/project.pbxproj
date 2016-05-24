@@ -29,6 +29,11 @@
 		2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D70D1CB0FA0C008FB392 /* NoteCoverCell.m */; };
 		2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */; };
 		2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2853D7131CB108E6008FB392 /* NoteCoverModel.m */; };
+		2854B4631CF2A3D600C5A88D /* SNUserEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B4621CF2A3D600C5A88D /* SNUserEditViewController.m */; };
+		2854B4661CF2AA5F00C5A88D /* UIAlertController+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B4651CF2AA5F00C5A88D /* UIAlertController+PDAdd.m */; };
+		2854B4691CF2D87000C5A88D /* SNUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B4681CF2D87000C5A88D /* SNUserModel.m */; };
+		2854B46C1CF2D91200C5A88D /* SNUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B46B1CF2D91200C5A88D /* SNUserTool.m */; };
+		2854B46F1CF30FF100C5A88D /* SNFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854B46E1CF30FF100C5A88D /* SNFeedbackController.m */; };
 		286409621CC75984006A628B /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286409611CC75984006A628B /* Welcome.storyboard */; };
 		286409661CC75D99006A628B /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409651CC75D99006A628B /* WelcomeViewController.m */; };
 		286409691CC75DD4006A628B /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286409681CC75DD4006A628B /* StepOneViewController.m */; };
@@ -94,6 +99,16 @@
 		2853D7101CB101ED008FB392 /* ChooseCoverReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCoverReusableView.m; sourceTree = "<group>"; };
 		2853D7121CB108E6008FB392 /* NoteCoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCoverModel.h; sourceTree = "<group>"; };
 		2853D7131CB108E6008FB392 /* NoteCoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCoverModel.m; sourceTree = "<group>"; };
+		2854B4611CF2A3D600C5A88D /* SNUserEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserEditViewController.h; sourceTree = "<group>"; };
+		2854B4621CF2A3D600C5A88D /* SNUserEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserEditViewController.m; sourceTree = "<group>"; };
+		2854B4641CF2AA5F00C5A88D /* UIAlertController+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+PDAdd.h"; sourceTree = "<group>"; };
+		2854B4651CF2AA5F00C5A88D /* UIAlertController+PDAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+PDAdd.m"; sourceTree = "<group>"; };
+		2854B4671CF2D87000C5A88D /* SNUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserModel.h; sourceTree = "<group>"; };
+		2854B4681CF2D87000C5A88D /* SNUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserModel.m; sourceTree = "<group>"; };
+		2854B46A1CF2D91200C5A88D /* SNUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserTool.h; sourceTree = "<group>"; };
+		2854B46B1CF2D91200C5A88D /* SNUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserTool.m; sourceTree = "<group>"; };
+		2854B46D1CF30FF100C5A88D /* SNFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFeedbackController.h; sourceTree = "<group>"; };
+		2854B46E1CF30FF100C5A88D /* SNFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFeedbackController.m; sourceTree = "<group>"; };
 		286409611CC75984006A628B /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		286409641CC75D99006A628B /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		286409651CC75D99006A628B /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
@@ -157,6 +172,10 @@
 				2833D8E71CEDBECD00485FE1 /* SNSettingViewController.m */,
 				2833D8E81CEDBECD00485FE1 /* SNUserSettingController.h */,
 				2833D8E91CEDBECD00485FE1 /* SNUserSettingController.m */,
+				2854B4611CF2A3D600C5A88D /* SNUserEditViewController.h */,
+				2854B4621CF2A3D600C5A88D /* SNUserEditViewController.m */,
+				2854B46D1CF30FF100C5A88D /* SNFeedbackController.h */,
+				2854B46E1CF30FF100C5A88D /* SNFeedbackController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -172,6 +191,8 @@
 				282AC6631CBB9E72002F9A49 /* UIImage+PDAdd.m */,
 				7CD961DF1CBE93AF00D16398 /* NSString+PDAdd.h */,
 				7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */,
+				2854B4641CF2AA5F00C5A88D /* UIAlertController+PDAdd.h */,
+				2854B4651CF2AA5F00C5A88D /* UIAlertController+PDAdd.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -261,6 +282,8 @@
 				7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */,
 				28DB7A931CC476E700BB01B0 /* SNRealmHelper.h */,
 				28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */,
+				2854B46A1CF2D91200C5A88D /* SNUserTool.h */,
+				2854B46B1CF2D91200C5A88D /* SNUserTool.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -365,6 +388,8 @@
 				2853D7131CB108E6008FB392 /* NoteCoverModel.m */,
 				28328B1C1CB63EBB0003A612 /* NoteModel.h */,
 				28328B1D1CB63EBB0003A612 /* NoteModel.m */,
+				2854B4671CF2D87000C5A88D /* SNUserModel.h */,
+				2854B4681CF2D87000C5A88D /* SNUserModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,13 +561,16 @@
 				7CA44B441CE213E30010098E /* LoginViewController.m in Sources */,
 				282FD0A51CB359FF000F25DA /* SNBasicViewController.m in Sources */,
 				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
+				2854B46C1CF2D91200C5A88D /* SNUserTool.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
 				7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */,
 				282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
+				2854B4691CF2D87000C5A88D /* SNUserModel.m in Sources */,
 				2853D7111CB101ED008FB392 /* ChooseCoverReusableView.m in Sources */,
 				282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */,
 				2866CE511CAD000B00518F16 /* SNLeftViewController.m in Sources */,
+				2854B4661CF2AA5F00C5A88D /* UIAlertController+PDAdd.m in Sources */,
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
 				2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
@@ -561,9 +589,11 @@
 				284C545F1CAE0DD1006EDCB8 /* SNRootViewController.m in Sources */,
 				28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */,
 				7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */,
+				2854B4631CF2A3D600C5A88D /* SNUserEditViewController.m in Sources */,
 				7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */,
 				7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */,
 				7CD961AD1CB5547300D16398 /* UIViewController+ScrollingNavbar.m in Sources */,
+				2854B46F1CF30FF100C5A88D /* SNFeedbackController.m in Sources */,
 				2866CE541CAD004B00518F16 /* SNMainViewController.m in Sources */,
 				284C54651CAE10E8006EDCB8 /* NoteBookViewCell.m in Sources */,
 				2853D70E1CB0FA0C008FB392 /* NoteCoverCell.m in Sources */,

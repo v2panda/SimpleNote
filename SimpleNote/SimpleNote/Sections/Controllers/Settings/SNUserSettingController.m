@@ -8,6 +8,8 @@
 
 #import "SNUserSettingController.h"
 #import "TZImagePickerController.h"
+#import "UIAlertController+PDAdd.h"
+#import "SNProgressView.h"
 
 @interface SNUserSettingController () <TZImagePickerControllerDelegate>
 
@@ -15,7 +17,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) UIImageView * titleIMg;
-@property (nonatomic, strong) UIImage *pickerImage;
+@property (nonatomic, strong) SNProgressView *progressView;
+
+@property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, copy) NSString *userSite;
+@property (nonatomic, copy) NSString *describe;
+@property (nonatomic, strong) AVFile *avatar;
+
 @end
 
 #define MaxIconWH  70.0  //用户头像最大的尺寸
@@ -31,13 +39,15 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.nameLabel.text = [AVUser currentUser].username;
+    self.nameLabel.text = [SNUserTool userInfo].nickName;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(userInfoSaved)];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar addSubview:self.titleIMg];
-    
+    [self getUserInfoData];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -45,11 +55,84 @@
     [self.titleIMg removeFromSuperview];
 }
 
+#pragma mark - event response
+
+- (void)userInfoSaved {
+    NSLog(@"存储信息");
+    
+    if (self.avatar) {
+        [self uploadToCloud];
+    }
+    if (![self.nickName isEqualToString:[SNUserTool userInfo].nickName]) {
+        [[AVUser currentUser] setObject:self.nickName forKey:@"nickName"];
+        [[AVUser currentUser] saveInBackground];
+        SNUserModel *model = [SNUserTool userInfo];
+        model.nickName = self.nickName;
+        [SNUserTool saveUserInfo:model];
+    }
+    if (![self.userSite isEqualToString:[SNUserTool userInfo].userSite]) {
+        [[AVUser currentUser] setObject:self.userSite forKey:@"userSite"];
+        [[AVUser currentUser] saveInBackground];
+        SNUserModel *model = [SNUserTool userInfo];
+        model.userSite = self.userSite;
+        [SNUserTool saveUserInfo:model];
+    }
+    if (![self.describe isEqualToString:[SNUserTool userInfo].describe]) {
+        [[AVUser currentUser] setObject:self.describe forKey:@"describe"];
+        [[AVUser currentUser] saveInBackground];
+        SNUserModel *model = [SNUserTool userInfo];
+        model.describe = self.describe;
+        [SNUserTool saveUserInfo:model];
+    }
+
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)uploadToCloud {
+//    if(![NSString isBlankString:self.fileID]) {
+//        [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
+//            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                NSLog(@"删除成功");
+//            }];;
+//        }];
+//    }
+    
+    [self.avatar saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"file.url : %@",self.avatar.url);//返回一个唯一的 Url 地址
+        NSLog(@"objectId : %@",self.avatar.objectId);
+        [[AVUser currentUser] setObject:self.avatar.url forKey:@"avatar"];
+        [[AVUser currentUser] saveInBackground];
+        
+        SNUserModel *model = [SNUserTool userInfo];
+        model.avatarUrl = self.avatar.url;
+        [SNUserTool saveUserInfo:model];
+  
+    } progressBlock:^(NSInteger percentDone) {
+        NSLog(@"percentDone : %ld",percentDone);
+        self.progressView.hidden = NO;
+        self.progressView.progressValue = percentDone / 100.f;
+        if (percentDone == 100) {
+            self.progressView.hidden = YES;
+        }
+
+    }];
+}
+
+- (void)getUserInfoData {
+    self.userSite = [SNUserTool userInfo].userSite;
+    self.nickName = [SNUserTool userInfo].nickName;
+    self.describe = [SNUserTool userInfo].describe;
+}
+
 #pragma mark - TZImagePickerControllerDelegate
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
-    self.titleIMg.image  = photos.firstObject;
-    self.pickerImage = photos.firstObject;
-    [self.tableView reloadData];
+    
+    UIImage *pickerImage = [photos.firstObject imageByResizeToSize:CGSizeMake(100, 100)];
+    
+    self.titleIMg.image  = pickerImage;
+    
+    NSData *imageData = UIImagePNGRepresentation(pickerImage);
+    self.avatar = [AVFile fileWithName:@"avatar.png" data:imageData];
 }
 
 
@@ -60,19 +143,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [UITableViewCell new];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(indexPath.row == 0) {
         cell.textLabel.text = @"头像";
-        UIImageView *imageView = [[UIImageView alloc]initWithImage:self.pickerImage];
-        cell.accessoryView = imageView;
     }else if (indexPath.row == 1) {
         cell.textLabel.text = @"昵称";
+        cell.detailTextLabel.text = self.nickName;
     }else if (indexPath.row == 2) {
         cell.textLabel.text = @"个人网站";
+        cell.detailTextLabel.text = self.userSite;
     }else if (indexPath.row == 3) {
         cell.textLabel.text = @"描述";
+        cell.detailTextLabel.text = self.describe;
     }else if (indexPath.row == 4) {
         cell.textLabel.text = @"重置密码";
     }
@@ -92,10 +176,45 @@
         [self presentViewController:imagePickerVc animated:YES completion:nil];
     }else if (indexPath.row == 1) {
         
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"请输入昵称" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+            textField.placeholder = self.nickName;
+        }];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField *textfield = alertController.textFields.firstObject;
+            NSLog(@"textfield : %@",textfield.text);
+            self.nickName = textfield.text;
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+        [alertController addAction:okAction];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     }else if (indexPath.row == 2) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"请输入个人网站" preferredStyle:UIAlertControllerStyleAlert];
         
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+            textField.placeholder = self.userSite;
+        }];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField *textfield = alertController.textFields.firstObject;
+            NSLog(@"textfield : %@",textfield.text);
+            self.userSite = textfield.text;
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+        [alertController addAction:okAction];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     }else if (indexPath.row == 3) {
-        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNUserEditViewControllerID"];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 4) {
         
     }
@@ -106,7 +225,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     // 是scrollview的偏移量
     CGFloat updateY = scrollView.contentOffset.y ;
-    NSLog(@"%f",scrollView.contentOffset.y);
     
     //  随着scrollview 的滚动， 改变bounds
     CGRect bound = _titleIMg.bounds;
@@ -134,7 +252,7 @@
 - (UIImageView *)titleIMg{
     if(_titleIMg == nil){
         UIImageView * img = [[UIImageView alloc] init];
-        img.image = [UIImage imageNamed:@"SimpleNote"];
+        [img sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
         img.bounds = CGRectMake(0, 0, MaxIconWH, MaxIconWH);
         img.center = CGPointMake(SCREEN_WIDTH*0.5, MaxIconCenterY);
         img.contentMode = UIViewContentModeScaleAspectFill;
@@ -145,6 +263,17 @@
         _titleIMg = img;
     }
     return _titleIMg;
+}
+
+- (SNProgressView *)progressView {
+    if (!_progressView) {
+        _progressView = [SNProgressView viewWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, SCREEN_HEIGHT/2 -80, 80, 80) circlesSize:CGRectMake(30, 5, 30, 5)];
+        _progressView.layer.cornerRadius = 10;
+        _progressView.progressValue = 0.2;
+        _progressView.hidden = YES;
+        [self.view addSubview:_progressView];
+    }
+    return _progressView;
 }
 
 @end
