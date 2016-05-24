@@ -21,11 +21,22 @@
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
+
 
 #pragma mark - event response
 - (IBAction)loginBtnDidTouched:(UIButton *)sender {
+    
+    if ([NSString isBlankString:self.userNameTf.text]) {
+        kTipAlert(@"请输入用户名");
+        return;
+    }
+    if ([NSString isBlankString:self.passwordTf.text]) {
+        kTipAlert(@"请输入密码");
+        return;
+    }
+    
     [AVUser logInWithUsernameInBackground:self.userNameTf.text password:self.passwordTf.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
             NSLog(@"登录成功");
@@ -34,8 +45,13 @@
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
             [self presentViewController:vc animated:YES completion:nil];
         } else {
-            NSLog(@"登录失败- %@",error);
-            kTipAlert(@"用户名或密码错误");
+            NSLog(@"errorcode : %ld",error.code);
+            if (error.code == 210) {
+                kTipAlert(@"用户名和密码不匹配");
+            }
+            if (error.code == 211) {
+                kTipAlert(@"此用户不存在");
+            }
         }
     }];
     

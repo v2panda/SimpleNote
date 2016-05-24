@@ -17,6 +17,7 @@
     AVQuery *query = [AVQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:[AVUser currentUser].objectId block:^(AVObject *object, NSError *error) {
         model.userName = [object objectForKey:@"username"];
+        model.email = [object objectForKey:@"email"];
         model.nickName = [object objectForKey:@"nickName"];
         model.describe = [object objectForKey:@"describe"];
         model.userSite = [object objectForKey:@"userSite"];

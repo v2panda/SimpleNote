@@ -13,6 +13,7 @@
 #import "SNUserSettingController.h"
 #import "SNProgressView.h"
 #import "UIAlertController+PDAdd.h"
+#import "PDActivity.h"
 
 @interface SNSettingViewController ()<UITableViewDelegate,
 UITableViewDataSource>
@@ -30,9 +31,8 @@ UITableViewDataSource>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    [self followScrollView:self.tableView withDelay:20.0];
     [self getFileID];
 }
@@ -42,19 +42,17 @@ UITableViewDataSource>
     [self.tableView reloadData];
 }
 
+
 #pragma mark - event response
 
 - (void)getFileID {
-    __block NSString *fileId = @"";
     
     AVQuery *query = [AVQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:[AVUser currentUser].objectId block:^(AVObject *object, NSError *error) {
         NSLog(@"realmFileID : %@",[object objectForKey:@"realmFileID"]);
-        fileId = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
         self.fileID = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
         NSLog(@"self.fileID : %@",self.fileID);
     }];
-    NSLog(@"fileId - %@",fileId);
 
 }
 
@@ -159,6 +157,24 @@ UITableViewDataSource>
 
         }else if (indexPath.row == 2) {
             NSLog(@"分享App");
+            
+            NSString *textToShare = @"要分享内容title";
+            NSString *description = @"这是我的内容---------";
+            UIImage *imageToShare = [UIImage imageNamed:@"SimpleNote"];
+            NSURL *urlToShare = [NSURL URLWithString:@"http://www.v2panda.com/"];
+            NSArray *activityItems = @[textToShare, description,imageToShare, urlToShare];
+            
+            PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:@"http://www.v2panda.com/" atTitle:@"v2panda.com " atShareContentArray:activityItems];
+            NSArray *apps = @[act1];
+            //创建
+            UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:apps];
+            activityVC.excludedActivityTypes = @[UIActivityTypePrint,
+                                                 UIActivityTypeAddToReadingList,
+                                                 UIActivityTypePostToFlickr,
+                                                 UIActivityTypePostToVimeo,
+                                                 UIActivityTypeAirDrop];
+            [self presentViewController:activityVC animated:YES completion:nil];
+            
         }else if (indexPath.row == 3) {
             NSLog(@"意见反馈");
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -181,6 +197,9 @@ UITableViewDataSource>
 
 #pragma mark - privatemethod
 - (void)uploadToCloud {
+    self.progressView.hidden = NO;
+    self.view.userInteractionEnabled = NO;
+    
     if(![NSString isBlankString:self.fileID]) {
         [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -191,7 +210,7 @@ UITableViewDataSource>
     
     NSLog(@"upload default.realm to leancloud");
     NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.relativePath;
-    AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"SimpleNote%@",[AVUser currentUser].objectId] contentsAtPath: realmPath];
+    AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@",[AVUser currentUser].username] contentsAtPath: realmPath];
     
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"file.url : %@",file.url);//返回一个唯一的 Url 地址
@@ -201,21 +220,24 @@ UITableViewDataSource>
         self.fileID = file.objectId;
     } progressBlock:^(NSInteger percentDone) {
         NSLog(@"percentDone : %ld",percentDone);
-        self.progressView.hidden = NO;
         self.progressView.progressValue = percentDone / 100.f;
         if (percentDone == 100) {
             self.progressView.hidden = YES;
+            self.view.userInteractionEnabled = YES;
         }
     }];
 }
 
 - (void)downloadFromCloud {
+    
     NSLog(@"downl default.realm from leancloud");
     
-    if([NSString isBlankString:self.fileID]) {
+    if(self.fileID.length < 8) {
         kTipAlert(@"无远端笔记");
+        return;
     }
-    
+    self.progressView.hidden = NO;
+    self.view.userInteractionEnabled = NO;
     //第一步先得到文件实例, 其中会包含文件的地址
     [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
         //文件实例获取成功可以再进一步获取文件内容
@@ -272,7 +294,6 @@ UITableViewDataSource>
             }
         } progressBlock:^(NSInteger percentDone) {
             NSLog(@"percentDone : %ld",percentDone);
-            self.progressView.hidden = NO;
             self.progressView.progressValue = percentDone / 100.f;
             if (percentDone == 100) {
                 self.progressView.hidden = YES;

@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy) NSString *userName;
 
+@property (nonatomic, copy) NSString *email;
+
 @property (nonatomic, copy) NSString *nickName;
 
 @property (nonatomic, copy) NSString *describe;
@@ -21,5 +23,7 @@
 @property (nonatomic, copy) NSString *realmFileID;
 
 @property (nonatomic, copy) NSString *avatarUrl;
+
+@property (nonatomic, copy) NSString *avatarObjID;
 
 @end

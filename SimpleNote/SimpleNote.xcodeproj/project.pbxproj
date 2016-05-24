@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2809D10D1CF42C5C004BF73B /* RegisterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */; };
+		2809D1171CF451E0004BF73B /* PDActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2809D1161CF451E0004BF73B /* PDActivity.m */; };
 		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
 		2829202F1CEEAAD300512F8F /* SNProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2829202E1CEEAAD300512F8F /* SNProgressView.m */; };
 		282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */; };
@@ -58,6 +60,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2809D10B1CF42C5C004BF73B /* RegisterDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDetailViewController.h; sourceTree = "<group>"; };
+		2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDetailViewController.m; sourceTree = "<group>"; };
+		2809D1151CF451E0004BF73B /* PDActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDActivity.h; sourceTree = "<group>"; };
+		2809D1161CF451E0004BF73B /* PDActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDActivity.m; sourceTree = "<group>"; };
 		2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicNavigationController.h; sourceTree = "<group>"; };
 		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
 		2829202D1CEEAAD300512F8F /* SNProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressView.h; sourceTree = "<group>"; };
@@ -375,6 +381,8 @@
 				2833D8DE1CED997900485FE1 /* CurrentUserCell.xib */,
 				2829202D1CEEAAD300512F8F /* SNProgressView.h */,
 				2829202E1CEEAAD300512F8F /* SNProgressView.m */,
+				2809D1151CF451E0004BF73B /* PDActivity.h */,
+				2809D1161CF451E0004BF73B /* PDActivity.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,6 +417,8 @@
 				7CA44B431CE213E30010098E /* LoginViewController.m */,
 				7CA44B451CE213EF0010098E /* RegisterViewController.h */,
 				7CA44B461CE213EF0010098E /* RegisterViewController.m */,
+				2809D10B1CF42C5C004BF73B /* RegisterDetailViewController.h */,
+				2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -563,6 +573,7 @@
 				28328B1E1CB63EBB0003A612 /* NoteModel.m in Sources */,
 				2854B46C1CF2D91200C5A88D /* SNUserTool.m in Sources */,
 				2853D70A1CB0F284008FB392 /* NoteBookDefaultCell.m in Sources */,
+				2809D1171CF451E0004BF73B /* PDActivity.m in Sources */,
 				7CD961B31CB6964800D16398 /* EditNoteViewController.m in Sources */,
 				282AC6641CBB9E72002F9A49 /* UIImage+PDAdd.m in Sources */,
 				2853D7141CB108E6008FB392 /* NoteCoverModel.m in Sources */,
@@ -574,6 +585,7 @@
 				284C54621CAE0E98006EDCB8 /* UIView+Frame.m in Sources */,
 				2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */,
 				284C546B1CAE2572006EDCB8 /* NoteBookModel.m in Sources */,
+				2809D10D1CF42C5C004BF73B /* RegisterDetailViewController.m in Sources */,
 				2833D8DF1CED997900485FE1 /* CurrentUserCell.m in Sources */,
 				2853D7001CB0C490008FB392 /* EditNoteBookViewController.m in Sources */,
 				28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */,

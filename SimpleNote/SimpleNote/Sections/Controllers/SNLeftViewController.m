@@ -44,13 +44,17 @@ TZImagePickerControllerDelegate>
     self.isEditing = YES;
     self.avataImageView.layer.cornerRadius = self.avataImageView.width / 2;
     self.avataImageView.layer.masksToBounds = YES;
-    
-    if ([AVUser currentUser]) {
-        self.topLabel.text = [AVUser currentUser].username;
-    }
-    
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDownInfo) name:kDownLoadAllNote object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([AVUser currentUser]) {
+        self.topLabel.text = [SNUserTool userInfo].nickName;
+        [self.avataImageView sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
+    }
 }
 
 
@@ -84,8 +88,6 @@ TZImagePickerControllerDelegate>
 }
 
 - (void)getDownInfo {
-//    self.notebooksArray = [SNRealmHelper readAllNoteBooks].mutableCopy;
-//    [self.noteCollectionView reloadData];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     [delegate reLaunching];

@@ -11,6 +11,7 @@
 
 
 @interface SNFeedbackController ()
+
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
@@ -32,6 +33,13 @@
     NSLog(@"存储信息");
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"感谢您的反馈！" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
         dispatch_after(0.2, dispatch_get_main_queue(), ^{
+            
+            AVObject *feedback = [[AVObject alloc] initWithClassName:@"SNFeedbackData"];// 构建对象
+            [feedback setObject:[AVUser currentUser].username forKey:@"name"];// 设置名称
+            [feedback setObject:self.textView.text forKey:@"feedback"];
+            [feedback setObject:@1 forKey:@"priority"];// 设置优先级
+            [feedback saveInBackground];// 保存到服务端
+            
             [self.navigationController popViewControllerAnimated:YES];
         });
     } cancelActionShow:NO];

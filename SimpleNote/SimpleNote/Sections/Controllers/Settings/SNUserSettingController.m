@@ -15,9 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView * titleIMg;
 @property (nonatomic, strong) SNProgressView *progressView;
+
 
 @property (nonatomic, copy) NSString *nickName;
 @property (nonatomic, copy) NSString *userSite;
@@ -39,7 +40,6 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.nameLabel.text = [SNUserTool userInfo].nickName;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(userInfoSaved)];
     
 }
@@ -63,6 +63,7 @@
     if (self.avatar) {
         [self uploadToCloud];
     }
+    
     if (![self.nickName isEqualToString:[SNUserTool userInfo].nickName]) {
         [[AVUser currentUser] setObject:self.nickName forKey:@"nickName"];
         [[AVUser currentUser] saveInBackground];
@@ -84,18 +85,20 @@
         model.describe = self.describe;
         [SNUserTool saveUserInfo:model];
     }
-
+    
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)uploadToCloud {
-//    if(![NSString isBlankString:self.fileID]) {
-//        [AVFile getFileWithObjectId:self.fileID withBlock:^(AVFile *file, NSError *error) {
-//            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                NSLog(@"删除成功");
-//            }];;
-//        }];
-//    }
+    
+    if(![NSString isBlankString:[SNUserTool userInfo].avatarObjID]) {
+        [AVFile getFileWithObjectId:[SNUserTool userInfo].avatarObjID withBlock:^(AVFile *file, NSError *error) {
+            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"删除头像成功");
+            }];;
+        }];
+    }
     
     [self.avatar saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"file.url : %@",self.avatar.url);//返回一个唯一的 Url 地址
@@ -105,6 +108,7 @@
         
         SNUserModel *model = [SNUserTool userInfo];
         model.avatarUrl = self.avatar.url;
+        model.avatarObjID = self.avatar.objectId;
         [SNUserTool saveUserInfo:model];
   
     } progressBlock:^(NSInteger percentDone) {
@@ -114,11 +118,13 @@
         if (percentDone == 100) {
             self.progressView.hidden = YES;
         }
-
+        
     }];
 }
 
 - (void)getUserInfoData {
+    self.nameLabel.text = [SNUserTool userInfo].nickName;
+    self.descriptionLabel.text = [SNUserTool userInfo].describe;
     self.userSite = [SNUserTool userInfo].userSite;
     self.nickName = [SNUserTool userInfo].nickName;
     self.describe = [SNUserTool userInfo].describe;
@@ -127,19 +133,20 @@
 #pragma mark - TZImagePickerControllerDelegate
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
     
-    UIImage *pickerImage = [photos.firstObject imageByResizeToSize:CGSizeMake(100, 100)];
+    UIImage *pickerImage = [photos.firstObject imageByResizeToSize:CGSizeMake(75, 75)];
     
     self.titleIMg.image  = pickerImage;
     
     NSData *imageData = UIImagePNGRepresentation(pickerImage);
-    self.avatar = [AVFile fileWithName:@"avatar.png" data:imageData];
+    
+    self.avatar = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",[AVUser currentUser].username] data:imageData];
 }
 
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,9 +162,14 @@
         cell.textLabel.text = @"个人网站";
         cell.detailTextLabel.text = self.userSite;
     }else if (indexPath.row == 3) {
-        cell.textLabel.text = @"描述";
+        cell.textLabel.text = @"个人简介";
         cell.detailTextLabel.text = self.describe;
     }else if (indexPath.row == 4) {
+        cell.textLabel.text = @"绑定邮箱";
+        if ([SNUserTool userInfo].email) {
+            cell.detailTextLabel.text = [SNUserTool userInfo].email;
+        }
+    }else if (indexPath.row == 5) {
         cell.textLabel.text = @"重置密码";
     }
     
@@ -216,7 +228,16 @@
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNUserEditViewControllerID"];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 4) {
-        
+        NSString *email = [SNUserTool userInfo].email;
+        kTipAlert(@"邮箱:%@",email);
+    }else if (indexPath.row == 5) {
+        [AVUser requestPasswordResetForEmailInBackground:[SNUserTool userInfo].email block:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                kTipAlert(@"已向注册邮箱发送重置邮件，注意查收！");
+            } else {
+                NSLog(@"errorcode : %ld",error.code);
+            }
+        }];
     }
 
 }

@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"描述";
+    self.title = @"个人简介";
     
     self.textView.layer.cornerRadius = 5;
     self.textView.layer.masksToBounds = YES;

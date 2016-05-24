@@ -10,4 +10,8 @@
 
 @interface NSString (PDAdd)
 + (BOOL) isBlankString:(NSString *)string;
+
+- (BOOL)isValidEmail;
+
+- (BOOL)isPwd;
 @end

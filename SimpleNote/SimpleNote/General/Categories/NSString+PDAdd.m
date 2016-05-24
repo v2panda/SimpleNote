@@ -21,4 +21,18 @@
     }
     return NO;
 }
+
+- (BOOL)isValidEmail
+{
+    NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTestPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [emailTestPredicate evaluateWithObject:self];
+}
+
+- (BOOL)isPwd
+{
+    NSString *regex = @"^[\\@A-Za-z0-9\\!\\#\\$\\%\\^\\&\\*\\.\\~]{6,20}$";
+    NSPredicate *emailTestPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [emailTestPredicate evaluateWithObject:self];
+}
 @end
