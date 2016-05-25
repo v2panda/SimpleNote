@@ -33,15 +33,14 @@ UITableViewDataSource>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.isDown = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    [self followScrollView:self.tableView withDelay:20.0];
     [self getFileID];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.isDown = NO;
+    
     [self.tableView reloadData];
 }
 
@@ -63,6 +62,7 @@ UITableViewDataSource>
 - (IBAction)backItemDidTouched:(UIBarButtonItem *)sender {
     if (self.isDown) {
         [[NSNotificationCenter defaultCenter]postNotificationName:kDownLoadAllNote object:nil];
+        self.isDown = NO;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -164,10 +164,10 @@ UITableViewDataSource>
         }else if (indexPath.row == 2) {
             NSLog(@"分享App");
             
-            NSString *textToShare = @"要分享内容title";
-            NSString *description = @"这是我的内容---------";
+            NSString *textToShare = @"至简笔记";
+            NSString *description = @"欢迎使用至简笔记，请到AppStore下载使用~";
             UIImage *imageToShare = [UIImage imageNamed:@"SimpleNote"];
-            NSURL *urlToShare = [NSURL URLWithString:@"http://www.v2panda.com/"];
+            NSURL *urlToShare = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/zhi-jian-bi-ji/id977539643?mt=8"];
             NSArray *activityItems = @[textToShare, description,imageToShare, urlToShare];
             
             PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:@"http://www.v2panda.com/" atTitle:@"v2panda.com" atShareContentArray:activityItems];
@@ -192,6 +192,7 @@ UITableViewDataSource>
     }else if (indexPath.section == 2) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出当前账户" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
             [AVUser logOut];
+            [SNUserTool logOut];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
             [self presentViewController:vc animated:YES completion:nil];

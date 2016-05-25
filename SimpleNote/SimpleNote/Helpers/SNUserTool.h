@@ -16,4 +16,6 @@
 + (BOOL)saveUserInfo:(SNUserModel *)userInfo;
 
 + (SNUserModel *)userInfo;
+
++ (void)logOut;
 @end

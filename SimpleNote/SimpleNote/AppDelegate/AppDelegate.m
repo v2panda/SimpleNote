@@ -10,12 +10,10 @@
 #import "SNRealmHelper.h"
 #import "NoteBookModel.h"
 
-
-
 @interface AppDelegate ()
 
 @end
-static char pdListenTabbarViewMove[] = "listenTabViewMove";
+
 @implementation AppDelegate
 
 
@@ -23,6 +21,7 @@ static char pdListenTabbarViewMove[] = "listenTabViewMove";
     [self reLaunching];
     return YES;
 }
+
 - (void)reLaunching {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -50,27 +49,11 @@ static char pdListenTabbarViewMove[] = "listenTabViewMove";
         self.window.rootViewController = vc;
     }
     
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.screenshotView = [[PDScreenShotView alloc] initWithFrame:CGRectMake(0, 0, self.window.frame.size.width, self.window.frame.size.height)];
-    [self.window insertSubview:_screenshotView atIndex:0];
-    
-    [self.window.rootViewController.view addObserver:self forKeyPath:@"transform" options:NSKeyValueObservingOptionNew context:pdListenTabbarViewMove];
-    
-    self.screenshotView.hidden = YES;
-    
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == pdListenTabbarViewMove)
-    {
-        NSValue *value  = [change objectForKey:NSKeyValueChangeNewKey];
-        CGAffineTransform newTransform = [value CGAffineTransformValue];
-        [self.screenshotView showEffectChange:CGPointMake(newTransform.tx, 0) ];
-    }
-}
+
 - (void)InitFileIfNeeded {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -81,8 +64,8 @@ static char pdListenTabbarViewMove[] = "listenTabViewMove";
         model.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
         model.noteBookID = [CreateNoteBookID getNoteBookID];
         
-        [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [userDefaults setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+        [userDefaults synchronize];
         
         [SNRealmHelper addNewNoteBook:model];
 

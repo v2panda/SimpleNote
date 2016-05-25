@@ -31,7 +31,6 @@ static CGFloat const kLeftPadding = 60.0;
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SNLeftVCSBID"];
     self.delegate = self;
     
-    
 }
 
 #pragma mark RESideMenuDelegate

@@ -51,4 +51,16 @@
     return userInfo;
 }
 
++ (void)logOut
+{
+    // 获取doc的目录
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 拼接保存的路径
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"OAuth.data"];
+    
+    //删除路径。data文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:filePath error:nil];
+}
+
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -730,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="2873" y="1098"/>
         </scene>
-        <!--Screen Shot Nav Controller-->
+        <!--Basic Navigation Controller-->
         <scene sceneID="rNJ-lj-ast">
             <objects>
-                <navigationController storyboardIdentifier="SettingNAID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ygl-DI-Au5" customClass="PDScreenShotNavController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingNAID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ygl-DI-Au5" customClass="SNBasicNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vou-ha-Dg8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

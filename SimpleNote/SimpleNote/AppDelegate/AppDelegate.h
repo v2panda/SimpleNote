@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDScreenShotView.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) PDScreenShotView *screenshotView;
+
 - (void)reLaunching;
 @end
 
