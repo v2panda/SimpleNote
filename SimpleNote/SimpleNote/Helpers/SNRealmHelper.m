@@ -131,6 +131,16 @@
     
 }
 
++ (void)deleteAllObjects {
+    @autoreleasepool {
+    // 从 Realm 中删除所有数据
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm deleteAllObjects];
+    [realm commitWriteTransaction];
+    }
+}
+
 + (NSMutableArray *)readAllNoteBooks {
     RLMResults *result = [NoteBookModel allObjects];
     NSMutableArray *notes = [@[] mutableCopy];

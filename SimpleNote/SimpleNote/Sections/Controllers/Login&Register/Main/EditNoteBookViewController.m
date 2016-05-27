@@ -82,7 +82,9 @@ TZImagePickerControllerDelegate>
         NoteBookDefaultCell *cell = [NoteBookDefaultCell cellWithTableView:tableView];
         NoteBookModel *model = self.noteBookModel;
         cell.backNoteTitle = ^(NSString *title) {
-            model.noteBookTitle = title;
+            [SNRealmHelper updateDataInRealm:^{
+                model.noteBookTitle = title;
+            }];
         };
         cell.model = self.noteBookModel;
         return cell;

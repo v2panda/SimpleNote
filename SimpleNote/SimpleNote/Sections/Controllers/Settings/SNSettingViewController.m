@@ -186,13 +186,10 @@ UITableViewDataSource>
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNFeedbackControllerID"];
             [self.navigationController pushViewController:vc animated:YES];
-        }else if (indexPath.row == 4) {
-            NSLog(@"给App评分");
         }
     }else if (indexPath.section == 2) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定退出当前账户" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
-            [AVUser logOut];
-            [SNUserTool logOut];
+            [self logoutAndDeleteObjects];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
             [self presentViewController:vc animated:YES completion:nil];
@@ -203,6 +200,21 @@ UITableViewDataSource>
 
 
 #pragma mark - privatemethod
+
+- (void)logoutAndDeleteObjects {
+    [AVUser logOut];
+    [SNUserTool logOut];
+    [SNRealmHelper deleteAllObjects];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NoteBookModel *model = [NoteBookModel new];
+    model.noteBookTitle = @"默认标题";
+    model.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
+    model.noteBookID = [CreateNoteBookID getNoteBookID];
+    [userDefaults setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+    [userDefaults synchronize];
+    [SNRealmHelper addNewNoteBook:model];
+}
+
 - (void)uploadToCloud {
     self.progressView.hidden = NO;
     self.view.userInteractionEnabled = NO;

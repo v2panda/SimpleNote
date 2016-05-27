@@ -174,12 +174,10 @@
     }
     
     return cell;
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"indexPath : %ld",indexPath.row);
     if(indexPath.row == 0) {
         TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
         imagePickerVc.navigationBar.barTintColor = SNColor(117, 106, 102);
@@ -231,13 +229,17 @@
         NSString *email = [SNUserTool userInfo].email;
         kTipAlert(@"邮箱:%@",email);
     }else if (indexPath.row == 5) {
-        [AVUser requestPasswordResetForEmailInBackground:[SNUserTool userInfo].email block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                kTipAlert(@"已向注册邮箱发送重置邮件，注意查收！");
-            } else {
-                NSLog(@"errorcode : %ld",error.code);
-            }
-        }];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"向注册邮箱发送重置邮件" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
+            [AVUser requestPasswordResetForEmailInBackground:[SNUserTool userInfo].email block:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    kTipAlert(@"已向注册邮箱发送重置邮件，注意查收！");
+                } else {
+                    NSLog(@"errorcode : %ld",error.code);
+                }
+            }];
+        } cancelActionShow:YES];
+        [self presentViewController:alertController animated:YES completion:nil];
+       
     }
 
 }

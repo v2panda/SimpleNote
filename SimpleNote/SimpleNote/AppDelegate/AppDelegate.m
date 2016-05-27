@@ -57,7 +57,7 @@
 - (void)InitFileIfNeeded {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (![userDefaults objectForKey:@"FileIfNeeded"]) {
+    if (!(BOOL)[userDefaults objectForKey:@"FileIfNeeded"]) {
         
         NoteBookModel *model = [NoteBookModel new];
         model.noteBookTitle = @"默认标题";

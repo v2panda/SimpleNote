@@ -33,6 +33,8 @@
 
 + (void)deleteNote:(NoteModel *)note;
 
++ (void)deleteAllObjects;
+
 + (NSMutableArray *)readAllNoteBooks;
 
 + (NSMutableArray *)readAllNotesFromNotebook;
