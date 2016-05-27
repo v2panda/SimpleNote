@@ -1,6 +1,7 @@
 platform :ios, "8.0"
 inhibit_all_warnings!
 
+target 'SimpleNote' do
 pod 'RESideMenu', '~> 4.0.7'
 pod 'TZImagePickerController'
 pod "YYText"
@@ -9,3 +10,4 @@ pod 'AVOSCloud'               # 数据存储、短信、云引擎调用等基础
 pod 'AVOSCloudCrashReporting' # 错误报告模块
 pod 'SDWebImage'
 pod 'IQKeyboardManager'
+end
