@@ -39,9 +39,6 @@ EditNoteEndedDelegate>
 #pragma mark - lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SNUserModel *model = [SNUserTool userInfo];
-    NSLog(@"userName - %@",model.userName);
-    NSLog(@"%@",[SNRealmHelper getLocalPath]);
     self.notesTableView.tableFooterView = [UIView new];
     [self.notesTableView registerNib:[UINib nibWithNibName:@"SNNoteCell" bundle:nil] forCellReuseIdentifier:@"SNNoteCellID"];
 }
@@ -110,7 +107,6 @@ CGFloat oldY = 0;
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        NSLog(@"Delete");
         
         if (self.dataArray.count == 1) {
             kTipAlert(@"删除笔记失败，不能删除唯一的笔记");

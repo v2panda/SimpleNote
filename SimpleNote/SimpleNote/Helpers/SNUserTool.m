@@ -14,17 +14,16 @@
     
     SNUserModel *model = [SNUserModel new];
     
-    AVQuery *query = [AVQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:[AVUser currentUser].objectId block:^(AVObject *object, NSError *error) {
-        model.userName = [object objectForKey:@"username"];
-        model.email = [object objectForKey:@"email"];
-        model.nickName = [object objectForKey:@"nickName"];
-        model.describe = [object objectForKey:@"describe"];
-        model.userSite = [object objectForKey:@"userSite"];
-        model.realmFileID = [object objectForKey:@"realmFileID"];
-        model.avatarUrl = [object objectForKey:@"avatar"];
-        [SNUserTool saveUserInfo:model];
-    }];
+    AVUser * currentUser = [AVUser currentUser];
+    model.userName = currentUser.username;
+    model.email = [currentUser objectForKey:@"email"];
+    model.nickName = [currentUser objectForKey:@"nickName"];
+    model.describe = [currentUser objectForKey:@"describe"];
+    model.userSite = [currentUser objectForKey:@"userSite"];
+    model.realmFileID = [currentUser objectForKey:@"realmFileID"];
+    model.avatarUrl = [currentUser objectForKey:@"avatar"];
+    [SNUserTool saveUserInfo:model];
+    
 }
 
 + (BOOL)saveUserInfo:(SNUserModel *)userInfo

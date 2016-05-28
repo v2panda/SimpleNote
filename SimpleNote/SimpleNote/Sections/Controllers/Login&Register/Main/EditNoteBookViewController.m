@@ -59,14 +59,11 @@ TZImagePickerControllerDelegate>
 }
 
 - (IBAction)saveBtnDidTouched:(UIBarButtonItem *)sender {
-    NSLog(@"Save & Add");
-    
     [[NSNotificationCenter defaultCenter]postNotificationName:kNoteBookAddedSaved object:self.noteBookModel];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backBtnDidTouched:(UIBarButtonItem *)sender {
-    NSLog(@"Back");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

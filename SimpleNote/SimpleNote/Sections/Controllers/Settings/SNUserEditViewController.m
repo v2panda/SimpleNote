@@ -29,7 +29,6 @@
 }
 
 - (void)userInfoSaved {
-    NSLog(@"存储信息");
     
     [[AVUser currentUser] setObject:self.textView.text forKey:@"describe"];
     [[AVUser currentUser] saveInBackground];

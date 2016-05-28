@@ -51,9 +51,7 @@ UITableViewDataSource>
     
     AVQuery *query = [AVQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:[AVUser currentUser].objectId block:^(AVObject *object, NSError *error) {
-        NSLog(@"realmFileID : %@",[object objectForKey:@"realmFileID"]);
         self.fileID = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
-        NSLog(@"self.fileID : %@",self.fileID);
     }];
 
 }
@@ -140,9 +138,7 @@ UITableViewDataSource>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击了第%ld行",indexPath.row);
     if (indexPath.section == 0) {
-        NSLog(@"个人资料");
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNUserSettingControllerID"];
         [self.navigationController pushViewController:vc animated:YES];
@@ -162,7 +158,6 @@ UITableViewDataSource>
             [self presentViewController:alertController animated:YES completion:nil];
 
         }else if (indexPath.row == 2) {
-            NSLog(@"分享App");
             
             NSString *textToShare = @"至简笔记";
             NSString *description = @"欢迎使用至简笔记，请到AppStore下载使用~";
@@ -182,7 +177,6 @@ UITableViewDataSource>
             [self presentViewController:activityVC animated:YES completion:nil];
             
         }else if (indexPath.row == 3) {
-            NSLog(@"意见反馈");
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNFeedbackControllerID"];
             [self.navigationController pushViewController:vc animated:YES];
@@ -227,13 +221,10 @@ UITableViewDataSource>
         }];
     }
     
-    NSLog(@"upload default.realm to leancloud");
     NSString *realmPath = [RLMRealmConfiguration defaultConfiguration].fileURL.relativePath;
     AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@",[AVUser currentUser].username] contentsAtPath: realmPath];
     
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"file.url : %@",file.url);//返回一个唯一的 Url 地址
-        NSLog(@"objectId : %@",file.objectId);
         [[AVUser currentUser] setObject:file.objectId forKey:@"realmFileID"];
         [[AVUser currentUser] saveInBackground];
         self.fileID = file.objectId;
@@ -249,8 +240,6 @@ UITableViewDataSource>
 }
 
 - (void)downloadFromCloud {
-    
-    NSLog(@"downl default.realm from leancloud");
     
     if(self.fileID.length < 8) {
         kTipAlert(@"无远端笔记");

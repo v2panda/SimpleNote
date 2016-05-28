@@ -58,7 +58,6 @@
 #pragma mark - event response
 
 - (void)userInfoSaved {
-    NSLog(@"存储信息");
     
     if (self.avatar) {
         [self uploadToCloud];
@@ -101,8 +100,6 @@
     }
     
     [self.avatar saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"file.url : %@",self.avatar.url);//返回一个唯一的 Url 地址
-        NSLog(@"objectId : %@",self.avatar.objectId);
         [[AVUser currentUser] setObject:self.avatar.url forKey:@"avatar"];
         [[AVUser currentUser] saveInBackground];
         

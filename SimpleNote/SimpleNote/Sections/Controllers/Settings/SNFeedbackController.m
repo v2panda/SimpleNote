@@ -30,7 +30,6 @@
 }
 
 - (void)feedbackUpload {
-    NSLog(@"存储信息");
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"感谢您的反馈！" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
         dispatch_after(0.2, dispatch_get_main_queue(), ^{
             

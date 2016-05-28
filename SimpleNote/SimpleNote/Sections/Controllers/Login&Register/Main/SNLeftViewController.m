@@ -49,6 +49,7 @@ NoteBookViewCellBtnDelegate>
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     if ([AVUser currentUser]) {
         self.topLabel.text = [SNUserTool userInfo].nickName;
         [self.avataImageView sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
@@ -92,7 +93,6 @@ NoteBookViewCellBtnDelegate>
 }
 
 - (IBAction)settingButtonDidTouched:(UIButton *)sender {
-    NSLog(@"settingButtonDidTouched");
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingNAID"];
@@ -135,7 +135,6 @@ NoteBookViewCellBtnDelegate>
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didSelectItemAtIndexPath - %@",@(indexPath.row));
     
     NoteBookModel *model = self.notebooksArray[indexPath.row];
     [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
@@ -160,7 +159,6 @@ NoteBookViewCellBtnDelegate>
 #pragma mark - NoteBookViewCellBtnDelegate
 
 - (void)noteEditBtnTouched:(NSInteger)noteBookID {
-    NSLog(@"Edit");
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"NAID"];
@@ -171,7 +169,6 @@ NoteBookViewCellBtnDelegate>
 }
 
 - (void)noteDeleteBtnTouched:(NSInteger)noteBookID {
-    NSLog(@"Delete");
     
     if (self.notebooksArray.count == 1) {
         kTipAlert(@"删除笔记本失败，不能删除正在使用的笔记本");

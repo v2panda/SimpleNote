@@ -35,7 +35,6 @@
         self.titleLabelConstraint.priority = 999;
     }
     
-    NSLog(@"model.noteID : %@",model.noteID);
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
