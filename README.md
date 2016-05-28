@@ -1,28 +1,51 @@
-#SimpleNote
-##至简笔记
----
-###关于
-SimpleNote for iOS
+##SimpleNote 2.0
+
+This is a SimpleNote App.
+
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/v2panda/SimpleNote)
+[![](https://img.shields.io/badge/done-50%-green.svg?style=flat)](https://github.com/v2panda/SimpleNote)
+<br/>
+
+##ScreenShoot
+![ScreenShoot](http://7xnmlk.com1.z0.glb.clouddn.com/QQ20160528-0.png)
+
+##Download
+<a target='_blank' href='https://itunes.apple.com/cn/app/zhi-jian-bi-ji/id977539643?mt=8'>
+<img src='http://ww2.sinaimg.cn/large/0060lm7Tgw1f1hgrs1ebwj308102q0sp.jpg' width='144' height='49' />
+</a>
+
+##How to build
+1)  Clone the repository
+
+```
+$ git clone https://github.com/v2panda/SimpleNote.git
+```
+
+2) Cd SimpleNote 
+
+```
+pod install
+```
+
+3) Open the workspace in Xcode
+
+```
+$ open "SimpleNote.xcworkspace"
+```
+
+3) Compile and run the app in your simulator or iOS device
+
+##Requirements
+* Xcode 7.3+
+* iOS8+
 
 
-###下载
+##LICENSE
+MIT © [v2panda](http://github.com/v2panda)
 
-https://itunes.apple.com/us/app/zhi-jian-bi-ji/id977539643?l=zh&ls=1&mt=8
+## Details
 
-###截图
-![ScreenShoot 1](https://raw.githubusercontent.com/xuzhen2014/edocs/master/images-folder/CCDD56A5-6218-4294-A95E-1FF01492838A.png)
-
-###LICENSE
-MIT 被许可在 MIT 协议下使用。查阅 LICENSE 文件来获得更多信息。
-
-###CONTACT
-Mail:pdxz@icloud.com
-Weibo:[panda](http://weibo.com/xzlovepanda/home?topnav=1&wvr=6)
-
-###祝你好运
-请记得给我反馈。如果您发现了什么 bug ，请直接指出，如果还能附带一个 pull request 修正的话，那真的感激万分！
-
-如果您觉得这个开源项目还不错的话，欢迎加颗星星或者 follow 我一下以示支持，这将对我和我的项目的发展提供不可估量的帮助。再次感谢。
+[http://v2panda.com/2016/05/28/simplenote](http://v2panda.com/2016/05/28/simplenote/)
 
 
 
