@@ -45,6 +45,10 @@ NoteBookViewCellBtnDelegate>
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveNoteBookModel:) name:kNoteBookAddedSaved object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDownInfo) name:kDownLoadAllNote object:nil];
+    
+    // Pass data to the Widget
+    NSUserDefaults* userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.simplenote.v2panda"];
+    [userDefault setObject:@(self.notebooksArray.count).stringValue forKey:@"group.simplenote.v2panda.allNotebooks"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

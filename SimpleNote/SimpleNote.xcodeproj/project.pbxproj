@@ -46,12 +46,40 @@
 		2866CE381CACF83F00518F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2866CE361CACF83F00518F16 /* LaunchScreen.storyboard */; };
 		28DB7A951CC476E700BB01B0 /* SNRealmHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */; };
 		2B8A95566534BB06FD5B44EF /* libPods-SimpleNote.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E39BF66240EAE0C57DCD713C /* libPods-SimpleNote.a */; };
+		7C660BD31D007BF0000E459E /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C660BD21D007BF0000E459E /* NotificationCenter.framework */; };
+		7C660BD71D007BF0000E459E /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C660BD61D007BF0000E459E /* TodayViewController.m */; };
+		7C660BDA1D007BF0000E459E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C660BD81D007BF0000E459E /* MainInterface.storyboard */; };
+		7C660BDE1D007BF0000E459E /* NoteWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7C660BD11D007BF0000E459E /* NoteWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */; };
 		7CA44B441CE213E30010098E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B431CE213E30010098E /* LoginViewController.m */; };
 		7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B461CE213EF0010098E /* RegisterViewController.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7C660BDC1D007BF0000E459E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2866CE1D1CACF83F00518F16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C660BD01D007BF0000E459E;
+			remoteInfo = NoteWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C660BE21D007BF0000E459E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7C660BDE1D007BF0000E459E /* NoteWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		14041A1DC40F3F80BFD5E21D /* Pods-SimpleNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleNote/Pods-SimpleNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +156,13 @@
 		2866CE621CAD16B700518F16 /* SimpleNoteHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNoteHeader.pch; sourceTree = "<group>"; };
 		28DB7A931CC476E700BB01B0 /* SNRealmHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRealmHelper.h; sourceTree = "<group>"; };
 		28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRealmHelper.m; sourceTree = "<group>"; };
+		7C660BD11D007BF0000E459E /* NoteWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NoteWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C660BD21D007BF0000E459E /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7C660BD51D007BF0000E459E /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		7C660BD61D007BF0000E459E /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		7C660BD91D007BF0000E459E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7C660BDB1D007BF0000E459E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C660BE31D008977000E459E /* SimpleNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = SimpleNote.entitlements; path = ../SimpleNote.entitlements; sourceTree = "<group>"; };
 		7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Login&Register.storyboard"; path = "../Sections/Controllers/Login&Register/Login&Register.storyboard"; sourceTree = "<group>"; };
 		7CA44B421CE213E30010098E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7CA44B431CE213E30010098E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -147,6 +182,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8A95566534BB06FD5B44EF /* libPods-SimpleNote.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C660BCE1D007BF0000E459E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C660BD31D007BF0000E459E /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2866CE271CACF83F00518F16 /* SimpleNote */,
+				7C660BD41D007BF0000E459E /* NoteWidget */,
 				2866CE261CACF83F00518F16 /* Products */,
 				B44564D26EC8819B4B45CF2B /* Pods */,
 				80310ADF8390A8ED162C473A /* Frameworks */,
@@ -228,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				2866CE251CACF83F00518F16 /* SimpleNote.app */,
+				7C660BD11D007BF0000E459E /* NoteWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,6 +341,7 @@
 		2866CE431CACF8D900518F16 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C660BE31D008977000E459E /* SimpleNote.entitlements */,
 				2866CE341CACF83F00518F16 /* Assets.xcassets */,
 				2866CE391CACF83F00518F16 /* Info.plist */,
 				7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */,
@@ -375,6 +421,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7C660BD41D007BF0000E459E /* NoteWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7C660BD51D007BF0000E459E /* TodayViewController.h */,
+				7C660BD61D007BF0000E459E /* TodayViewController.m */,
+				7C660BD81D007BF0000E459E /* MainInterface.storyboard */,
+				7C660BDB1D007BF0000E459E /* Info.plist */,
+			);
+			path = NoteWidget;
+			sourceTree = "<group>";
+		};
 		7CA44B3F1CDDDECC0010098E /* Login&Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				E39BF66240EAE0C57DCD713C /* libPods-SimpleNote.a */,
+				7C660BD21D007BF0000E459E /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -419,15 +477,34 @@
 				ACD4EF64838D0A3627EC1390 /* 📦 Embed Pods Frameworks */,
 				C50BB28E2E236D544C412E17 /* 📦 Copy Pods Resources */,
 				49C3E4A4A97A264F9AE5F672 /* Embed Pods Frameworks */,
+				7C660BE21D007BF0000E459E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7C660BDD1D007BF0000E459E /* PBXTargetDependency */,
 			);
 			name = SimpleNote;
 			productName = SimpleNote;
 			productReference = 2866CE251CACF83F00518F16 /* SimpleNote.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7C660BD01D007BF0000E459E /* NoteWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C660BE11D007BF0000E459E /* Build configuration list for PBXNativeTarget "NoteWidget" */;
+			buildPhases = (
+				7C660BCD1D007BF0000E459E /* Sources */,
+				7C660BCE1D007BF0000E459E /* Frameworks */,
+				7C660BCF1D007BF0000E459E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoteWidget;
+			productName = NoteWidget;
+			productReference = 7C660BD11D007BF0000E459E /* NoteWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -439,6 +516,15 @@
 				ORGANIZATIONNAME = v2panda;
 				TargetAttributes = {
 					2866CE241CACF83F00518F16 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 88N7V8S4F8;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					7C660BD01D007BF0000E459E = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -457,6 +543,7 @@
 			projectRoot = "";
 			targets = (
 				2866CE241CACF83F00518F16 /* SimpleNote */,
+				7C660BD01D007BF0000E459E /* NoteWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -473,6 +560,14 @@
 				2866CE331CACF83F00518F16 /* Main.storyboard in Resources */,
 				2833D8E01CED997900485FE1 /* CurrentUserCell.xib in Resources */,
 				7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C660BCF1D007BF0000E459E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C660BDA1D007BF0000E459E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +680,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7C660BCD1D007BF0000E459E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C660BD71D007BF0000E459E /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7C660BDD1D007BF0000E459E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C660BD01D007BF0000E459E /* NoteWidget */;
+			targetProxy = 7C660BDC1D007BF0000E459E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2866CE311CACF83F00518F16 /* Main.storyboard */ = {
@@ -604,6 +715,14 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		7C660BD81D007BF0000E459E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C660BD91D007BF0000E459E /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -698,13 +817,16 @@
 			baseConfigurationReference = E7706B35A662C853A3250B9E /* Pods-SimpleNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				CODE_SIGN_ENTITLEMENTS = SimpleNote/SimpleNote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Marco/SimpleNoteHeader.pch";
 				INFOPLIST_FILE = SimpleNote/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -714,14 +836,41 @@
 			baseConfigurationReference = 14041A1DC40F3F80BFD5E21D /* Pods-SimpleNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				CODE_SIGN_ENTITLEMENTS = SimpleNote/SimpleNote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Marco/SimpleNoteHeader.pch";
 				INFOPLIST_FILE = SimpleNote/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7C660BDF1D007BF0000E459E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				INFOPLIST_FILE = NoteWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen.NoteWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7C660BE01D007BF0000E459E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				INFOPLIST_FILE = NoteWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen.NoteWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -745,6 +894,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7C660BE11D007BF0000E459E /* Build configuration list for PBXNativeTarget "NoteWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C660BDF1D007BF0000E459E /* Debug */,
+				7C660BE01D007BF0000E459E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

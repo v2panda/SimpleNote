@@ -22,6 +22,22 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSString* prefix = @"SimpleNoteWidget://action=";
+    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) {
+        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];
+        if ([action isEqualToString:@"GotoAddNote"]) {
+            UIWindow *window = [UIApplication sharedApplication].keyWindow;
+
+            [window.rootViewController.childViewControllers.lastObject.childViewControllers.firstObject performSegueWithIdentifier:@"ToEditNoteSegue" sender:[UIButton new]];
+        }
+    }
+    
+    return  YES;
+}
+
+
 - (void)reLaunching {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
