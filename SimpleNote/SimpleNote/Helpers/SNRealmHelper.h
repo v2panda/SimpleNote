@@ -37,6 +37,8 @@
 
 + (NSMutableArray *)readAllNoteBooks;
 
++ (NSMutableArray *)readAllNotes;
+
 + (NSMutableArray *)readAllNotesFromNotebook;
 
 + (NoteBookModel *)getNowNoteBook;

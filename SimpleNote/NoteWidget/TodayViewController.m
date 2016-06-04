@@ -24,13 +24,10 @@
     self.addNoteButton.layer.cornerRadius = 5;
     self.addNoteButton.layer.masksToBounds  = YES;
     
-    NSUserDefaults* userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.simplenote.v2panda"];
-    NSString* allNotebooks = [userDefault objectForKey:@"group.simplenote.v2panda.allNotebooks"];
-    if (allNotebooks) {
-        self.titleLabel.text = [NSString stringWithFormat:@"已记录了30条笔记在%@个笔记本上。",allNotebooks];
-    }
+
 
 }
+
 
 - (IBAction)addNoteButtonDidTouched:(UIButton *)sender {
     
@@ -58,6 +55,12 @@
     // If an error is encountered, use NCUpdateResultFailed
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
+    NSUserDefaults* userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.simplenote.v2panda"];
+    NSString* allNotebooks = [userDefault objectForKey:@"group.simplenote.v2panda.allNotebooks"];
+    NSString* allNotes = [userDefault objectForKey:@"group.simplenote.v2panda.allNotes"];
+    if (allNotebooks) {
+        self.titleLabel.text = [NSString stringWithFormat:@"已记录了%@条笔记在%@个笔记本上。",allNotes,allNotebooks];
+    }
 
     completionHandler(NCUpdateResultNewData);
 }

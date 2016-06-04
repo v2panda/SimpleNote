@@ -14,8 +14,9 @@ static NSString *const kNoteBookIDKey = @"kNoteBookID";
 @implementation CreateNoteBookID
 + (void)initialize
 {
+    NSString *timeInterval = [NSString stringWithFormat:@"%f",[NSDate date].timeIntervalSince1970];
     if (![UserDefaults objectForKey:kNoteBookIDKey]) {
-        [UserDefaults setInteger:1000 forKey:kNoteBookIDKey];
+        [UserDefaults setInteger:timeInterval.integerValue forKey:kNoteBookIDKey];
     }
 }
 

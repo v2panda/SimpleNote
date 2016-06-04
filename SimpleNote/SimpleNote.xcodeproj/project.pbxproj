@@ -163,6 +163,7 @@
 		7C660BD91D007BF0000E459E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		7C660BDB1D007BF0000E459E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C660BE31D008977000E459E /* SimpleNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = SimpleNote.entitlements; path = ../SimpleNote.entitlements; sourceTree = "<group>"; };
+		7C660BE41D02E4EC000E459E /* NoteWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = NoteWidget.entitlements; sourceTree = "<group>"; };
 		7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Login&Register.storyboard"; path = "../Sections/Controllers/Login&Register/Login&Register.storyboard"; sourceTree = "<group>"; };
 		7CA44B421CE213E30010098E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7CA44B431CE213E30010098E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -424,6 +425,7 @@
 		7C660BD41D007BF0000E459E /* NoteWidget */ = {
 			isa = PBXGroup;
 			children = (
+				7C660BE41D02E4EC000E459E /* NoteWidget.entitlements */,
 				7C660BD51D007BF0000E459E /* TodayViewController.h */,
 				7C660BD61D007BF0000E459E /* TodayViewController.m */,
 				7C660BD81D007BF0000E459E /* MainInterface.storyboard */,
@@ -526,6 +528,12 @@
 					};
 					7C660BD01D007BF0000E459E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 88N7V8S4F8;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -853,11 +861,14 @@
 		7C660BDF1D007BF0000E459E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				CODE_SIGN_ENTITLEMENTS = NoteWidget/NoteWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NoteWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen.NoteWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -865,11 +876,14 @@
 		7C660BE01D007BF0000E459E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhen Xu (88N7V8S4F8)";
+				CODE_SIGN_ENTITLEMENTS = NoteWidget/NoteWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NoteWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cococom.panda.xuzhen.NoteWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -902,6 +916,7 @@
 				7C660BE01D007BF0000E459E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

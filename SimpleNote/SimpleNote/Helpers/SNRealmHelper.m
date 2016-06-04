@@ -150,6 +150,15 @@
     return notes;
 }
 
++ (NSMutableArray *)readAllNotes {
+    RLMResults *result = [NoteModel allObjects];
+    NSMutableArray *notes = [@[] mutableCopy];
+    for (NoteModel *model in result) {
+        [notes addObject:model];
+    }
+    return notes;
+}
+
 + (NSMutableArray *)readAllNotesFromNotebook {
     RLMResults *result = [NoteModel objectsWhere:@"owner = %@",[self getNowNoteBook]];
     NSMutableArray *notes = [@[] mutableCopy];

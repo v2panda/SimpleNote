@@ -49,6 +49,7 @@ NoteBookViewCellBtnDelegate>
     // Pass data to the Widget
     NSUserDefaults* userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.simplenote.v2panda"];
     [userDefault setObject:@(self.notebooksArray.count).stringValue forKey:@"group.simplenote.v2panda.allNotebooks"];
+    [userDefault setObject:@([SNRealmHelper readAllNotes].count).stringValue forKey:@"group.simplenote.v2panda.allNotes"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,6 +59,7 @@ NoteBookViewCellBtnDelegate>
         self.topLabel.text = [SNUserTool userInfo].nickName;
         [self.avataImageView sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
     }
+
 }
 
 
