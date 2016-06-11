@@ -25,6 +25,7 @@ EditNoteEndedDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *headers;
+@property (nonatomic, strong) NSMutableArray *totalArray;
 
 @end
 
@@ -76,18 +77,25 @@ CGFloat oldY = 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    if (self.dataArray.count) {
+        NSArray *array = (NSArray *)self.totalArray[section];
+        return array.count;
+    }
+   return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSArray *array = (NSArray *)self.totalArray[indexPath.section];
     SNNoteCell *cell = [SNNoteCell cellWithTableView:tableView atIndexPath:indexPath];
-    cell.model = self.dataArray[indexPath.row];
+    cell.model = array[indexPath.row];
     return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:@(indexPath.row)];
+    [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:indexPath];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {
@@ -96,10 +104,11 @@ CGFloat oldY = 0;
         vc.title = @"添加笔记";
         vc.delegate = self;
     }else {
-        NSNumber *index = sender;
+        NSIndexPath *indexPath = (NSIndexPath*)sender;
+        NSArray *array = (NSArray *)self.totalArray[indexPath.section];
         EditNoteViewController *vc = [segue destinationViewController];
         vc.title = @"编辑笔记";
-        vc.noteModel = self.dataArray[index.integerValue];
+        vc.noteModel = array[indexPath.row];
         vc.delegate = self;
     }
 }
@@ -112,9 +121,9 @@ CGFloat oldY = 0;
             kTipAlert(@"删除笔记失败，不能删除唯一的笔记");
             return;
         }
-        
-        [SNRealmHelper deleteNote:self.dataArray[indexPath.row]];
-        [self.dataArray removeObjectAtIndex:indexPath.row];
+        NSMutableArray *array = (NSMutableArray *)self.totalArray[indexPath.section];
+        [SNRealmHelper deleteNote:array[indexPath.row]];
+        [array removeObjectAtIndex:indexPath.row];
         
         [self.notesTableView reloadData];
         
@@ -141,13 +150,27 @@ CGFloat oldY = 0;
     
     if (dataArray) {
         NSMutableArray *temp = @[].mutableCopy;
+        NSMutableArray *totalArray = @[].mutableCopy;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy年MM月"];
         for (NoteModel *model in dataArray) {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy年MM月"];
             NSString *sectionHeader = [formatter stringFromDate:model.noteCreateDate];
             [temp addObject:sectionHeader];
         }
-        self.headers = [temp valueForKeyPath:@"@distinctUnionOfObjects.self"];
+        temp = [temp valueForKeyPath:@"@distinctUnionOfObjects.self"];
+        temp = [[temp reverseObjectEnumerator] allObjects].mutableCopy;
+        for (int i = 0 ; i < temp.count ; i ++) {
+            NSMutableArray *tempArray = @[].mutableCopy;
+            for (NoteModel *model in dataArray) {
+                NSString *sectionHeader = [formatter stringFromDate:model.noteCreateDate];
+                if ([sectionHeader isEqualToString:temp[i]]) {
+                    [tempArray addObject:model];
+                }
+            }
+            [totalArray addObject:tempArray];
+        }
+        self.headers = temp;
+        self.totalArray = totalArray;
     }
     _dataArray = dataArray;
 }
@@ -155,7 +178,7 @@ CGFloat oldY = 0;
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        self.dataArray = [SNRealmHelper readAllNotesFromNotebook];
+        self.dataArray = [SNRealmHelper readAllNotesFromNotebook] ;
     }
     return _dataArray;
 }
@@ -166,5 +189,14 @@ CGFloat oldY = 0;
     }
     return _headers;
 }
+
+- (NSMutableArray *)totalArray {
+    if (!_totalArray) {
+        _totalArray = @[@""].mutableCopy;
+    }
+    return _totalArray;
+}
+
+
 
 @end

@@ -165,12 +165,16 @@
     for (NoteModel *model in result) {
         [notes addObject:model];
     }
-    return notes;
+    NSArray* reversedArray = [[notes reverseObjectEnumerator] allObjects];
+    return reversedArray.mutableCopy;
 }
 
 + (NoteBookModel *)getNowNoteBook {
     NSNumber *nowNotebook =  (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
     RLMResults *notebookResult = [NoteBookModel objectsWhere:@"noteBookID = %d",nowNotebook.integerValue];
+    if (!notebookResult.count) {
+        notebookResult = [NoteBookModel allObjects];
+    }
     NoteBookModel *notebook = (NoteBookModel *)notebookResult.firstObject;
     return notebook;
 }
