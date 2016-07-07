@@ -41,7 +41,7 @@ $ open "SimpleNote.xcworkspace"
 
 
 ##LICENSE
-MIT © [v2panda](http://github.com/v2panda)
+GPL © [v2panda](http://github.com/v2panda)
 
 ## Details
 

@@ -46,17 +46,43 @@ EditNoteEndedDelegate>
 
 
 #pragma mark - UIScrollViewDelegate
-CGFloat oldY = 0;
+CGFloat contentOffsetY = 0;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    oldY = scrollView.contentOffset.y;
+    contentOffsetY = scrollView.contentOffset.y;
 }
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if(scrollView.contentOffset.y > oldY) {
-        self.bottomView.hidden = YES;
-    }else {
-        self.bottomView.hidden = NO;
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    if(scrollView.contentOffset.y > contentOffsetY) {
+//        self.bottomView.hidden = YES;
+//    }else {
+//        self.bottomView.hidden = NO;
+//    }
+//}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.dragging) {
+        if (scrollView.contentOffset.y - contentOffsetY > 5.0) {
+            // 向上拖拽 隐藏
+            [UIView animateWithDuration:0.25 animations:^{
+                self.bottomView.transform = CGAffineTransformMakeTranslation(0, self.bottomView.height);
+            }];
+        } else if (contentOffsetY - scrollView.contentOffset.y > 5.0) {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.bottomView.transform = CGAffineTransformIdentity;
+            }];
+        }
     }
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 滚动到底部后 显示
+    CGFloat space = scrollView.contentOffset.y + SCREEN_HEIGHT - scrollView.contentSize.height;
+    if (space > -5 && space < 5 ){
+        [UIView animateWithDuration:0.25 animations:^{
+            self.bottomView.transform = CGAffineTransformIdentity;
+        }];
+    }
+}
+
 
 #pragma mark - EditNoteEndedDelegate
 - (void)reloadNotes {
