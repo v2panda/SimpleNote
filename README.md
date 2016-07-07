@@ -2,7 +2,7 @@
 
 This is a SimpleNote App.
 
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/v2panda/SimpleNote)
+[![License MIT](https://img.shields.io/badge/license-GPL-green.svg)](https://github.com/v2panda/SimpleNote)
 [![](https://img.shields.io/badge/done-50%-green.svg?style=flat)](https://github.com/v2panda/SimpleNote)
 <br/>
 
