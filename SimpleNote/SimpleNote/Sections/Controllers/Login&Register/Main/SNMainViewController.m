@@ -50,13 +50,6 @@ CGFloat contentOffsetY = 0;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     contentOffsetY = scrollView.contentOffset.y;
 }
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    if(scrollView.contentOffset.y > contentOffsetY) {
-//        self.bottomView.hidden = YES;
-//    }else {
-//        self.bottomView.hidden = NO;
-//    }
-//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView.dragging) {
