@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (PDAdd)
-+ (BOOL) isBlankString:(NSString *)string;
+
++ (BOOL)isBlankString:(NSString *)string;
 
 - (BOOL)isValidEmail;
 
 - (BOOL)isPwd;
+
 @end

@@ -20,8 +20,7 @@
     return [[self alloc] initWithFrame:frame circlesSize:size];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame circlesSize:(CGRect)size
-{
+- (instancetype)initWithFrame:(CGRect)frame circlesSize:(CGRect)size {
     self = [super initWithFrame:frame];
     if (self) {
         self.circlesSize = size;

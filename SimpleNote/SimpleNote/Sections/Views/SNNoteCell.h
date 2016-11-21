@@ -10,6 +10,9 @@
 #import "NoteModel.h"
 
 @interface SNNoteCell : UITableViewCell
+
 @property (nonatomic, strong) NoteModel *model;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath;
+
 @end

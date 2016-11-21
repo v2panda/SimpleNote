@@ -9,10 +9,12 @@
 #import "NSData+PDAdd.h"
 
 @implementation NSData (PDAdd)
+
 + (NSData *)dataNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     if (!path) return nil;
     NSData *data = [NSData dataWithContentsOfFile:path];
     return data;
 }
+
 @end

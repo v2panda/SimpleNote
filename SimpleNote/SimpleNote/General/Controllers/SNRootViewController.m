@@ -18,7 +18,6 @@ static CGFloat const kLeftPadding = 60.0;
 
 - (void)awakeFromNib {
     self.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
-    
     self.scaleContentView = NO;
     self.scaleBackgroundImageView = NO;
     self.scaleMenuView = NO;
@@ -26,11 +25,9 @@ static CGFloat const kLeftPadding = 60.0;
     self.contentViewInPortraitOffsetCenterX = CGRectGetWidth([UIScreen mainScreen].bounds)/2.0 - kLeftPadding;
     self.bouncesHorizontally = NO;
     self.fadeMenuView = NO;
-    
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainBasicNavID"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SNLeftVCSBID"];
     self.delegate = self;
-    
 }
 
 #pragma mark RESideMenuDelegate
@@ -56,7 +53,5 @@ static CGFloat const kLeftPadding = 60.0;
     NSLog(@"didHideMenuViewController: %@", NSStringFromClass([menuViewController class]));
     self.panGestureEnabled = YES;
 }
-
-
 
 @end

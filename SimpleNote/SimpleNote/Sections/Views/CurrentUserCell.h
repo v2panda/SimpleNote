@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CurrentUserCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
 @end

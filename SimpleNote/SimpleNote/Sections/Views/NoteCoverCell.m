@@ -20,18 +20,15 @@
 
 - (void)setModel:(NoteCoverModel *)model {
     _model = model;
-    
     self.coverImageView.image = model.noteCoverImage;
     self.coverCheckImageView.hidden = !model.isNoteCoverSeleted;
 }
 
-+ (instancetype)cellWithCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
-{
++ (instancetype)cellWithCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"NoteBookCoverID";
     NoteCoverCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.layer.borderColor=[SNColor(223,223,223) CGColor];
     cell.layer.borderWidth=0.3;
-
     return cell;
 }
 @end

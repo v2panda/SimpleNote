@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSData (PDAdd)
+
 + (NSData *)dataNamed:(NSString *)name;
+
 @end

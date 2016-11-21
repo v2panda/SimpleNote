@@ -11,7 +11,8 @@
 
 @interface NoteCoverCell : UICollectionViewCell
 
+@property (nonatomic, strong) NoteCoverModel *model;
+
 + (instancetype)cellWithCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath;
 
-@property (nonatomic, strong) NoteCoverModel *model;
 @end

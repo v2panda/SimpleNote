@@ -10,14 +10,18 @@
 #import "NoteBookModel.h"
 
 @interface NoteBookDefaultCell : UITableViewCell
+
 @property (nonatomic, strong) NoteBookModel *model;
 @property (nonatomic, copy) void (^backNoteTitle)(NSString *title);
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
 @end
 
-
 @interface NoteBookCreateCoverCell : UITableViewCell
+
 @property (nonatomic, strong) NoteBookModel *model;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @end

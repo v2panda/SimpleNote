@@ -26,8 +26,7 @@
 
 @implementation NoteBookViewCell
 
-- (void)setModel:(NoteBookModel *)model
-{
+- (void)setModel:(NoteBookModel *)model {
     _model = model;
     NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:kIsNoteBookSeleted];
     if (isShow) {
@@ -37,7 +36,6 @@
             self.noteCheckImageView.hidden = YES;
         }
     }
-    
     self.noteTitleLabel.text = model.noteBookTitle;
     self.noteBookCover.image = [UIImage imageWithData:model.customCoverImageData];
 }
@@ -49,8 +47,7 @@
     self.noteDeleteBtn.hidden = self.isNoteBookEditing;
 }
 
-+ (instancetype)cellWithCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
-{
++ (instancetype)cellWithCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"NoteCellID";
     NoteBookViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
@@ -67,7 +64,6 @@
 }
 
 - (IBAction)noteEditBtnDidTouched:(UIButton *)sender {
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([self.delegate respondsToSelector:@selector(noteEditBtnTouched:)]) {
             [self.delegate noteEditBtnTouched:self.notebookID];

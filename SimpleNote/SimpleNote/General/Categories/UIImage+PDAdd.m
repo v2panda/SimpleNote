@@ -10,6 +10,7 @@
 #import "UIImage+PDAdd.h"
 
 @implementation UIImage (PDAdd)
+
 - (UIImage *)imageByResizeToSize:(CGSize)size {
     if (size.width <= 0 || size.height <= 0) return nil;
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
@@ -18,8 +19,8 @@
     UIGraphicsEndImageContext();
     return image;
 }
-- (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize
-{
+
+- (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize {
     CGSize size = self.size;
     CGFloat width = size.width;
     CGFloat height = size.height;
@@ -34,6 +35,6 @@
     UIImage* newImage= UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
-    
 }
+
 @end

@@ -11,7 +11,9 @@
 @protocol ChooseCoverReusableViewDelegate <NSObject>
 
 @optional
+
 - (void)ChooseCoverBtnDidTouched;
+
 @end
 
 @interface ChooseCoverReusableView : UICollectionReusableView

@@ -19,11 +19,6 @@
 
 @implementation SNNoteCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
 - (void)setModel:(NoteModel *)model {
     _model = model;
     self.titleLabel.text = model.noteTitle;
@@ -34,13 +29,10 @@
         self.rightImageView.image = nil;
         self.titleLabelConstraint.priority = 999;
     }
-    
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    
     SNNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SNNoteCellID" forIndexPath:indexPath];
-    
     if (cell == nil) {
         cell =[[[NSBundle mainBundle]loadNibNamed:@"SNNoteCell" owner:self options:nil] lastObject];
     }

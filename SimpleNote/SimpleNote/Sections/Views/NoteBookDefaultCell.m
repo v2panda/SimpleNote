@@ -9,6 +9,7 @@
 #import "NoteBookDefaultCell.h"
 
 @interface NoteBookDefaultCell () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
 @end
@@ -20,48 +21,43 @@
     self.titleTextField.text = model.noteBookTitle;
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView
-{
++ (instancetype)cellWithTableView:(UITableView *)tableView {
     static NSString *identifier = @"NoteBookNameID";
     NoteBookDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
     if (cell == nil) {
         cell =[[[NSBundle mainBundle]loadNibNamed:@"NoteBookDefaultCell" owner:self options:nil] firstObject];
     }
-    
     return cell;
 }
 
 #pragma  mark - UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
     if (textField.text.length > 20) {
         return NO;
     }else {
         return YES;
     }
 }
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    
     if (self.backNoteTitle) {
         self.backNoteTitle(textField.text);
     }
 }
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5f);
     CGContextSetStrokeColorWithColor(context,[SNColor(223,223,223) CGColor]);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
 }
-
 @end
 
-
 @interface NoteBookCreateCoverCell ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailCover;
+
 @end
 
 @implementation NoteBookCreateCoverCell
@@ -73,26 +69,21 @@
     }
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView
-{
++ (instancetype)cellWithTableView:(UITableView *)tableView {
     static NSString *identifier = @"NoteBookCoverID";
     NoteBookCreateCoverCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
     if (cell == nil) {
         cell =[[[NSBundle mainBundle]loadNibNamed:@"NoteBookDefaultCell" owner:self options:nil] lastObject];
     }
-    
     return cell;
 }
 
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5f);
     CGContextSetStrokeColorWithColor(context,[SNColor(223,223,223) CGColor]);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
 }
-
 @end

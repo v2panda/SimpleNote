@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (PDAdd)
+
 - (UIImage *)imageByResizeToSize:(CGSize)size;
+
 - (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize;
+
 @end
 
