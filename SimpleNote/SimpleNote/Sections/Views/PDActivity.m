@@ -51,7 +51,7 @@
     NSLog(@"要分享的内容-----%@",_getShareArray);
     NSLog(@"分享的类型------ %@",_title);
     if([_title isEqualToString:@"v2panda.com"]){
-        NSURL *URL = [NSURL URLWithString:@"http://v2panda.com"];
+        NSURL *URL = [NSURL URLWithString:kDefaultURL];
         [[UIApplication sharedApplication] openURL:URL];
     }
 }

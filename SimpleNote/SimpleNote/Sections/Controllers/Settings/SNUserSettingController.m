@@ -58,7 +58,6 @@
 #pragma mark - event response
 
 - (void)userInfoSaved {
-    
     if (self.avatar) {
         [self uploadToCloud];
     }
@@ -86,11 +85,9 @@
     }
     
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)uploadToCloud {
-    
     if(![NSString isBlankString:[SNUserTool userInfo].avatarObjID]) {
         [AVFile getFileWithObjectId:[SNUserTool userInfo].avatarObjID withBlock:^(AVFile *file, NSError *error) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -115,7 +112,6 @@
         if (percentDone == 100) {
             self.progressView.hidden = YES;
         }
-        
     }];
 }
 

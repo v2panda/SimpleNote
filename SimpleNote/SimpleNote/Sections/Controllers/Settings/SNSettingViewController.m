@@ -40,20 +40,15 @@ UITableViewDataSource>
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self.tableView reloadData];
 }
 
-
 #pragma mark - event response
-
 - (void)getFileID {
-    
     AVQuery *query = [AVQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:[AVUser currentUser].objectId block:^(AVObject *object, NSError *error) {
         self.fileID = [NSString stringWithFormat:@"%@",[object objectForKey:@"realmFileID"]];
     }];
-
 }
 
 #pragma mark - event response
@@ -66,13 +61,11 @@ UITableViewDataSource>
 }
 
 #pragma mark - UITableViewDataSource UITableViewDelegate
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
     }else if(section == 1) {
@@ -91,9 +84,7 @@ UITableViewDataSource>
     }
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         CurrentUserCell *cell = [CurrentUserCell cellWithTableView:tableView];
         [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:[SNUserTool userInfo].avatarUrl] placeholderImage:[UIImage imageNamed:@"Circled User Male"]];
@@ -123,7 +114,6 @@ UITableViewDataSource>
             cell.detailTextLabel.text = currentVersion;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         return cell;
     }else if (indexPath.section == 2) {
         UITableViewCell *cell = [UITableViewCell new];
@@ -133,7 +123,6 @@ UITableViewDataSource>
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    
     return nil;
 }
 
@@ -165,7 +154,7 @@ UITableViewDataSource>
             NSURL *urlToShare = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/zhi-jian-bi-ji/id977539643?mt=8"];
             NSArray *activityItems = @[textToShare, description,imageToShare, urlToShare];
             
-            PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:@"http://www.v2panda.com/" atTitle:@"v2panda.com" atShareContentArray:activityItems];
+            PDActivity *act1 = [[PDActivity alloc]initWithImage:[UIImage imageNamed:@"v2panda"] atURL:kDefaultURL atTitle:@"v2panda.com" atShareContentArray:activityItems];
             NSArray *apps = @[act1];
             //创建
             UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:apps];
@@ -194,7 +183,6 @@ UITableViewDataSource>
 
 
 #pragma mark - privatemethod
-
 - (void)logoutAndDeleteObjects {
     [AVUser logOut];
     [SNUserTool logOut];
@@ -314,7 +302,6 @@ UITableViewDataSource>
     }];
 }
 
-
 #pragma mark - getters and setters
 - (SNProgressView *)progressView {
     if (!_progressView) {
@@ -326,9 +313,5 @@ UITableViewDataSource>
     }
     return _progressView;
 }
-
-
-
-
 
 @end

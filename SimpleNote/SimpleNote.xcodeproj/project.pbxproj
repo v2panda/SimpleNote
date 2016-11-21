@@ -86,8 +86,8 @@
 		14041A1DC40F3F80BFD5E21D /* Pods-SimpleNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNote.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleNote/Pods-SimpleNote.release.xcconfig"; sourceTree = "<group>"; };
 		2809D10B1CF42C5C004BF73B /* RegisterDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDetailViewController.h; sourceTree = "<group>"; };
 		2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDetailViewController.m; sourceTree = "<group>"; };
-		2809D1151CF451E0004BF73B /* PDActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDActivity.h; sourceTree = "<group>"; };
-		2809D1161CF451E0004BF73B /* PDActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDActivity.m; sourceTree = "<group>"; };
+		2809D1151CF451E0004BF73B /* PDActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDActivity.h; path = ../Views/PDActivity.h; sourceTree = "<group>"; };
+		2809D1161CF451E0004BF73B /* PDActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDActivity.m; path = ../Views/PDActivity.m; sourceTree = "<group>"; };
 		280FD9341DE2DAA1003D8F74 /* Marco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Marco.h; sourceTree = "<group>"; };
 		280FD9351DE2DD77003D8F74 /* SNVCHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNVCHandler.h; sourceTree = "<group>"; };
 		280FD9361DE2DD77003D8F74 /* SNVCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNVCHandler.m; sourceTree = "<group>"; };
@@ -408,8 +408,6 @@
 				2833D8DE1CED997900485FE1 /* CurrentUserCell.xib */,
 				2829202D1CEEAAD300512F8F /* SNProgressView.h */,
 				2829202E1CEEAAD300512F8F /* SNProgressView.m */,
-				2809D1151CF451E0004BF73B /* PDActivity.h */,
-				2809D1161CF451E0004BF73B /* PDActivity.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,6 +415,8 @@
 		2866CE5E1CAD134F00518F16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2809D1151CF451E0004BF73B /* PDActivity.h */,
+				2809D1161CF451E0004BF73B /* PDActivity.m */,
 				284C54691CAE2572006EDCB8 /* NoteBookModel.h */,
 				284C546A1CAE2572006EDCB8 /* NoteBookModel.m */,
 				2853D7121CB108E6008FB392 /* NoteCoverModel.h */,

@@ -33,6 +33,9 @@ static NSString * const kAVOSCloudclientKey = @"eXMjUwHcsnw8t1G96XHpvQHI";
 
 /** Default **/
 static NSString * const kDefaultTitle = @"默认标题";
+static NSString * const kDefaultURL = @"http://www.v2panda.com";
+
+
 #define kDefaultImageData UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"])
 
 #endif /* Marco_h */
