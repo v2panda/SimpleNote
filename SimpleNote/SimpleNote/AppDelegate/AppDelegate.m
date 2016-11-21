@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SNRealmHelper.h"
 #import "NoteBookModel.h"
+#import "SNVCHandler.h"
 
 @interface AppDelegate ()
 
@@ -22,71 +23,44 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    NSString* prefix = @"SimpleNoteWidget://action=";
-    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) {
-        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];
-        if ([action isEqualToString:@"GotoAddNote"]) {
-            UIWindow *window = [UIApplication sharedApplication].keyWindow;
-
-            [window.rootViewController.childViewControllers.lastObject.childViewControllers.firstObject performSegueWithIdentifier:@"ToEditNoteSegue" sender:[UIButton new]];
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([[url absoluteString] rangeOfString:kWidgetPrefix].location != NSNotFound) {
+        NSString* action = [[url absoluteString] substringFromIndex:kWidgetPrefix.length];
+        if ([action isEqualToString:kWidgetAdd]) {
+            [[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers.lastObject.childViewControllers.firstObject performSegueWithIdentifier:kSegueEditNote sender:[UIButton new]];
         }
     }
-    
     return  YES;
 }
 
-
 - (void)reLaunching {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    NSString *currentRealm = (NSString *)[[NSUserDefaults standardUserDefaults]objectForKey:kCurrentRealm];
+    NSString *currentRealm = (NSString *)USER_DEFAULT_VALUEFOR(kCurrentRealm);
     [SNRealmHelper setDefaultRealmForUser:currentRealm];
-    
     [self InitFileIfNeeded];
-    
-    [AVOSCloud setApplicationId:@"bKlBx1uLlzqzmozQmyLVPYeo-gzGzoHsz"
-                      clientKey:@"eXMjUwHcsnw8t1G96XHpvQHI"];
-    AVUser *currentUser = [AVUser currentUser];
-    if (currentUser != nil) {
-        // 跳转到首页
-        NSLog(@"已登录");
+    [AVOSCloud setApplicationId:kAVOSCloudApplicationId
+                      clientKey:kAVOSCloudclientKey];
+    if ([AVUser currentUser] != nil) {
         [SNUserTool getUserInfo];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
-        self.window.rootViewController = vc;
-        
+        self.window.rootViewController = [SNVCHandler getRootViewController];
     } else {
-        //缓存用户对象为空时，可打开用户注册界面…
-        NSLog(@"未登录");
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login&Register" bundle:nil];
-        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Login&RegisterID"];
-        self.window.rootViewController = vc;
+        self.window.rootViewController = [SNVCHandler getLRViewController];
     }
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
 }
 
 - (void)InitFileIfNeeded {
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (!(BOOL)[userDefaults objectForKey:@"FileIfNeeded"]) {
-        
+    BOOL ifNeeded = (BOOL)USER_DEFAULT_VALUEFOR(kFileIfNeeded);
+    if (!ifNeeded) {
         NoteBookModel *model = [NoteBookModel new];
-        model.noteBookTitle = @"默认标题";
-        model.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
+        model.noteBookTitle = kDefaultTitle;
+        model.customCoverImageData = kDefaultImageData;
         model.noteBookID = [CreateNoteBookID getNoteBookID];
-        
-        [userDefaults setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
-        [userDefaults synchronize];
-        
         [SNRealmHelper addNewNoteBook:model];
-
-        [userDefaults setBool:YES forKey:@"FileIfNeeded"];
-        [userDefaults synchronize];
+        USER_DEFAULT_SET(model.noteBookID, kIsNoteBookSeleted);
+        USER_DEFAULT_SET(@1, kFileIfNeeded);
+        USER_DEFAULT_SYNCHRONIZE;
     }
 }
 

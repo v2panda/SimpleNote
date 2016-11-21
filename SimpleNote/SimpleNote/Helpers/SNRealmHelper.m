@@ -37,8 +37,8 @@
 + (void)initDefaultNotebook {
     NoteBookModel *notebook = [NoteBookModel new];
     notebook.noteBookID = [CreateNoteBookID getNoteBookID];
-    notebook.noteBookTitle = @"默认标题";
-    notebook.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
+    notebook.noteBookTitle = kDefaultTitle;
+    notebook.customCoverImageData = kDefaultImageData;
     
     NoteModel *note = [NoteModel new];
     note.noteTitle = @"默认笔记";
@@ -170,7 +170,7 @@
 }
 
 + (NoteBookModel *)getNowNoteBook {
-    NSNumber *nowNotebook =  (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+    NSNumber *nowNotebook =  (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:kIsNoteBookSeleted];
     RLMResults *notebookResult = [NoteBookModel objectsWhere:@"noteBookID = %d",nowNotebook.integerValue];
     if (!notebookResult.count) {
         notebookResult = [NoteBookModel allObjects];

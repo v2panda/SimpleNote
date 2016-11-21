@@ -113,8 +113,7 @@ CGFloat contentOffsetY = 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    [self performSegueWithIdentifier:@"ToEditNoteSegue" sender:indexPath];
+    [self performSegueWithIdentifier:kSegueEditNote sender:indexPath];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender  {

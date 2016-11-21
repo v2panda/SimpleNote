@@ -29,7 +29,7 @@
 - (void)setModel:(NoteBookModel *)model
 {
     _model = model;
-    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:kIsNoteBookSeleted];
     if (isShow) {
         if ([model.noteBookID isEqualToNumber:isShow]) {
             self.noteCheckImageView.hidden = NO;

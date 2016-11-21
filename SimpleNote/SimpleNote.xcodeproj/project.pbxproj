@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2809D10D1CF42C5C004BF73B /* RegisterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */; };
 		2809D1171CF451E0004BF73B /* PDActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2809D1161CF451E0004BF73B /* PDActivity.m */; };
+		280FD9371DE2DD77003D8F74 /* SNVCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 280FD9361DE2DD77003D8F74 /* SNVCHandler.m */; };
 		2826DC0F1CB49FF800BB5F41 /* SNBasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */; };
 		2829202F1CEEAAD300512F8F /* SNProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2829202E1CEEAAD300512F8F /* SNProgressView.m */; };
 		282AC6611CBB9302002F9A49 /* NSData+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 282AC6601CBB9302002F9A49 /* NSData+PDAdd.m */; };
@@ -87,6 +88,9 @@
 		2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDetailViewController.m; sourceTree = "<group>"; };
 		2809D1151CF451E0004BF73B /* PDActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDActivity.h; sourceTree = "<group>"; };
 		2809D1161CF451E0004BF73B /* PDActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDActivity.m; sourceTree = "<group>"; };
+		280FD9341DE2DAA1003D8F74 /* Marco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Marco.h; sourceTree = "<group>"; };
+		280FD9351DE2DD77003D8F74 /* SNVCHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNVCHandler.h; sourceTree = "<group>"; };
+		280FD9361DE2DD77003D8F74 /* SNVCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNVCHandler.m; sourceTree = "<group>"; };
 		2826DC0D1CB49FF800BB5F41 /* SNBasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBasicNavigationController.h; sourceTree = "<group>"; };
 		2826DC0E1CB49FF800BB5F41 /* SNBasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBasicNavigationController.m; sourceTree = "<group>"; };
 		2829202D1CEEAAD300512F8F /* SNProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNProgressView.h; sourceTree = "<group>"; };
@@ -319,6 +323,8 @@
 				28DB7A941CC476E700BB01B0 /* SNRealmHelper.m */,
 				2854B46A1CF2D91200C5A88D /* SNUserTool.h */,
 				2854B46B1CF2D91200C5A88D /* SNUserTool.m */,
+				280FD9351DE2DD77003D8F74 /* SNVCHandler.h */,
+				280FD9361DE2DD77003D8F74 /* SNVCHandler.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 			children = (
 				2866CE581CAD017700518F16 /* Common.h */,
 				2866CE621CAD16B700518F16 /* SimpleNoteHeader.pch */,
+				280FD9341DE2DAA1003D8F74 /* Marco.h */,
 			);
 			path = Marco;
 			sourceTree = "<group>";
@@ -669,6 +676,7 @@
 				2833D8DF1CED997900485FE1 /* CurrentUserCell.m in Sources */,
 				28328B1A1CB639320003A612 /* SNNoteCell.m in Sources */,
 				2833D8EB1CEDBECD00485FE1 /* SNUserSettingController.m in Sources */,
+				280FD9371DE2DD77003D8F74 /* SNVCHandler.m in Sources */,
 				2866CE2D1CACF83F00518F16 /* AppDelegate.m in Sources */,
 				284D8C5F1CF53F80003D64DE /* SNMainViewController.m in Sources */,
 				2833D8EA1CEDBECD00485FE1 /* SNSettingViewController.m in Sources */,

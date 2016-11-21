@@ -10,6 +10,7 @@
 #define SimpleNoteHeader_pch
 
 #import "Common.h"
+#import "Marco.h"
 #import "UIView+Frame.h"
 #import "NSData+PDAdd.h"
 #import "UIImage+PDAdd.h"

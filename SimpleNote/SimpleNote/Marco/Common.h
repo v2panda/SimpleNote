@@ -31,23 +31,24 @@
 #define SNColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:255/255.0]
 
 
+/**NSUserDefaults 实例化*/
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults];
+/**NSUserDefaults 读取设置*/
+#define USER_DEFAULT_VALUEFOR(key) [[NSUserDefaults standardUserDefaults] valueForKey:(key)]
+/**NSUserDefaults 写入设置*/
+#define USER_DEFAULT_SET(value,key) [[NSUserDefaults standardUserDefaults] setObject:(value) forKey:(key)];
+/**NSUserDefaults*/
+#define USER_DEFAULT_SYNCHRONIZE [[NSUserDefaults standardUserDefaults] synchronize];
+
 
 /** weakify - strongify **/
-#define weakify(var) __weak typeof(var) SNWeak_##var = var;
-#define strongify(var) \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Wshadow\"") \
-__strong typeof(var) var = SNWeak_##var; \
-_Pragma("clang diagnostic pop")
+//#define weakify(var) __weak typeof(var) SNWeak_##var = var;
+//#define strongify(var) \
+//_Pragma("clang diagnostic push") \
+//_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+//__strong typeof(var) var = SNWeak_##var; \
+//_Pragma("clang diagnostic pop")
 
-
-static NSString * const kCurrentRealm = @"kUserDefaultCurrentRealm";
-
-/** KNotificationName **/
-static NSString * const kNoteEditBtnTouched = @"kNotificationNoteEditBtnTouched";
-static NSString * const kNoteBookAddedSaved = @"kNotificationNoteBookAddedSaved";
-static NSString * const kOpenNoteBook = @"kNotificationOpenNoteBook";
-static NSString * const kDownLoadAllNote = @"kNotificationDownLoadAllNote";
 
 
 /**kTipAlert**/

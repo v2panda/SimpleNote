@@ -143,7 +143,7 @@ NoteBookViewCellBtnDelegate>
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NoteBookModel *model = self.notebooksArray[indexPath.row];
-    [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+    [[NSUserDefaults standardUserDefaults]setObject:model.noteBookID forKey:kIsNoteBookSeleted];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
     [self.noteCollectionView reloadData];
@@ -182,12 +182,12 @@ NoteBookViewCellBtnDelegate>
     }
     
     NoteBookModel *model = self.notebooksArray[noteBookID];
-    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:@"isNoteBookSeleted"];
+    NSNumber *isShow = (NSNumber *)[[NSUserDefaults standardUserDefaults]objectForKey:kIsNoteBookSeleted];
     if (isShow && [model.noteBookID isEqualToNumber:isShow]) {
         [SNRealmHelper deleteNoteBook:model];
         [self.notebooksArray removeObjectAtIndex:noteBookID];
         NoteBookModel *firstModel = [self.notebooksArray firstObject];
-        [[NSUserDefaults standardUserDefaults]setObject:firstModel.noteBookID forKey:@"isNoteBookSeleted"];
+        [[NSUserDefaults standardUserDefaults]setObject:firstModel.noteBookID forKey:kIsNoteBookSeleted];
         [[NSUserDefaults standardUserDefaults]synchronize];
         [[NSNotificationCenter defaultCenter]postNotificationName:kOpenNoteBook object:nil];
     }else {

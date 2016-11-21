@@ -201,10 +201,10 @@ UITableViewDataSource>
     [SNRealmHelper deleteAllObjects];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NoteBookModel *model = [NoteBookModel new];
-    model.noteBookTitle = @"默认标题";
-    model.customCoverImageData = UIImagePNGRepresentation([UIImage imageNamed:@"AccountBookCover3"]);
+    model.noteBookTitle = kDefaultTitle;
+    model.customCoverImageData = kDefaultImageData;
     model.noteBookID = [CreateNoteBookID getNoteBookID];
-    [userDefaults setObject:model.noteBookID forKey:@"isNoteBookSeleted"];
+    [userDefaults setObject:model.noteBookID forKey:kIsNoteBookSeleted];
     [userDefaults synchronize];
     [SNRealmHelper addNewNoteBook:model];
 }
