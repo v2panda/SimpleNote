@@ -17,6 +17,7 @@ static CGFloat const kLeftPadding = 60.0;
 @implementation SNRootViewController
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
     self.scaleContentView = NO;
     self.scaleBackgroundImageView = NO;

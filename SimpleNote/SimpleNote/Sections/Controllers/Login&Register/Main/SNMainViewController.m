@@ -34,6 +34,7 @@ EditNoteEndedDelegate>
 @synthesize dataArray = _dataArray;
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(openNoteBook:) name:kOpenNoteBook object:nil];
 }
 

@@ -521,7 +521,7 @@
 		2866CE1D1CACF83F00518F16 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = v2panda;
 				TargetAttributes = {
 					2866CE241CACF83F00518F16 = {
@@ -758,8 +758,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -803,8 +805,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -836,6 +840,7 @@
 				CODE_SIGN_ENTITLEMENTS = SimpleNote/SimpleNote.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 88N7V8S4F8;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Marco/SimpleNoteHeader.pch";
 				INFOPLIST_FILE = SimpleNote/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -855,6 +860,7 @@
 				CODE_SIGN_ENTITLEMENTS = SimpleNote/SimpleNote.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 88N7V8S4F8;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleNote/Marco/SimpleNoteHeader.pch";
 				INFOPLIST_FILE = SimpleNote/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

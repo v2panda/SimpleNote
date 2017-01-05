@@ -41,6 +41,7 @@ TZImagePickerControllerDelegate>
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNoteBookModel:) name:kNoteEditBtnTouched object:nil];
 }
 
