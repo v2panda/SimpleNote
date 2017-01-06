@@ -141,7 +141,7 @@ UITableViewDataSource>
             
             
         }else if (indexPath.row == 1) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"下载笔记到本地" message:@"下载操作会覆盖本地笔记，请提前同步笔记。" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"下载" message:@"下载操作会覆盖本地笔记，请提前同步笔记。" preferredStyle:UIAlertControllerStyleAlert okActionBlock:^{
                 [self downloadFromCloud];
             } cancelActionShow:YES];
             [self presentViewController:alertController animated:YES completion:nil];

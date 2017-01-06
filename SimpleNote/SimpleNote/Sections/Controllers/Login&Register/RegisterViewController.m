@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 
 @interface RegisterViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameTf;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTf;
 @property (weak, nonatomic) IBOutlet UITextField *emailTf;
@@ -22,6 +23,7 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - event response
 - (IBAction)registerBtnDidTouched:(UIButton *)sender {
     if ([NSString isBlankString:self.usernameTf.text]) {
         kTipAlert(@"请输入用户名");
@@ -58,7 +60,6 @@
                     NSLog(@"登录失败- %ld",error.code);
                 }
             }];
-            
         } else {
             NSLog(@"errorcode : %ld",error.code);
             if (error.code == 125) {
@@ -72,19 +73,6 @@
             }
         }
     }];
-    
-    
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -19,8 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
+
+#pragma mark - event response
 - (IBAction)nextBtnDidTouched:(UIButton *)sender {
     if ([NSString isBlankString:self.nicknameTf.text]) {
         kTipAlert(@"请输入昵称");
@@ -41,7 +42,6 @@
         model.describe = self.describeTf.text;
         [SNUserTool saveUserInfo:model];
     }
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SNRootVCSBID"];
     [self presentViewController:vc animated:YES completion:nil];

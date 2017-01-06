@@ -54,6 +54,7 @@
 		7CA44B411CDDDEFE0010098E /* Login&Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA44B401CDDDEFE0010098E /* Login&Register.storyboard */; };
 		7CA44B441CE213E30010098E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B431CE213E30010098E /* LoginViewController.m */; };
 		7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA44B461CE213EF0010098E /* RegisterViewController.m */; };
+		7CAE9E041E1FDF3400BAF23D /* ForgetPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE9E031E1FDF3400BAF23D /* ForgetPWViewController.m */; };
 		7CD961A81CB40B3200D16398 /* CreateNoteBookID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */; };
 		7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD961E01CBE93AF00D16398 /* NSString+PDAdd.m */; };
 /* End PBXBuildFile section */
@@ -173,6 +174,8 @@
 		7CA44B431CE213E30010098E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7CA44B451CE213EF0010098E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		7CA44B461CE213EF0010098E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7CAE9E021E1FDF3400BAF23D /* ForgetPWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWViewController.h; sourceTree = "<group>"; };
+		7CAE9E031E1FDF3400BAF23D /* ForgetPWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWViewController.m; sourceTree = "<group>"; };
 		7CD961A61CB40B3200D16398 /* CreateNoteBookID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteBookID.h; sourceTree = "<group>"; };
 		7CD961A71CB40B3200D16398 /* CreateNoteBookID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteBookID.m; sourceTree = "<group>"; };
 		7CD961DF1CBE93AF00D16398 /* NSString+PDAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PDAdd.h"; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 				7CA44B461CE213EF0010098E /* RegisterViewController.m */,
 				2809D10B1CF42C5C004BF73B /* RegisterDetailViewController.h */,
 				2809D10C1CF42C5C004BF73B /* RegisterDetailViewController.m */,
+				7CAE9E021E1FDF3400BAF23D /* ForgetPWViewController.h */,
+				7CAE9E031E1FDF3400BAF23D /* ForgetPWViewController.m */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -688,6 +693,7 @@
 				2854B4631CF2A3D600C5A88D /* SNUserEditViewController.m in Sources */,
 				7CD961E11CBE93AF00D16398 /* NSString+PDAdd.m in Sources */,
 				284D8C5E1CF53F80003D64DE /* SNLeftViewController.m in Sources */,
+				7CAE9E041E1FDF3400BAF23D /* ForgetPWViewController.m in Sources */,
 				7CA44B471CE213EF0010098E /* RegisterViewController.m in Sources */,
 				2854B46F1CF30FF100C5A88D /* SNFeedbackController.m in Sources */,
 				284D8C5C1CF53F80003D64DE /* EditNoteBookViewController.m in Sources */,
