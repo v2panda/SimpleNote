@@ -29,7 +29,6 @@
 }
 
 - (void)userInfoSaved {
-    
     [[AVUser currentUser] setObject:self.textView.text forKey:@"describe"];
     [[AVUser currentUser] saveInBackground];
     SNUserModel *model = [SNUserTool userInfo];
